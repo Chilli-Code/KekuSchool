@@ -10,6 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.9.2"
+    "astro": "^4.9.2",
+    "gsap": "^3.12.5",
+    "jquery": "^3.7.1",
+    "select2": "^4.1.0-rc.0"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.30"
   }
 }

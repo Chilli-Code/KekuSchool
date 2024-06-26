@@ -1,51 +1,442 @@
 ---
+import Navigation from '../components/Navigation.astro';
 interface Props {
-	title: string;
+    title_p: string;
+    spanText: string;
 }
 
-const { title } = Astro.props;
----
+import $ from "jquery";
 
+
+    const { title_p,  spanText } = Astro.props;
+
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+		<link rel="icon" type="image/png" href="/img/icon.png">
+        <script type="text/javascript" src="/js/jquery.min.js" ></script>
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{title_p}</title>
 	</head>
 	<body>
+		<Navigation spanText={spanText} />
 		<slot />
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --backgroundDefault: #282a36;
+    --backgroundNavHome: #383a59;
+    --activadorMenu: #6272a4;
+    --bacgroundContent: #44475a;
+    --backgroundBtnDisabled:#6a7186;
+    --backgroundMenuActive: #9492c0;
+    --backgroundHoverMenu: #9492c0;
+    --backgroundFocusInput: #929cb9;
+    --backgroundBtnShearch: #6272a4;
+    --backgroundBtnFocusShearch: #929cb9;
+    --backgroundBtnList:#6272a4;
+    --borderColorHr:#282a3680;
+    --colorhr:#4a567c;
+    --colorIcon:#fff;
+    --backgroundChat:-webkit-linear-gradient(-45deg, #183850a6 0, #1838500d 25%, #192c462e 50%, #22254c6e 75%, #22254ce0 100%);
+    --scrollPrincipal:rgb(98, 114, 164);
+    --scrollSecundario:#6272a4;
+    --selectB:#6a7186;
+    --colorTitle:#fff;
+}
+
+.dark-mode {
+    --activadorMenu:#3d7c98;
+    --backgroundDefault: #a8dff1;
+    --backgroundNavHome: #3d7c98;
+    --bacgroundContent: #3d7c98;
+    --backgroundBtnDisabled:#aeb2bda6;
+    --backgroundHoverMenu:#a8dff1;
+    --backgroundMenuActive: #a8dff1;
+    --borderColorHr:#a8dff1;
+    --backgroundBtnList:#a8dff1;
+    --backgroundBtnShearch:#a8dff1;
+    --backgroundBtnFocusShearch:#a8dff1;
+    --colorhr:#3d7c98;
+    --backgroundFocusInput:#a8dff1;
+    --colorIcon: #3d7c98;
+    --backgroundChat: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192c46d4 50%, #22254c 75%, #22254cfa 100%);
+    --scrollPrincipal:#3d7c98;
+    --scrollSecundario:#a8dff1;
+    --selectB:#326b7c;
+    --colorTitle:#3d7c98;
+}
+body {
+    font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
+    background: var(--backgroundDefault);
+    color: #4a567c;
+}
+@font-face {
+    font-family: 'icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/MaterialIconsOutlined-Regular.eot);
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(./fonts/MaterialIcons-Regular.woff2) format('woff2'), url(./fonts/MaterialIcons-Regular.woff) format('woff'), url(./fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.icon {
+    font-family: "icons" !important;
+    text-transform: none;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+}
+::selection {
+    background: #a4b5d3;
+    color: #eef4ff;
+}
+::placeholder {
+    color: #687292;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollSecundario);
+    border-bottom-left-radius: 0.6em;
+    border-bottom-right-radius: 0.6em;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollPrincipal);
+    border-radius: 2em;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #eef4ff52;
+    cursor: pointer;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #eef4ff3d;
+}
+input[disabled],
+select[disabled],
+textarea[disabled] {
+    background: #eef4ff !important;
+    color: #687292 !important;
+    transition: all 200ms ease-in !important;
+}
+input:focus,
+select:focus,
+textarea:focus {
+    background: #dde8fc !important;
+    transition: all 200ms ease-in !important;
+}
+button:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    transition: all 200ms ease-in !important;
+}
+
+@media only screen and (max-width: 1186px){
+.content .adminWidth{
+    width: 100% !important;
+}
+}
+@media only screen and (max-width: 1186px){
+    .content-aside {
+    width: 60% !imporant;
+    margin-bottom:20px;
+}
+}
+@media only screen and (max-width: 990px) {
+    .content-aside{
+        width:100% !important;
+    }
+}
+/*-------------------------------------------
+Contenedor Formularios
+-------------------------------------------*/
+@media only screen and (max-width: 990px){
+
+	.form-gridview {
+		width: 100% !important;
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+}
+
+
+@media only screen and (max-width: 990px) {
+
+}
+
+@media only screen and (max-width: 641px){
+
+	.form-gridview table.default {
+		display: block;
+		max-width: fit-content;
+		margin: 5.5% auto 0;
+		overflow-x: auto;
+		white-space: nowrap;
+		box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+}
+.content {
+    display: block;
+    float: right;
+    margin: 0 3%;
+    width: 72%;
+}
+@media only screen and (max-width: 990px) {
+.content {
+    float: none;
+    width: 94%;
+    display: flex;
+    flex-flow: column-reverse;
+}
+}
+@media only screen and (max-width: 1186px) {
+    .content {
+    display: flex;
+    align-items: center;
+    flex-flow: column-reverse;
+}
+ }
+
+.content-aside {
+    display: block;
+    float: right;
+    width: 27%;
+}
+
+.content:after,
+.content-aside:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+
+
+
+/*-------------------------------------------
+  Formulario | Herramientas
+-------------------------------------------*/
+
+.form-options {
+    width: 100%;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-radius: 0.4em;
+    user-select: none;
+}
+
+.form-options .options {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--borderColorHr);
+    padding: 5% 10%;
+}
+
+.form-options .options .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: block; */
+    width: 40px;
+    height: 40px;
+    color: #eef4ff;
+    font-size: 1em;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+}
+
+.form-options .options .btn.btn-disabled,
+.form-options .search .btn-search.btn-disabled {
+    background: var(--backgroundBtnDisabled);
+    color: #eef4ff98;
+    cursor: initial;
+    pointer-events: none;
+}
+
+.form-options .options .btn-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 6px rgba(91, 133, 127, 0.2);
+    background: #569188;
+    border-color: #6daaa3;
+    transition: all 300ms ease-out;
+}
+
+.form-options .options .btn-add:hover,
+.form-options .options .btn-add:focus {
+    background: #456661;
+    border: 4px solid #6daaa3;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-options .options .btn-add:active {
+    background: #569188;
+    transition: all 200ms ease-in;
+}
+
+.form-options .options .btn-exit {
+    box-shadow: 0 1px 6px rgba(219, 73, 73, 0.2);
+    background: #db4949;
+    border-color: #e77f7f;
+    transition: all 300ms ease-out;
+}
+
+.form-options .options .btn-exit:hover,
+.form-options .options .btn-exit:focus {
+    background: #aa3535;
+    border: 4px solid #e77f7f;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-options .options .btn-exit:active {
+    background: #db4949;
+    transition: all 200ms ease-in;
+}
+
+.form-options .options .btn-search-mobile {
+    display: none;
+    box-shadow: 0 1px 6px rgba(73, 100, 219, 0.2);
+    background: #6272a4;
+    border-color: #929cb9;
+    transition: all 300ms ease-out;
+}
+
+.form-options .options .btn-search-mobile:hover,
+.form-options .options .btn-search-mobile:focus {
+    background: #4a567c;
+    border: 4px solid #929cb9;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-options .options .btn-search-mobile:active {
+    background: #6272a4;
+    transition: all 200ms ease-in;
+}
+
+.form-options .search {
+    padding: 20px 0;
+}
+
+.form-options .search .barra{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-options .search:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.form-options .search .text-search {
+    float: left;
+    width: 57%;
+    height: 36px;
+    margin: 0 0 0 7.9%;
+    padding: 0 23.5% 0 3.5%;
+    background: #eef4ff;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-top-left-radius: 0.4em;
+    border-bottom-left-radius: 0.4em;
+    border-top-right-radius: 0.55em;
+    border-bottom-right-radius: 0.55em;
+    color: #687292;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: all 300ms ease-out;
+    outline: none !important;
+    outline-width: 0 !important;
+    transition: all 300ms ease-out;
+}
+
+.form-options .search .text-search:focus {
+    box-shadow: 0 0 0 2.5pt var(--backgroundBtnFocusShearch) !important;
+    color: #4a567c !important;
+    transition: all 200ms ease-in;
+}
+
+.form-options .search .btn-search {
+    float: left;
+    width: 20%;
+    height: 36px;
+    margin: 0 6.5% 0 -20%;
+    background: var(--backgroundBtnShearch);
+    border: none;
+    color: #eef4ff;
+    cursor: initial;
+    border-top-right-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    font-size: 1.02em;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.form-options .search .btn-search:hover,
+.form-options .search .btn-search:focus {
+    background: var(--colorhr);
+    box-shadow: inset 0 0 0 2.5pt var(--backgroundFocusInput) !important;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-options .search .btn-search:hover:active {
+    background: var(--backgroundBtnShearch);
+    transition: all 200ms ease-in;
+}
+
+@media only screen and (max-width: 990px){
+    .header {
+    float: none;
+    width: 94%;
+    margin-top: 100px;
+}
+}
+@media only screen and (max-width: 701px){
+
+.info-title {
+    width: 59.5%;
+}
+}
+@media (max-width: 278px){
+    .content {
+    width: 300px !important;
+}
+}
+ 
+
+
+.select:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    /* color: #4a567c !important; */
+    box-shadow: 0 0 0 2.5pt #929cb9 !important;
+    transition: all 200ms ease-in;
+}
+
+
 </style>
+
+

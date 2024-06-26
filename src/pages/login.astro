@@ -1,0 +1,336 @@
+---
+---
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+		<link rel="icon" type="image/png" href="/public/img/icon.png">
+		<script src="/public/js/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body class="login">
+        <div class="wrap-title-login">
+            <div class="title-login">
+                <h1>Sistema Escolar</h1>
+            </div>
+        </div>
+        <div class="form-login">
+            <div class="logo-form-login">
+            </div>
+            <form>
+                <label class="label">Inicia sesión</label>
+                <input type="text" class="text" placeholder="Correo electronico o matricula" autofocus="" required="">
+                <input type="password" class="textcontrasena" placeholder="Contraseña" autocomplete="off" required="">
+                <div class="forgot-pass">
+                    <a class="un" href="#">¿Olvidaste la contraseña?</a>
+                </div>
+                <div class="pretty p-svg p-curve p-smooth">
+                    <input type="checkbox" placeholder="Recordar">
+                    <div class="state p-primary">
+                        <label class="remember">Recuerdame</label>
+                    </div>
+                </div>
+                <button class="button" type="submit">Entrar</button>
+            </form>
+        </div>
+    </body>
+
+</html>
+
+<style>
+
+/*-------------------------------------------
+  Formulario | Iniciar Sesión
+-------------------------------------------*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: ;
+}
+
+body {
+    font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
+}
+@font-face {
+    font-family: 'icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/MaterialIconsOutlined-Regular.eot);
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(./fonts/MaterialIcons-Regular.woff2) format('woff2'), url(./fonts/MaterialIcons-Regular.woff) format('woff'), url(./fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+
+
+.login {
+    font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
+    background: #dadceb url(../../public/img/background_login.jpg) no-repeat top center fixed;
+    background-size: cover !important;
+}
+.wrap-title-login {
+    height: 230px;
+    background: #383a59e7;
+    box-shadow: 0 2px 6px rgba(142, 136, 192, 0.4);
+    user-select: none;
+}
+
+.wrap-title-login .title-login h1 {
+    text-align: center;
+    padding: 25px 0 0 0;
+    font-size: 3.2em;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+}
+.form-login {
+    position: relative;
+    width: 380px;
+    height: 370px;
+    margin: -55px auto 0;
+    background-color: #eef4ff;
+    border-top: 3px solid #6f7a9a;
+    box-shadow: 0 2px 6px rgba(142, 136, 192, 0.3);
+    border-radius: 0.5em;
+    user-select: none;
+}
+
+.logo-form-login {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    left: 0;
+    right: 0;
+    margin: -55px auto 0;
+    background: url(../img/icon.png) #eef4ff no-repeat bottom / 126px 126px;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: 4px solid #6f7a9a;
+    border-radius: 100%;
+}
+
+.logo-form-login img {
+    width: 130px;
+    height: 130px;
+}
+
+.form-login .label {
+    display: block;
+    padding: 104px 0 19px 0;
+    color: #4a567c;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-size: 1.7em;
+    text-align: center;
+}
+
+
+
+.form-login .label.error {
+    margin: 8px 0 3px 0;
+    color: #ca3636;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.form-login .text,
+.form-login .textcontrasena {
+    width: 82.5%;
+    height: 40px;
+    margin: 0 6.25% 22px;
+    padding: 0 2.3%;
+    background: transparent;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: 2px solid #929cb9;
+    border-radius: 0.4em;
+    color: #687292;
+    font-size: .9em;
+    font-weight: 600;
+    outline: none !important;
+    outline-width: 0 !important;
+    transition: all 300ms ease-out;
+}
+
+.form-login .text:focus,
+.form-login .textcontrasena:focus {
+    color: #4a567c !important;
+    cursor: text;
+    box-shadow: 0 0 0 1.5pt #929cb9 !important;
+    transition: all 200ms ease-in;
+}
+
+.form-login .textcontrasena {
+    margin: 0 6.25% 0;
+}
+
+.form-login .forgot-pass {
+    display: block;
+    width: 100%;
+    padding: 10px 0 9px;
+    text-align: center;
+}
+
+.form-login .forgot-pass a {
+    color: #4a567c;
+    font-size: 1em;
+    text-decoration: none;
+    outline: none !important;
+    outline-width: 0 !important;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+}
+
+.form-login .forgot-pass a:active {
+    color: #687292;
+}
+
+.form-login .forgot-pass a.un {
+    display: inline-block;
+}
+
+.form-login .forgot-pass a.un::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 2px;
+    margin: 0 auto;
+    padding: 0 0;
+    background: #929cb9;
+    border-radius: 0.1em;
+    transition: all 300ms ease-out;
+}
+
+.form-login .forgot-pass a.un:hover::after,
+.form-login .forgot-pass a.un:focus::after {
+    padding: 0 50%;
+    transition: all 200ms ease-in;
+}
+
+.form-login .forgot-pass a.un:active::after {
+    padding: 0 0;
+    transition: all 200ms ease-in;
+}
+
+.form-login .pretty {
+    float: left;
+    margin: 2.2% 0 0 6.25%;
+    font-size: 1em;
+}
+
+.form-login .pretty .state label {
+    position: relative;
+    margin: 0 0 0 17px;
+    color: #4a567c;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    bottom: 18px;
+}
+.form-login .pretty .state label:before {
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+}
+
+.form-login .pretty.p-svg input:hover~.state label:before,
+.form-login .pretty.p-svg input:focus~.state label:before {
+    box-shadow: 0 0 0 1.5pt #929cb9 !important;
+    transition: all 200ms ease-in;
+}
+
+.form-login .button {
+    float: right;
+    width: 32%;
+    height: 35px;
+    margin-right: 5.55%;
+    background: #6f7a9a;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-radius: 0.4em;
+    color: #eef4ff;
+    font-size: .9em;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none !important;
+    outline-width: 0 !important;
+    transition: all 300ms ease-out;
+}
+
+.form-login .button:hover,
+.form-login .button:focus {
+    background: #383a59c5;
+    box-shadow: 0 0 0 2.5pt #929cb9 !important;
+    transition: all 200ms ease-in;
+}
+
+.form-login .button:active {
+    background: #6f7a9a;
+    transition: all 200ms ease-in;
+}
+
+
+
+
+/*-------------------------------------------
+  Responsive Design
+  Formulario | Iniciar Sesión
+-------------------------------------------*/
+
+
+@media (max-width: 450px) {
+    .login {
+        background: #dadceb url(../../public/img/background_login.jpg) no-repeat top center fixed;
+    }
+}
+
+
+@media only screen and (max-width: 295px) {
+    .wrap-title-login{
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .wrap-title-login {
+        height: 190px;
+    }
+    .wrap-title-login .title-login h1 {
+        padding-top: 15px;
+        font-size: 2.2em;
+    }
+    .form-login {
+        margin-top: -60px;
+        width: 300px;
+        height: 382.5px;
+    }
+    .form-login .label {
+        margin: -5px 0 -5px 0;
+    }
+    .form-login .label.error {
+        margin: 6px 0 -.8px 0;
+        font-size: 1em;
+    }
+    .form-login .text,
+    .form-login .textcontrasena {
+        width: 81.9%;
+    }
+    .form-login .forgot-pass {
+        margin-top: 36px;
+        margin-bottom: 0px;
+    }
+    .form-login .pretty {
+        margin: -17% 0 0 30.1%;
+        font-size: 1em;
+    }
+    .form-login .pretty .state label {
+        margin: 0 0 0 18px;
+        position: relative;
+        bottom: 20px;
+    }
+    .form-login .button {
+        float: none;
+        display: block;
+        width: 88%;
+        margin: 0 auto;
+    }
+    .form-login .forgot-pass a.un {
+        position: relative;
+        display: inline-block;
+        top: 4px;
+    }
+}
+
+</style>

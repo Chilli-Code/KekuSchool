@@ -1,0 +1,977 @@
+---
+interface Props {
+    spanText: string;
+}
+
+const { spanText } = Astro.props;
+---
+<layout>
+    <header class="header">
+        <div class="info-title">
+            <span class="title">{spanText}</span>
+        </div>
+        <div class="info-school-period">
+            <span class="school-period">Periodo Escolar /
+                <a id="schoolPeriod" href="/periods">2022-1</a>
+            </span>
+        </div>
+    </header>
+<aside class="aside">
+    <div class="nav-home">
+        <a href="/"><span class="name_system">Control de Asistencias</span></a>
+        <div class="user">
+            <img class="image_user" src="/img/user.png">
+            <span class="name_user">Nombre Admin</span>
+            <span class="logout_user">
+                <a class="icon" href="#">expand_more</a>
+                <ul>
+                    <li>
+                        <a class="" style="border-bottom: 3px solid var(--backgroundBtnList);" href="/setting"><span
+                                class="icon">settings</span>Configuración</a>
+                    </li>
+                    <li>
+                        <a href="/login"><span class="icon">logout</span>Cerrar sesión</a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+        <ul>
+            <li>
+                <a href="/"><span class="icon">dashboard</span>Inicio</a>
+            </li>
+            <li>
+                <a  href="/periods"><span class="icon">date_range</span>Periodo Escolar</a>
+            </li>
+            <li>
+                <a href="/users"><span class="icon">manage_accounts</span>Usuarios</a>
+            </li>
+            <li>
+                <a  href="/administrative"><span class="icon">supervised_user_circle</span>Administrativos</a>
+            </li>
+            <li>
+                <a  href="/teachers"><span class="icon">connect_without_contact</span>Docentes</a>
+            </li>
+            <li>
+                <a  href="/students"><span class="icon">recent_actors</span>Alumnos</a>
+            </li>
+            <li>
+                <a  href="/subjects"><span class="icon">library_books</span>Asignaturas</a>
+            </li>
+            <li>
+                <a  href=""><span class="icon">groups</span>Grupos</a>
+            </li>
+            <li>
+                <a  href=""><span class="icon">fact_check</span>Asistencias</a>
+            </li>
+            <li>
+                <a href="/chat"><span class="icon">message</span>Chat</a>
+            </li>
+        </ul>
+        <!-- Menu Mobile -->
+        <div class="button-dark dark-mode-btn" id="dark-mode-btn">
+            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </div>
+        <div class="cont-copyright">
+            <hr>
+            <p>© Copyright Keku Enterprise</p>
+        </div>
+    </div>
+    <div class="menu-mobile">
+        <header>
+            <span class="activator icon" id="activator">menu</span>
+            <nav>
+                <ul>
+                    <li class="lista">
+                        <a href="/"><span class="icon">dashboard</span><span class="text">Inicio</span></a>
+                    </li>
+                    <li class="lista">
+                        <a  href="/periods"><span class="icon">date_range</span><span class="text">Perido Escolar</span></a>
+                    </li>
+                    <li  class="lista">
+                        <a  href="/users"><span class="icon">manage_accounts</span><span class="text">Usuarios</span></a>
+                    </li>
+                    <li  class="lista">
+                        <a  href="/administrative"><span class="icon">supervised_user_circle</span><span class="text">Administrativos</span></a>
+                    </li>
+                    <li  class="lista">
+                        <a  href="/teachers"><span class="icon">connect_without_contact</span><span class="text">Docentes</span></a>
+                    </li>
+                    <li  class="lista">
+                        <a  href="/students"><span class="icon">recent_actors</span><span class="text">Alumnos</span></a>
+                    </li>
+                    <li>
+                        <a  href="/subjects"><span class="icon">library_books</span><span class="text">Asignaturas</span></a>
+                    </li>
+                    <li  class="lista">
+                        <a  href="#"><span class="icon">groups</span><span class="text">Grupos</span></a>
+                    </li>
+                    <li class="lista">
+                        <a  href="#"><span class="icon">fact_check</span><span class="text">Asistencias</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <a href="/"><span class="name_system">Control de Asistencias</span></a>
+    </div>
+    <div class="user-mobile">
+        <header>
+            <img class="activator-user" id="activator-user" src="./img/user.png">
+            <nav>
+                <ul>
+                    <li>
+                        <div class="button-dark dark-mode-btn dark-mobile" id="dark-mode-btn">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+                        </div>
+                    </li>
+                    <li class="first-item">
+                        <a href="/setting"><span class="icon">settings</span><span
+                                class="text">Configuración</span></a>
+                    </li>
+                    <li>
+                        <a href="/login"><span class="icon">logout</span><span class="text">Cerrar
+                                sesión</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    </aside>
+    <div class="flotinChat">
+        <a href="./chat">
+        <span class="icon">chat</span>
+    </a>
+    </div>
+</layout>
+
+
+<style>
+    .flotinChat a {
+    font-size: 20px;
+    text-decoration: none;
+    color:#fff;
+}
+.flotinChat:hover{
+    background: var(--backgroundBtnShearch);
+}
+.flotinChat:hover span{
+    color: #000;
+}
+.flotinChat {
+    z-index:1;
+    cursor: pointer;
+    display: none;
+    opacity:0;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: fixed;
+    bottom: 70px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    border:2px solid var(--backgroundBtnShearch);
+    transform: translateY(70px);
+    transition: all 250ms ease-out;
+    border-radius: 50%;
+    background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
+    background: var(--backgroundNavHome);
+}
+@media (max-width: 990px){
+    .flotinChat {
+        display: flex;
+        opacity:1;
+    }
+}
+/*-------------------------------------------
+  Home | Header
+-------------------------------------------*/
+.header {
+    width: 72%;
+    float: right;
+    height: 50px;
+    margin: 35px 3%;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-radius: 0.4em;
+    user-select: none;
+}
+
+@media(max-width: 305px){
+
+    .header{
+        width: 300px !important;
+    }
+}
+
+
+.info-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    float: left;
+    width: 73.1%;
+    height: 100%;
+}
+
+.info-title .title {
+    display: block;
+    margin-left: 4%;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-size: 1.25em;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.info-school-period {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    width: 26.7%;
+    height: 100%;
+    border-left: 1px solid #282a3660;
+}
+
+.info-school-period .school-period {
+    display: block;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.info-school-period .school-period a {
+    color: #eef4ff;
+    font-size: 0.92em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 300ms ease-out;
+}
+
+.info-school-period .school-period a:hover,
+.info-school-period .school-period a:focus {
+    color: var(----backgroundHoverMenu);
+    outline: none;
+    transition: all 200ms ease-in;
+}
+
+.info-school-period .school-period a:active {
+    color: #7875a1;
+    transition: all 200ms ease-in;
+}
+
+
+
+/*-------------------------------------------
+Home | Navigation
+-------------------------------------------*/
+
+.nav-home {
+    position: fixed;
+    width: 18%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--backgroundNavHome);
+    box-shadow: 2px 0 2px rgba(73, 80, 104, 0.4);
+    overflow-x: hidden;
+    overflow-y: auto;
+    user-select: none;
+}
+
+.nav-home span.name_system {
+    display: block;
+    padding: 12% 0;
+    margin: 10px 5px;
+    background: url(../img/logo.svg) no-repeat center;
+    background-size: 190px;
+    text-indent: -999px;
+}
+
+.nav-home .user {
+    border-top: 1px solid var(--borderColorHr);
+    border-bottom: 1px solid var(--borderColorHr);
+}
+
+.nav-home .user::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.nav-home .user img.image_user {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 6% 8%;
+    background-color: var(--backgroundBtnList);
+    box-shadow: 0 0 6px rgba(142, 136, 192, 0.2);
+    border: 3px solid var(--backgroundBtnList);
+    border-radius: 10em;
+    pointer-events: none;
+}
+
+.nav-home .user span.name_user {
+    float: left;
+    margin: -2% 0 2% 8%;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-weight: 500;
+    font-size: 0.97em;
+    text-transform: capitalize;
+}
+
+.nav-home .user span.logout_user {
+    float: right;
+    margin: -2.5% 7% 2% 0;
+}
+
+.nav-home .user span.logout_user>a {
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    outline: none;
+    outline-width: none;
+    transition: all 300ms ease-out;
+}
+
+.nav-home .user span.logout_user>a:hover,
+.nav-home .user span.logout_user>a:focus {
+    color: var(--backgroundHoverMenu);
+    transition: all 200ms ease-in;
+}
+
+.nav-home .user span.logout_user>a+ul {
+    display: none;
+    position: absolute;
+    right: 3%;
+    width: 170px;
+    margin-top: -10%;
+    background: var(--backgroundNavHome);
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: 3px solid var(--backgroundBtnList);
+    border-radius: 0.4em;
+    font-size: 0.95em;
+    text-align: left;
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+.nav-home .user span.logout_user>a+ul>li>a.active-logout {
+    color: var(--backgroundMenuActive);
+    transition: all 200ms ease-in;
+}
+
+.nav-home .user span.logout_user>a+ul>li>a.active-logout:active {
+    color: #7875a1;
+    transition: all 200ms ease-in;
+}
+
+.nav-home .user span.logout_user>a+ul>li>a .icon {
+    margin: 0;
+    margin-right: 15.5px;
+    padding: 0;
+    font-size: 1em;
+}
+
+.nav-home .user span.logout_user>a+ul:hover {
+    display: block;
+    animation: fadeIn 200ms;
+}
+
+.nav-home .user span.logout_user>a:focus+ul {
+    display: block;
+    animation: fadeIn 200ms;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 0.99;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.nav-home ul {
+    margin-top: 5%;
+    display: flex;
+    flex-flow: column wrap;
+    list-style: none;
+}
+
+.nav-home ul li a {
+    display: block;
+    padding: 4% 8%;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-size: 0.97em;
+    font-weight: 500;
+    text-decoration: none;
+    outline: none;
+    outline-width: none;
+    transition: all 300ms ease-out;
+}
+
+.nav-home ul li a .icon {
+    float: left;
+    margin-top: -1px;
+    margin-right: 15px;
+}
+
+.nav-home ul li a:hover,
+.nav-home ul li a:focus {
+    color: var(--backgroundHoverMenu);
+    transition: all 200ms ease-in;
+}
+
+.nav-home ul li a.active {
+    padding: 4% 6.8%;
+    color: var(--backgroundMenuActive);
+    text-shadow: none;
+    border-left: 4px solid var(--backgroundBtnList);
+    transition: all 200ms ease-in;
+}
+
+.nav-home ul li a:active,
+.nav-home ul li a.active:active {
+    color: var(--backgroundMenuActive);
+    transition: all 200ms ease-in;
+}
+
+
+
+@media only screen and (max-width: 990px) {
+    .menu-mobile,
+    .user-mobile {
+        display: block!important;
+    }
+    .menu-mobile {
+        margin-top: -162px !important;
+        margin-bottom: 97px !important;
+    }
+    .user-mobile {
+        margin-top: -154px !important;
+        margin-bottom: 100px !important;
+    }
+    .nav-home {
+        display: none;
+    }
+    .header {
+        display: flex;
+        float: none;
+        width: 94%;
+        margin-top: 100px;
+    }
+
+}
+
+@media (max-width:330px) {
+    .user-mobile header{
+        /* width: 300px; */
+        
+    }
+    .aside{
+        z-index: 100;
+        width: 100%;
+        position: relative;
+    
+    }
+}
+
+/*-------------------------------------------
+Menu Mobile
+-------------------------------------------*/
+
+.menu-mobile {
+    display: none;
+    position: relative;
+    width: 94%;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    place-content: center;
+    user-select: none;
+}
+
+.menu-mobile span.name_system {
+    display: block;
+    width: 300px;
+    height: 60px;
+    margin: -55px auto 0px;
+    padding: 0;
+    background: url(../img/logo.svg) no-repeat center;
+    background-size: 156px;
+    text-indent: -999px;
+}
+
+.menu-mobile header {
+    display: flex;
+}
+
+.menu-mobile header .activator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    min-height: 52px;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-radius: 0.4em;
+    color: #eef4ff;
+    font-size: 1.3em;
+    line-height: 0.95em;
+    cursor: pointer;
+    transition: color 300ms ease-out;
+}
+
+.menu-mobile header .activator:hover {
+    background: var(--bacgroundContent);
+    transition: color 200ms ease-in;
+}
+
+.menu-mobile header span.activator {
+    width: 20px;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.menu-mobile header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-mobile header nav {
+    z-index: 99;
+    max-width: fit-content;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 48px;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-radius: 0 0.4em 0.4em 0;
+    padding: 5px 0 0 6px;
+    clip-path: ellipse(50% 50% at -50% 50%);
+}
+
+.menu-mobile header nav ul {
+    display: flex;
+}
+
+.menu-mobile header nav ul li a {
+    display: block;
+    margin: 4px 6px 0 0;
+    padding: 0em .35em;
+    color: #eef4ff;
+    font-size: 1.3em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.4em;
+    outline: none;
+    outline-width: none;
+    transition: all 300ms ease-out;
+}
+
+.menu-mobile header nav ul li a span.text {
+    display: block;
+    margin-top: -5px;
+    padding-bottom: 2px;
+    font-size: 0.5em;
+    font-weight: bold;
+}
+
+.menu-mobile header nav ul li a:hover,
+.menu-mobile header nav ul li a:focus {
+    background: #323844;
+    box-shadow: 0 0 2px rgba(73, 80, 104, 0.4);
+    color: var(--backgroundHoverMenu);
+    transition: all 200ms ease-in;
+}
+
+.menu-mobile header nav ul li a:active,
+.menu-mobile header nav ul li a.activeMenu:active {
+    background: #282d36;
+    color: #7875a1;
+    transition: all 200ms ease-in;
+}
+
+.menu-mobile header nav ul li a.activeMenu {
+    background: #323844;
+    box-shadow: 0 0 2px rgba(73, 80, 104, 0.4);
+    opacity: 1;
+    color: var(--backgroundMenuActive);
+    transform: translateX(-10px);
+}
+
+.menu-mobile header nav ul li a span {
+    margin-top: 5px;
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+
+
+/*-------------------------------------------
+User Mobile
+-------------------------------------------*/
+
+.user-mobile {
+    display: none;
+    float: right;
+    margin: 0 auto;
+    margin-right: 3%;
+    position: relative;
+    background: transparent;
+    place-content: left;
+    user-select: none;
+}
+
+.user-mobile header {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.user-mobile header img {
+    max-width: 46px;
+    max-height: 46px;
+}
+
+.user-mobile header .activator-user {
+    width: 46px;
+    height: 46px;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border: 3px solid var(--bacgroundContent);
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    cursor: pointer;
+    transition: background 300ms ease-out;
+}
+
+.user-mobile header .activator-user:hover {
+    background: var(--bacgroundContent);
+    transition: background 200ms ease-in;
+}
+
+.user-mobile ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-mobile nav {
+    display: none;
+    width: 0;
+    height: 52px;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-top-left-radius: 10em;
+    border-bottom-left-radius: 10em;
+    overflow: hidden;
+}
+
+.user-mobile nav ul {
+    display: flex;
+    float: right;
+}
+
+.user-mobile nav ul li.first-item {
+    margin-left: 6px;
+    margin-right: 18px;
+}
+
+.user-mobile nav ul li {
+    margin-right: 18px;
+}
+
+.user-mobile nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 0 6px;
+    margin-top: 8px;
+    color: #eef4ff;
+    font-size: 1.3em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.9em;
+    outline: none;
+    outline-width: none;
+    transition: all 300ms ease-out;
+}
+
+.user-mobile header nav ul li a span.text {
+    display: block;
+    width: 100%;
+    margin-top: -5px;
+    padding-bottom: 2px;
+    font-size: 0.5em;
+    font-weight: bold;
+}
+
+.user-mobile nav ul li a:hover,
+.user-mobile nav ul li a:focus {
+    background: #323844;
+    box-shadow: 0 0 2px rgba(73, 80, 104, 0.4);
+    color: var(--backgroundHoverMenu);
+    transition: all 200ms ease-in;
+}
+
+.user-mobile nav ul li a:active,
+.user-mobile nav ul li a.active-user:active {
+    background: #282d36;
+    color: #7875a1;
+    transition: all 200ms ease-in;
+}
+
+.user-mobile nav ul li a.active-user {
+    background: #323844;
+    box-shadow: 0 0 2px rgba(73, 80, 104, 0.4);
+    opacity: 0;
+    color: var(--backgroundHoverMenu);
+    transform: translateX(10px);
+}
+
+.user-mobile nav ul li a span {
+    width: 20px;
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+@media only screen and (max-width: 535px) {
+    .user-mobile{
+        /* float: revert; */
+    }
+}
+
+
+
+.button-dark.dark-mobile{
+    left: 15px;
+    position: relative;
+    display: flex;
+    background-color: #21242d;
+    box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    border-radius: 50%;
+    z-index: 3;
+    cursor: pointer;
+    text-align: center;
+    top: 2px;
+}
+
+.button-dark svg {
+    width: 24px;
+    flex-shrink: 0;
+    fill: #ffce45;
+    stroke: #ffce45;
+    transition: 0.5s;
+}
+
+.button-dark {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    background-color: #21242d;
+    box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    border-radius: 50%;
+    z-index: 3;
+    cursor: pointer;
+}
+
+
+.dark-mode .button-dark{
+    background-color: #f7f7f7;
+}
+
+.dark-mode .button-dark  svg {
+    fill: transparent;
+    stroke:#3c3a3a;
+}
+
+.cont-copyright {
+    position: absolute;
+    bottom: 0;
+    left: 17px;
+    width: 100%;
+    text-align: center;
+}
+.cont-copyright hr{
+    width: 100%;
+    border:1px solid var(--borderColorHr);
+}
+.cont-copyright p{
+    padding: 4px 3px;
+    width:100%;
+    color:#fff;
+    font-size: 0.7em;
+}
+
+
+
+
+</style>
+
+
+<script>
+import { gsap } from 'gsap';
+let card = document.getElementById('activator');
+
+let tl = gsap.timeline({
+    defaults: {
+        ease: 'power2.inOut'
+    }
+});
+
+let toggle = false;
+let toggleU = false;
+
+tl.to('.activator', {
+    background: '#6272a4',
+    color: '#eef4ff98',
+    borderTopRightRadius: '0',
+    borderBottomRightRadius: '0'
+});
+
+tl.to('.menu-mobile nav', {
+    clipPath: 'ellipse(100% 100% at 50% 50%)',
+    duration: 0.6
+});
+
+tl.to('.menu-mobile nav span', {
+    opacity: 1,
+    transform: 'translateX(0)',
+    stagger: .01,
+    duration: 0.3
+});
+
+tl.to('.active-menu', {
+    opacity: 1,
+    transform: 'translateX(0)',
+    stagger: .05,
+    duration: 0.3
+});
+
+tl.pause();
+
+card.addEventListener('click', () => {
+    toggle = !toggle;
+
+    if (toggle) {
+        tl.play();
+
+        toggleU = !toggleU;
+
+        if (!toggleU) {
+            tlU.reverse();
+        } else {
+            toggleU = !toggleU;
+        }
+    } else {
+        tl.reverse();
+    }
+});
+
+/*-------------------------------------------
+  user
+-------------------------------------------*/
+
+let cardU = document.getElementById('activator-user');
+
+let tlU = gsap.timeline({
+    defaults: {
+        ease: 'power2.inOut'
+    }
+});
+
+tlU.to('.user-mobile .activator-user', {
+    background: 'var(--backgroundNavHome)',
+    border: '3px solid var(--backgroundBtnList)',
+    borderTopLeftRadius: '0',
+    borderBottomLeftRadius: '0'
+});
+
+tlU.to('.user-mobile nav', {
+    display: 'block',
+    width: '100%',
+    height:'auto',
+    duration: 0.2
+});
+
+tlU.to('.user-mobile nav span', {
+    opacity: 1,
+    transform: 'translateX(0)',
+    stagger: .03,
+    duration: 0.3
+});
+
+tlU.to('.active-user', {
+    opacity: 1,
+    transform: 'translateX(0)',
+    stagger: .05,
+    duration: 0.3
+});
+
+tlU.pause();
+
+cardU.addEventListener('click', () => {
+    toggleU = !toggleU;
+
+    if (toggleU) {
+        tlU.play();
+
+        toggle = !toggle;
+
+        if (!toggle) {
+            tl.reverse();
+        } else {
+            toggle = !toggle;
+        }
+    } else {
+        tlU.reverse();
+    }
+});
+
+
+/*-------------------------------------------
+ botón de modo Dark
+-------------------------------------------*/
+
+var btn = document.getElementsByClassName("dark-mode-btn");
+  // Escucha el evento "click" del botón
+for (var i = 0; i < btn.length; i++) {
+
+    btn[i].addEventListener("click", function() {
+    // Alterna la clase "dark-mode" del elemento body
+    document.body.classList.toggle("dark-mode");
+
+    // Almacena el estado del modo oscuro en el almacenamiento local
+
+    if (document.body.classList.contains("dark-mode")) {
+    localStorage.setItem("dark-mode", "enabled");
+    } else {
+    localStorage.removeItem("dark-mode");
+    }
+});
+}
+  // Aplica el estado del modo oscuro al cargar la página
+if (localStorage.getItem("dark-mode") === "enabled") {
+    document.body.classList.add("dark-mode");
+}
+
+
+</script>

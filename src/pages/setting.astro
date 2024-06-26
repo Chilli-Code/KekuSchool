@@ -1,0 +1,728 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title_p="Sistema Escolar || Setting" spanText="Configuracion">
+
+    <section style="min-height: 100vh;">
+        <section class="content">
+            <div class="form-data form-config-user">
+                <div class="body">
+                <form>
+                    <div class="wrap">
+                        <div class="first">
+                            <div class="section-user-image">
+                                <img src="./img/user.png">
+                                <a href="#" class="file"><span class="icon">add_a_photo</span></a>
+                                <input id="fileuploadimage" style="display: none;" type="file" name="fileuploadimage" accept=".jpg, .jpeg, .png">
+                                                        <div class="section-user-info">
+                                    <span class="user-name">Nombre Admin</span>
+                                    <span class="user-id">admin</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="last">
+                            <div class="config-data-user">
+                                <p>
+                                    <input disabled="" class="text" type="email" name="txtemailupdate" value="carmonabernaldiego@gmail.com" maxlength="200" placeholder="Correo electrónico" autocomplete="off" required="">
+                                    <button class="btn-edit-email icon">edit</button>
+                                </p>
+                                <a class="btn-edit-info-user" href="#"><span class="icon">edit_note</span>Información Personal</a>
+                                <a class="btn-change-pass" href="#"><span class="icon">lock_open</span>Cambiar Contraseña</a>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <span class="user-permissions">Adminisrador </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </section>
+    </section>
+</Layout>
+
+
+<style>
+
+/*-------------------------------------------
+  Formulario | Add / Update
+-------------------------------------------*/
+
+.form-data {
+    position: relative;
+    float: left;
+    margin: 0 0 35px 0;
+    width: 71%;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-radius: 0.4em;
+    user-select: none;
+}
+
+.form-data .head {
+    padding: 14px 0;
+    border-bottom: 1px solid #282a3660;
+}
+
+.form-data .head h1 {
+    color: #eef4ff;
+    font-size: 1em;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    text-align: center;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.form-data .body .wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    padding: 4% 0 0 0;
+}
+
+.form-data .body .first,
+.form-data .body .last {
+    width: 44%;
+}
+
+.form-data .body .content-full {
+    display: block;
+    width: 92%;
+}
+
+.form-data .body .content-full .select2-container .select2-selection--single .select2-selection__rendered {
+    padding: 0 1.5% !important;
+}
+
+.form-data .body .content-full .select2-container--default .select2-selection--single .select2-selection__arrow {
+    right: 1%;
+    width: 20px;
+}
+
+.form-data .body .label {
+    display: block;
+    margin: 0 0 6px 0;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-size: 0.9em;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.form-data .body .text {
+    width: 94%;
+    height: 36px;
+    margin: 0 0 25px 0;
+    padding: 0 3%;
+    background: #eef4ff;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-radius: 0.4em;
+    color: #687292;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: all 300ms ease-out;
+}
+
+.form-data .body .textarea {
+    display: block;
+    width: 203.1%;
+    min-height: 50px;
+    max-height: 120px;
+    margin: 0 0 20px 0;
+    padding: 6px 3%;
+    background: #eef4ff;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-radius: 0.4em;
+    color: #687292;
+    line-height: 1.7;
+    font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: justify;
+    resize: vertical;
+    transition: all 300ms ease-out;
+}
+
+.form-data .body .date {
+    width: 94%;
+    height: 36px;
+    margin: 0 0 25px 0;
+    padding: 0 3%;
+    background: #eef4ff;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-radius: 0.4em;
+    color: #687292;
+    font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 300ms ease-out;
+}
+
+.form-data .body [type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.form-data .body [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
+.litepicker {
+    user-select: none;
+}
+
+.litepicker .month-item-name,
+.litepicker .month-item-year {
+    background: #dde8fc;
+    border: none;
+    border-radius: 0.4em;
+    color: #4a567c;
+    font-size: 1em;
+    font-weight: 500;
+    text-transform: capitalize;
+    outline: none;
+    outline-width: 0;
+}
+
+.litepicker select.month-item-name option,
+.litepicker select.month-item-year option {
+    background: #dde8fc;
+    border: none;
+    border-radius: 0.4em;
+    color: #4a567c;
+    font-size: 1em;
+    font-weight: 600;
+    outline: none;
+    outline-width: 0;
+}
+
+.form-data .body .select {
+    width: 100%;
+    height: 36px;
+    margin: 0 0 25px 0;
+    padding: 0 1%;
+    background: #eef4ff;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-radius: 0.4em;
+    color: #687292;
+    font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 300ms ease-out;
+}
+
+.form-data .body .select option {
+    color: #4a567c;
+    font-weight: 500;
+}
+
+.form-data .body .btn {
+    display: block;
+    float: right;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 8px 0 0 8px;
+    background: var(--backgroundBtnList);
+    box-shadow: -1px -1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-color: #929cb9;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 0.4em;
+    color: #eef4ff;
+    text-shadow: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.form-data .body .btn.back {
+    display: block;
+    float: left;
+    padding: 8px 8px 0 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 0.4em;
+    border-bottom-right-radius: 0;
+}
+
+.form-data .body .btn.icon {
+    text-shadow: 0 -1px 5px rgb(142, 136, 192, 0.2);
+}
+
+.form-data .body .btn:hover,
+.form-data .body .btn:focus {
+    background: #4a567c;
+    border: 4px solid #929cb9;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-data .body .btn:active {
+    background: #6272a4;
+    transition: all 200ms ease-in;
+}
+
+.text:focus,
+.textarea:focus,
+.date:focus,
+.select:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    color: #4a567c !important;
+    box-shadow: 0 0 0 2.5pt #929cb9 !important;
+    transition: all 200ms ease-in;
+}
+
+
+
+/*-------------------------------------------
+  Formulario | Configuration User
+-------------------------------------------*/
+
+.form-config-user {
+    float: none;
+    width: 100%;
+    background: #44475a;
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-radius: 0.4em;
+}
+
+.form-config-user:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.form-config-user .body .wrap {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+.form-config-user .body .first,
+.form-config-user .body .last {
+    width: 45%;
+}
+
+.form-config-user .body .first {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0;
+}
+
+.form-config-user .body .last {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-users .body .section-user-image,
+.form-config-user .body .section-user-image {
+    width: 100%;
+}
+
+.form-users .body .section-user-image img,
+.form-config-user .body .section-user-image img {
+    display: block;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    background-color: #eef4ff;
+    border: solid #eef4ff 4px;
+    border-radius: 100%;
+    pointer-events: none;
+    box-shadow: 0 0 6px rgba(142, 136, 192, 0.2);
+}
+
+.form-users .body .section-user-image .file,
+.form-config-user .body .section-user-image .file {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 55px;
+    height: 55px;
+    margin: 0 auto;
+    margin-top: -32px;
+    padding: 0;
+    background: #6272a4;
+    box-shadow: 0 0 6px rgba(142, 136, 192, 0.2);
+    border-radius: 100%;
+    color: #eef4ff;
+    text-decoration: none;
+    font-size: 1.6em;
+    font-weight: 100;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.form-users .body .section-user-image .file.disabled,
+.form-config-user .body .section-user-image .file.disabled {
+    background: #6a7186;
+    color: #eef4ff98;
+    cursor: default;
+}
+
+.form-users .body .section-user-image .file:hover,
+.form-config-user .body .section-user-image .file:hover,
+.form-users .body .section-user-image .file:focus,
+.form-config-user .body .section-user-image .file:focus {
+    outline: none;
+    outline-width: 0;
+    background: #4a567c;
+    box-shadow: 0 0 0 2.5pt #929cb9 !important;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-user-image .file.disabled:hover,
+.form-config-user .body .section-user-image .file.disabled:hover,
+.form-users .body .section-user-image .file.disabled:focus,
+.form-config-user .body .section-user-image .file.disabled:focus {
+    background: #6a7186;
+    color: #eef4ff98;
+    cursor: default;
+}
+
+.form-users .body .section-user-image .file.disabled:hover,
+.form-config-user .body .section-user-image .file.disabled:hover,
+.form-users .body .section-user-image .file.disabled:focus,
+.form-config-user .body .section-user-image .file.disabled:focus {
+    box-shadow: none !important;
+}
+
+.form-users .body .section-user-image .file:active,
+.form-config-user .body .section-user-image .file:active {
+    background: #6272a4;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-croppie-image,
+.form-config-user .body .section-croppie-image {
+    width: 100%;
+    padding: 33px 0 0;
+}
+
+.form-users .body .section-croppie-image .options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 0 0px;
+}
+
+.form-config-user .body .section-croppie-image .options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 0 32.5px;
+}
+
+.form-users .body .section-croppie-image .options .crop-btn,
+.form-config-user .body .section-croppie-image .options .crop-btn,
+.form-users .body .section-croppie-image .options .change-btn,
+.form-config-user .body .section-croppie-image .options .change-btn,
+.form-users .body .section-croppie-image .options .cancel-btn,
+.form-config-user .body .section-croppie-image .options .cancel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    margin: 0 25px;
+    background: #6272a4;
+    box-shadow: 0 0 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-radius: 100%;
+    color: #eef4ff;
+    text-decoration: none;
+    outline: none;
+    line-height: 2.55em;
+    font-size: 1.5em;
+    font-weight: 100;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 300ms ease-out;
+}
+
+.form-users .body .section-croppie-image .options .change-btn,
+.form-config-user .body .section-croppie-image .options .change-btn {
+    background: #3f6992;
+    box-shadow: 0 1px 6px rgba(63, 105, 146, 0.2);
+}
+
+.form-users .body .section-croppie-image .options .cancel-btn,
+.form-config-user .body .section-croppie-image .options .cancel-btn {
+    background: #db4949;
+    box-shadow: 0 1px 6px rgba(219, 73, 73, 0.2);
+}
+
+.form-users .body .section-croppie-image .options .crop-btn:hover,
+.form-config-user .body .section-croppie-image .options .crop-btn:hover,
+.form-users .body .section-croppie-image .options .crop-btn:focus,
+.form-config-user .body .section-croppie-image .options .crop-btn:focus {
+    background: #4a567c;
+    box-shadow: 0 0 0 2.5pt #929cb9 !important;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-croppie-image .options .change-btn:hover,
+.form-config-user .body .section-croppie-image .options .change-btn:hover,
+.form-users .body .section-croppie-image .options .change-btn:focus,
+.form-config-user .body .section-croppie-image .options .change-btn:focus {
+    background: #2a4866;
+    box-shadow: 0 0 0 2.5pt #7eb2e2 !important;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-croppie-image .options .cancel-btn:hover,
+.form-config-user .body .section-croppie-image .options .cancel-btn:hover,
+.form-users .body .section-croppie-image .options .cancel-btn:focus,
+.form-config-user .body .section-croppie-image .options .cancel-btn:focus {
+    background: #aa3535;
+    box-shadow: 0 0 0 2.5pt #e77f7f !important;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-croppie-image .options .crop-btn:active,
+.form-config-user .body .section-croppie-image .options .crop-btn:active {
+    background: #6272a4;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-croppie-image .options .change-btn:active,
+.form-config-user .body .section-croppie-image .options .change-btn:active {
+    background: #3f6992;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-croppie-image .options .cancel-btn:active,
+.form-config-user .body .section-croppie-image .options .cancel-btn:active {
+    background: #db4949;
+    transition: all 200ms ease-in;
+}
+
+.form-users .body .section-user-info {
+    display: block;
+    width: 100%;
+    margin: 13px 0 10px;
+}
+
+.form-config-user .body .section-user-info span.user-name,
+.form-config-user .body .section-user-info span.user-id {
+    display: block;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.form-config-user .body .section-user-info span.user-name {
+    margin-top: 8px;
+}
+
+.form-config-user .body .section-user-info span.user-id {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.form-config-user .body .config-data-user {
+    width: 100%;
+}
+
+.form-config-user .body .config-data-user .text {
+    width: 80%;
+    margin: 0;
+    padding: 0 8% 0 3%;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+}
+
+.form-config-user .body .config-data-user .btn-edit-email {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 22%;
+    height: 36px;
+    margin-top: -36px;
+    background: #6272a4;
+    box-shadow: none;
+    border: none;
+    border-color: #929cb9;
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: #eef4ff;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.form-config-user .body .config-data-user .btn-edit-email.disabled {
+    background: #6a7186;
+    color: #eef4ff98;
+    cursor: default;
+}
+
+.form-config-user .body .config-data-user .btn-edit-email:hover,
+.form-config-user .body .config-data-user .btn-edit-email:focus {
+    outline: none;
+    outline-width: 0;
+    background: #4a567c;
+    box-shadow: inset 0 0 0 4px #929cb9;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-config-user .body .config-data-user .btn-edit-email.disabled:hover,
+.form-config-user .body .config-data-user .btn-edit-email.disabled:focus {
+    background: #6a7186;
+    box-shadow: none !important;
+}
+
+.form-config-user .body .config-data-user .btn-edit-email:active {
+    background: #6272a4;
+    transition: all 200ms ease-in;
+}
+
+.form-config-user .body .config-data-user .btn-edit-info-user,
+.form-config-user .body .config-data-user .btn-change-pass {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    height: 36px;
+    padding-left: 10.6%;
+    background: #6272a4;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    border: none;
+    border-radius: 0.4em;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgb(142 136 192 / 20%);
+    font-size: 0.95em;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.form-config-user .body .config-data-user .btn-edit-info-user {
+    margin: 10% 0;
+}
+
+.form-config-user .body .config-data-user .btn-edit-info-user span.icon {
+    display: block;
+    position: absolute;
+    left: 2.7%;
+    font-size: 1.6em;
+}
+
+.form-config-user .body .config-data-user .btn-change-pass span.icon {
+    display: block;
+    position: absolute;
+    left: 2.7%;
+    font-size: 1.2em;
+}
+
+.form-config-user .body .config-data-user .btn-edit-info-user:hover,
+.form-config-user .body .config-data-user .btn-edit-info-user:focus,
+.form-config-user .body .config-data-user .btn-change-pass:hover,
+.form-config-user .body .config-data-user .btn-change-pass:focus {
+    outline: none;
+    outline-width: 0;
+    background: #4a567c;
+    border: none;
+    box-shadow: 0 0 0 2.5pt #929cb9 !important;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.form-config-user .body .config-data-user .btn-edit-info-user:active,
+.form-config-user .body .config-data-user .btn-change-pass:active {
+    background: #6272a4;
+    transition: all 200ms ease-in;
+}
+
+.form-config-user .body .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 0 3%;
+}
+
+.form-config-user .body .footer span.user-permissions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+    padding: 5px 15px 4px;
+    border: 2px solid #eef4ff;
+    border-radius: 0.4em;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+input[type="range"]:focus,
+input[type="range"]:hover,
+input[type="range"]:active {
+    background: transparent !important;
+}
+.form-users .body .section-user-info span.user-id, .form-users .body .section-user-info span.user-name {
+    display: block;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+}
+@media only screen and (max-width: 701px) {
+    .form-data{
+        width: 100%;
+    }
+    .form-config-user .body .section-croppie-image, .form-data .body .section-croppie-image{
+        padding: 24px 0 0;
+    }
+    .form-config-user .body .first{
+        padding: 24px 0 2%;
+    }
+    .form-config-user .body .first, .form-config-user .body .last{
+        width: 87.5%;
+    }
+    .form-data .body .first, .form-data .body .last, .form-data .body .description{
+        width: 88%;
+    }
+    .form-config-user .body .footer{
+        padding: 24px 0 24px;
+    }
+}
+@media (max-width: 990px){
+    .form-users{
+        width: 100% !important;
+    }
+}
+
+
+</style>
+
