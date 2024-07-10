@@ -1,0 +1,109 @@
+
+---
+import Layout from "../layouts/Layout.astro";
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+import TableTeachers from "../components/Table_Teachers.astro";
+---
+
+
+<Layout title_p="Sistema Escolar || Teachers" spanText="Docentes">
+    <section class="content columContent">
+        <div class="containerLotttie">
+            <div class="lottie" style="width: 500px; height: auto; top:0px; position:relative; ">
+                <LottieAnimation src="/TeacherAnimation.json" autoplay="visible" />
+            </div>
+            <div class="content-aside" id="jjj">
+                <div class="form-options">
+                  <div class="options">
+                    <div>
+                      <a
+                        href="/add_administrative"
+                        style="text-decoration: none;"
+                        class="btn btn-add icon activateOption activateOptionPeriods"
+                        >add</a
+                      >
+                    </div>
+                    <div>
+                      <a
+                        href="#"
+                        style="text-decoration: none;"
+                        class="btn btn-disabled icon"
+                        type="submit">code</a
+                      >
+                    </div>
+                    <div>
+                      <a
+                        href="#"
+                        style="text-decoration: none;"
+                        class="btn btn-disabled icon"
+                        type="submit">print</a
+                      >
+                    </div>
+                    <a
+                      href="#"
+                      style="text-decoration: none;"
+                      class="btn btn-search-mobile icon">search</a
+                    >
+                    <div>
+                      <a
+                        href="/login"
+                        style="text-decoration: none;"
+                        class="btn btn-exit icon">exit_to_app</a
+                      >
+                    </div>
+                  </div>
+                  <div class="search">
+                    <div class="barra">
+                      <input
+                        type="text"
+                        class="text-search"
+                        placeholder="Buscar..."
+                        autofocus=""
+                      />
+                      <button id="btnSearch" class="btn-search icon" type="submit"
+                        >search</button
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <TableTeachers />
+    </section>
+</Layout>
+
+
+<style>
+    .content{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction:column;
+    }
+
+    .content .containerLotttie {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap:wrap;
+    height: auto;
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 990px) {
+.form-gridview{
+        overflow-x: auto;
+        width: 100% !important;
+    }
+    .lottie{
+        bottom:46px
+    }
+}
+@media only screen and (max-width: 1186px){
+.content-aside {
+    margin-bottom: 50px;
+}
+}
+
+</style>

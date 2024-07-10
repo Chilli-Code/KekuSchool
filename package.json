@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "astro": "^4.9.2",
+    "astro-integration-lottie": "^0.3.0",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
+    "lottie-web": "^5.12.2",
     "select2": "^4.1.0-rc.0"
   },
   "devDependencies": {
