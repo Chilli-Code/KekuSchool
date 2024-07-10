@@ -4,6 +4,9 @@ interface Props {
 }
 
 const { spanText } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // Elimina el primer "/"
 ---
 <layout>
     <header class="header">
@@ -37,25 +40,25 @@ const { spanText } = Astro.props;
         </div>
         <ul>
             <li>
-                <a href="/"><span class="icon">dashboard</span>Inicio</a>
+                <a href="/" class={currentPath === "" ? "active" : ""} href="/"><span class="icon">dashboard</span>Inicio</a>
             </li>
             <li>
-                <a  href="/periods"><span class="icon">date_range</span>Periodo Escolar</a>
+                <a  href="/periods" class={currentPath === "periods" ? "active" : ""} ><span class="icon">date_range</span>Periodo Escolar</a>
             </li>
             <li>
-                <a href="/users"><span class="icon">manage_accounts</span>Usuarios</a>
+                <a href="/users" class={currentPath === "perusersiods" ? "active" : ""}><span class="icon">manage_accounts</span>Usuarios</a>
             </li>
             <li>
-                <a  href="/administrative"><span class="icon">supervised_user_circle</span>Administrativos</a>
+                <a  href="/administrative" class={currentPath === "administrative" ? "active" : ""} ><span class="icon">supervised_user_circle</span>Administrativos</a>
             </li>
             <li>
-                <a  href="/teachers"><span class="icon">connect_without_contact</span>Docentes</a>
+                <a  href="/teachers" class={currentPath === "peteachersriods" ? "active" : ""} ><span class="icon">connect_without_contact</span>Docentes</a>
             </li>
             <li>
-                <a  href="/students"><span class="icon">recent_actors</span>Alumnos</a>
+                <a  href="/students" class={currentPath === "students" ? "active" : ""}><span class="icon">recent_actors</span>Alumnos</a>
             </li>
             <li>
-                <a  href="/subjects"><span class="icon">library_books</span>Asignaturas</a>
+                <a  href="/subjects" class={currentPath === "subjects" ? "active" : ""}><span class="icon">library_books</span>Asignaturas</a>
             </li>
             <li>
                 <a  href=""><span class="icon">groups</span>Grupos</a>
@@ -64,9 +67,10 @@ const { spanText } = Astro.props;
                 <a  href=""><span class="icon">fact_check</span>Asistencias</a>
             </li>
             <li>
-                <a href="/chat"><span class="icon">message</span>Chat</a>
+                <a href="/chat" class={currentPath === "chat" ? "active" : ""}><span class="icon">message</span>Chat</a>
             </li>
         </ul>
+
         <!-- Menu Mobile -->
         <div class="button-dark dark-mode-btn" id="dark-mode-btn">
             <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
