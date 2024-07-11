@@ -1,2 +1,70 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import TableStudents from "../components/Table_Students.astro";
 ---
+
+
+<Layout title_p="Sistema Escolar || Students" spanText="Alumnos">
+<section class="content columContent">
+    <div class="content-aside">
+        <div class="form-options">
+          <div class="options">
+            <div>
+              <a
+                href="./add_period"
+                style="text-decoration: none;"
+                class="btn btn-add icon">add</a
+              >
+            </div>
+            <div>
+              <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn" type="submit" aria-disabled="false">code</a
+              >
+            </div>
+            <div>
+              <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn"  type="submit">print</a>
+            </div>
+            <a
+              href="#"
+              style="text-decoration: none;"
+              class="btn btn-search-mobile icon">search</a
+            >
+            <div>
+              <a
+                href="./index.html"
+                style="text-decoration: none;"
+                class="btn btn-exit icon">exit_to_app</a
+              >
+            </div>
+          </div>
+          <div class="search">
+            <div class="barra">
+              <input
+                type="text"
+                class="text-search"
+                id="txtSearch"
+                name="search"
+                placeholder="Buscar..."
+                autofocus=""
+              />
+              <button id="btnSearch" class="btn-search icon" type="submit"
+                >search</button
+              >
+            </div>
+          </div>
+        </div>
+    </div>
+    <TableStudents />
+    </section>
+
+</Layout>
+
+
+<style>
+@media only screen and (max-width: 1186px){
+    .content {
+    flex-flow: column;
+}
+}
+
+
+</style>

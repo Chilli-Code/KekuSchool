@@ -1,0 +1,355 @@
+---
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+import Layout from "../layouts/Layout.astro";
+import 'animate.css';
+import TableStudents from '../components/Table_Students.astro';
+
+---
+
+<Layout title_p="Sistema Escolar || Students" spanText="Vista de Alumno" >
+    <section class="content columContent">
+    <div class="content-aside">
+        <div class="form-options">
+          <div class="options">
+            <div>
+              <a
+                href="./add_period"
+                style="text-decoration: none;"
+                class="btn btn-add icon">add</a
+              >
+            </div>
+            <div>
+              <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn" type="submit" aria-disabled="false">code</a
+              >
+            </div>
+            <div>
+              <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn"  type="submit">print</a>
+            </div>
+            <a
+              href="#"
+              style="text-decoration: none;"
+              class="btn btn-search-mobile icon">search</a
+            >
+            <div>
+              <a
+                href="./index.html"
+                style="text-decoration: none;"
+                class="btn btn-exit icon">exit_to_app</a
+              >
+            </div>
+          </div>
+          <div class="search">
+            <div class="barra">
+              <input
+                type="text"
+                class="text-search"
+                id="txtSearch"
+                name="search"
+                placeholder="Buscar..."
+                autofocus=""
+              />
+              <button id="btnSearch" class="btn-search icon" type="submit"
+                >search</button
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="containerInfoStudent">
+          <div class="main-container">
+              <div class="container-img">
+                  <div class="container1">
+                      <div class="image-2" id="ButtonInfo"></div>
+                      <span class="adnnin">Informacion</span>
+                  </div>
+                  <div class="container-img2">
+                      <div class="image-2" id="ButtonFallas"></div>
+                      <span class="adnnin">Faltas</span>
+                  </div>
+              </div>
+              <div class="container-im2g">
+                  <div class="container2">
+                      <div class="image-2" id="ButtonDocente"></div>
+                      <span class="adnnin">Profesora</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="containerSubjet">
+        <header class="header">
+            <div class="info-title">
+                <span class="title">Notas Escolares 📚</span>
+            </div>
+        </header>
+          <TableStudents />
+      </div>
+    </section>
+</Layout>
+
+<script>
+    import Swal from 'sweetalert2/dist/sweetalert2.js';
+    import 'sweetalert2/src/sweetalert2.scss';
+
+    const buttonInfo = document.getElementById('ButtonInfo');
+    buttonInfo.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Informacion',
+        // text: 'Este es un mensaje de SweetAlert2',
+        html: `
+        <div class="contInfoW">
+            <p>Nombre:</p> <br/>
+            <p>Curso:</p> <br/>
+            <p>Numero De Telefono:</p> <br/>
+            <p>Acudiente:</p> <br/>
+            <p>Numero Del Acudiente:</p> <br/>
+            <p>Jornada:</p> <br/>
+        </div>
+        `,
+        icon: 'info',
+        confirmButtonText: "Editar",
+        allowOutsideClick: false,
+        showCancelButton: true,
+        cancelButtonText:'Cerrar',
+        cancelButtonColor: "#d33",
+        footer: 'Vista Previa de la informacion de los Alumnos',
+
+        customClass: {
+            htmlContainer: 'contInfoW',
+      },
+
+        showClass: {
+    popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `
+  },
+  hideClass: {
+    popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `
+  }
+      });
+    });
+
+    const ButtonFallas = document.getElementById('ButtonFallas');
+    ButtonFallas.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Fallas',
+        text: 'Este es un mensaje de SweetAlert2',
+        icon: 'question',
+        confirmButtonText: '¡Entendido!'
+      });
+    });
+    const ButtonDocente = document.getElementById('ButtonDocente');
+    ButtonDocente.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Docente Encargado',
+        text: 'Este es un mensaje de SweetAlert2',
+        icon: 'info',
+        confirmButtonText: '¡Entendido!',
+        allowOutsideClick: false
+      });
+    });
+</script>
+
+<style>
+    /*-------------------------------------------
+  Home | Header
+-------------------------------------------*/
+.header {
+    width: 100%;
+    float: right;
+    height: 50px;
+    margin: 35px 3%;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    border-radius: 0.4em;
+    user-select: none;
+}
+
+@media(max-width: 305px){
+
+    .header{
+        width: 300px !important;
+    }
+}
+
+
+.info-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.info-title .title {
+    display: block;
+    margin-left: 4%;
+    color: #eef4ff;
+    text-shadow: 0 1px 5px rgba(142,136,192,0.2);
+    font-size: 2em;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.contInfoW p{
+    color:#f00;
+    position:relative;
+}
+
+.containerSubjet{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    min-height: 50vh;
+    flex-direction:column;
+}
+
+@media only screen and (max-width: 1186px){
+    .content {
+        flex-flow: column;
+    }
+.containerSubjet{
+    min-height: 100vh;
+
+}
+}
+@media only screen and (max-width: 663px){
+    .containerInfoStudent{
+        width:100% !important;
+    }
+    .main-container{
+        width:auto !important;
+    }
+
+}
+
+.container-im2g {
+    padding:10px 0px 0px 0px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.containerInfoStudent{
+    display: block;
+    width: 72%;
+}
+.container1{
+    /* text-align: center; */
+    display: flex;
+    width: 45%;
+    border-right: 3px solid #282a3660;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image-2 {
+    transition: all 200ms ease-in-out; 
+}
+
+.image-2:hover {
+    cursor: pointer;
+    transform: scale(1.3); 
+}
+
+.image-2:hover::after {
+    content: '';
+    position: absolute;
+    border-radius:50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 200ms ease-in-out;
+}
+
+.image-2:hover::after {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.image-2:hover + .adnnin{
+    font-size:1.5em;
+    font-weight: 600;
+}
+
+
+.container-img2{
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-img {
+    display: flex;
+    width:100%;
+    /* flex-direction: column; */
+    justify-content: space-around;
+  border-bottom:3px solid #282a3660;
+
+    align-items: center;
+}
+
+
+
+.main-container {
+  position: relative;
+  padding: 15px 10px;
+  width: 500px;
+  height: auto;
+  background: var(--bacgroundContent);
+  display:flex;
+  border-bottom:0 2px 2px rgba(73,80,104,0.4);
+  box-shadow: 0 2px 2px rgba(73,80,104,0.4);
+  color: #eef4ff;
+  border-radius: 0.4em;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.groups-1 {
+
+  position: relative;
+  width: 176px;
+  height: 395px;
+  background: rgba(0, 0, 0, 0);
+  z-index: 8;
+}
+
+.image-2 {
+  position: relative;
+  width: 107px;
+  height: 107px;
+  margin: 10px 0px;
+  background: url(/img/Image.svg)
+    no-repeat center;
+  background-size: cover;
+  z-index: 13;
+  border-radius: 53.25px;
+}
+.adnnin {
+    transition: font-size 200ms ease-in-out;
+  display: block;
+  position: relative;
+  height: 30px;
+  /* margin: 9px 0 0 56px; */
+  color: #eef4ff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 18.5px;
+  font-weight: 400;
+  line-height: 22.389px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+</style>
