@@ -1,13 +1,49 @@
 ---
+const rows_teacher = [
+    { nombre: "Darly polo", asignatura: "Espanol", curso_encargado: "9A" },
+    { nombre: "Gigliola Cantillo", asignatura: "Filosofia", curso_encargado: "11A" },
+    { nombre: "Maria", asignatura: "Sociales", curso_encargado: "11B" },
+    // Agrega más filas aquí
+];
+
 ---
 
 <div class="form-gridview">
     <table class="default">
       <tbody>
-        <tr>
-          <th>Usuario</th>
+         <tr>
           <th>Nombre</th>
-          <th>Teléfono</th>
+          <th>Asignatura</th>
+          <th>Curso Encargado</th>
+          <th class="center"><a class="icon">visibility</a></th>
+          <th class="center"><a class="icon">edit</a></th>
+          <th class="center"><a class="icon">delete</a></th>
+        </tr>
+        {rows_teacher.map(row => (
+          <tr>
+              <td>
+                <input type="checkbox" id="selectAll" class="rowCheckbox" />
+                {row.nombre}
+                </td>
+              <td>
+                {row.asignatura}
+                </td>
+              <td>{row.curso_encargado}</td>
+              <td><a class="btnview" href="/view_students"></a></td>
+          <td>
+            <button class="btnedit" type="submit"></button>
+          </td>
+          <td>
+            <button class="btndelete" type="submit"></button>
+          </td>
+          </tr>
+      ))}
+
+
+        <!-- <tr>
+          <th>Nombre</th>
+          <th>Asignatura</th>
+          <th>Curso Encargado</th>
           <th class="center"><a class="icon">visibility</a></th>
           <th class="center"><a class="icon">edit</a></th>
           <th class="center"><a class="icon">delete</a></th>
@@ -67,7 +103,7 @@
           <td>
             <button class="btndelete" type="submit"></button>
           </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
     <div class="pages">
@@ -317,4 +353,130 @@
     cursor: pointer;
     transition: all 200ms ease-in;
 }
+
+/* CHECKCED */
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+	 input[type='checkbox'] {
+		 --active: #275efe;
+		 --active-inner: #fff;
+		 --focus: 2px rgba(39, 94, 254, .3);
+		 --border: #bbc1e1;
+		 --border-hover: #275efe;
+		 --background: #fff;
+		 --disabled: #f6f8ff;
+		 --disabled-inner: #e1e6f9;
+		 -webkit-appearance: none;
+		 -moz-appearance: none;
+		 height: 15px;
+		 outline: none;
+		 display: inline-block;
+		 vertical-align: top;
+		 position: relative;
+		 margin: 0;
+		 cursor: pointer;
+		 border: 1px solid var(--bc, var(--border));
+		 background: var(--b, var(--background));
+		 transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+	}
+	 input[type='checkbox']:after {
+		 content: '';
+		 display: block;
+		 left: 0;
+		 top: 0;
+		 position: absolute;
+		 transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+	}
+	 input[type='checkbox']:checked {
+		 --b: var(--active);
+		 --bc: var(--active);
+		 --d-o: 0.3s;
+		 --d-t: 0.6s;
+		 --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+	}
+	 input[type='checkbox']:disabled {
+		 --b: var(--disabled);
+		 cursor: not-allowed;
+		 opacity: 0.9;
+	}
+	 input[type='checkbox']:disabled:checked {
+		 --b: var(--disabled-inner);
+		 --bc: var(--border);
+	}
+	 input[type='checkbox']:disabled {
+		 cursor: not-allowed;
+	}
+	 input[type='checkbox']:hover{
+		 --bc: var(--border-hover);
+	}
+	 input[type='checkbox']:focus {
+		 box-shadow: 0 0 0 var(--focus);
+	}
+	 input[type='checkbox']:not(.switch), input[type='radio']:not(.switch) {
+		 width: 15px;
+     margin-right: 3px;
+	}
+	 input[type='checkbox']:after{
+		 opacity: var(--o, 0);
+	}
+	 input[type='checkbox']:checked {
+		 --o: 1;
+	}
+	 input[type='checkbox'] {
+		 font-size: 14px;
+		 line-height: 21px;
+		 display: inline-block;
+		 vertical-align: top;
+		 cursor: pointer;
+	}
+	 input[type='checkbox'] {
+		 border-radius: 7px;
+	}
+	 input[type='checkbox']:after {
+		 width: 4px;
+		 height: 8px;
+		 border: 2px solid var(--active-inner);
+		 border-top: 0;
+		 border-left: 0;
+		 left: 4px;
+		 top: 0px;
+		 transform: rotate(var(--r, 20deg));
+	}
+	 input[type='checkbox']:checked {
+		 --r: 43deg;
+	}
+	 input[type='checkbox'].switch {
+		 width: 38px;
+		 border-radius: 11px;
+	}
+	
+
+	 input[type='radio'] {
+		 border-radius: 50%;
+	}
+	 input[type='radio']:after {
+		 width: 19px;
+		 height: 19px;
+		 border-radius: 50%;
+		 background: var(--active-inner);
+		 opacity: 0;
+		 transform: scale(var(--s, 0.7));
+	}
+	 input[type='radio']:checked {
+		 --s: 0.5;
+	}
+
+}
+.checkPadding{
+  padding:8px 5px !important;
+}
+.selected-row {
+  background-color:#b0c2e0; /* Color de la fila seleccionada */
+}
+
+.selected-row td {
+  color:#060606 !important;
+  background-color: transparent !important; /* Quitar el fondo de los td cuando se selecciona la fila */
+}
   </style>
+
+<script lang="ts" type="module" src="../../public/js/checkboxTable.js"></script>

@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TableStudents from "../components/Table_Students.astro";
+import TableStudentsGolbal from "../components/Table_Students_Golbal.astro";
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+
 ---
 
 
@@ -11,7 +13,7 @@ import TableStudents from "../components/Table_Students.astro";
           <div class="options">
             <div>
               <a
-                href="./add_period"
+                href="./add_students"
                 style="text-decoration: none;"
                 class="btn btn-add icon">add</a
               >
@@ -53,7 +55,15 @@ import TableStudents from "../components/Table_Students.astro";
           </div>
         </div>
     </div>
-    <TableStudents />
+    <!-- <TableStudentsGolbal /> -->
+     <div class="containerLotttie">
+      <div class="tittleLottie">
+        <h2>¿Algun Alumno que quieras Buscar?🧐</h2>
+      </div>
+    <div class="lottie" style="width: 500px; height: auto; top:0px; position:relative; ">
+      <LottieAnimation src="/LoaderStudents2.json" autoplay="visible" />
+  </div>
+</div>
     </section>
 
 </Layout>
@@ -64,6 +74,41 @@ import TableStudents from "../components/Table_Students.astro";
     .content {
     flex-flow: column;
 }
+
+}
+.tittleLottie {
+    width: 100%;
+    text-align: center;
+    padding: 30px 8px;
+}
+.containerLotttie {
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--bacgroundContent);
+    box-shadow: 0 2px 2px rgba(73,80,104,0.4);
+    border-radius: 0.4em;
+    margin: 0px 20px;
+    position: relative;
+    padding: 20px 20px;
+    overflow-x:hidden;
+}
+.tittleLottie h2 {
+    font-size: 2.4em;
+    color: #fff;
+}
+
+@media only screen and (max-width: 990px){
+  .containerLotttie {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 500px){
+  .lottie{
+    width:400px !important;
+  }
 }
 
 

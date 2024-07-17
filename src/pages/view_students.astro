@@ -16,7 +16,7 @@ import TableStudents from '../components/Table_Students.astro';
               <a
                 href="./add_period"
                 style="text-decoration: none;"
-                class="btn btn-add icon">add</a
+                class="btn icon  btn-disabled">add</a
               >
             </div>
             <div>
@@ -33,24 +33,9 @@ import TableStudents from '../components/Table_Students.astro';
             >
             <div>
               <a
-                href="./index.html"
+                href="/students"
                 style="text-decoration: none;"
-                class="btn btn-exit icon">exit_to_app</a
-              >
-            </div>
-          </div>
-          <div class="search">
-            <div class="barra">
-              <input
-                type="text"
-                class="text-search"
-                id="txtSearch"
-                name="search"
-                placeholder="Buscar..."
-                autofocus=""
-              />
-              <button id="btnSearch" class="btn-search icon" type="submit"
-                >search</button
+                class="btn btn-exit icon">close</a
               >
             </div>
           </div>
@@ -65,13 +50,13 @@ import TableStudents from '../components/Table_Students.astro';
                   </div>
                   <div class="container-img2">
                       <div class="image-2" id="ButtonFallas"></div>
-                      <span class="adnnin">Faltas</span>
+                      <span class="adnnin">Observaciones</span>
                   </div>
               </div>
               <div class="container-im2g">
                   <div class="container2">
                       <div class="image-2" id="ButtonDocente"></div>
-                      <span class="adnnin">Profesora</span>
+                      <span class="adnnin">Docente</span>
                   </div>
               </div>
           </div>
@@ -86,7 +71,6 @@ import TableStudents from '../components/Table_Students.astro';
       </div>
     </section>
 </Layout>
-
 <script>
     import Swal from 'sweetalert2/dist/sweetalert2.js';
     import 'sweetalert2/src/sweetalert2.scss';
@@ -274,7 +258,7 @@ import TableStudents from '../components/Table_Students.astro';
 }
 
 .image-2:hover::after {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 23%);
 }
 
 .image-2:hover + .adnnin{
@@ -331,11 +315,21 @@ import TableStudents from '../components/Table_Students.astro';
   width: 107px;
   height: 107px;
   margin: 10px 0px;
-  background: url(/img/Image.svg)
+  background: url(/img/Info-User.svg)
     no-repeat center;
   background-size: cover;
   z-index: 13;
   border-radius: 53.25px;
+}
+
+.container-img2 .image-2{
+  background: url(/img/Faults.svg)
+  no-repeat center;
+}
+
+.container-im2g .container2 .image-2{
+  background: url(/img/teacher-svgrepo-com.svg)
+  no-repeat center;
 }
 .adnnin {
     transition: font-size 200ms ease-in-out;
