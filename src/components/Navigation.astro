@@ -6,7 +6,8 @@ interface Props {
 const { spanText } = Astro.props;
 
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // Elimina el primer "/"
+const currentPath = pathname.slice(1);
+const isActive = (paths) => paths.includes(currentPath);
 ---
 <layout>
     <header class="header">
@@ -43,25 +44,25 @@ const currentPath = pathname.slice(1); // Elimina el primer "/"
                 <a href="/" class={currentPath === "" ? "active" : ""} href="/"><span class="icon">dashboard</span>Inicio</a>
             </li>
             <li>
-                <a  href="/periods" class={currentPath === "periods" ? "active" : ""} ><span class="icon">date_range</span>Periodo Escolar</a>
+                <a  href="/periods"  class={isActive(["periods", "add_period", "edit_periods"]) ? "active" : ""} ><span class="icon">date_range</span>Periodo Escolar</a>
             </li>
             <li>
                 <a href="/users" class={currentPath === "users" ? "active" : ""}><span class="icon">manage_accounts</span>Usuarios</a>
             </li>
             <li>
-                <a  href="/administrative" class={currentPath === "administrative" ? "active" : ""} ><span class="icon">supervised_user_circle</span>Administrativos</a>
+                <a  href="/administrative" class={isActive(["administrative", "add_administrative"]) ? "active" : ""} ><span class="icon">supervised_user_circle</span>Administrativos</a>
             </li>
             <li>
-                <a  href="/teachers" class={currentPath === "teachers" ? "active" : ""} ><span class="icon">connect_without_contact</span>Docentes</a>
+                <a  href="/teachers"  class={isActive(["teachers", "add_teachers", ]) ? "active" : ""} ><span class="icon">connect_without_contact</span>Docentes</a>
             </li>
             <li>
-                <a  href="/students" class={currentPath === "students" ? "active" : ""}><span class="icon">recent_actors</span>Alumnos</a>
+                <a  href="/students"  class={isActive(["students", "add_students", "view_students"]) ? "active" : ""}><span class="icon">recent_actors</span>Alumnos</a>
             </li>
             <li>
                 <a  href="/subjects" class={currentPath === "subjects" ? "active" : ""}><span class="icon">library_books</span>Asignaturas</a>
             </li>
             <li>
-                <a  href=""><span class="icon">groups</span>Grupos</a>
+                <a  href="/groups" class={isActive(["groups", "add_groups"]) ? "active" : ""}><span class="icon">groups</span>Grupos</a>
             </li>
             <li>
                 <a  href=""><span class="icon">fact_check</span>Asistencias</a>
@@ -108,7 +109,7 @@ const currentPath = pathname.slice(1); // Elimina el primer "/"
                         <a  href="/subjects"><span class="icon">library_books</span><span class="text">Asignaturas</span></a>
                     </li>
                     <li  class="lista">
-                        <a  href="#"><span class="icon">groups</span><span class="text">Grupos</span></a>
+                        <a  href="/groups"><span class="icon">groups</span><span class="text">Grupos</span></a>
                     </li>
                     <li class="lista">
                         <a  href="#"><span class="icon">fact_check</span><span class="text">Asistencias</span></a>

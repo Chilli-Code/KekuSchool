@@ -1,5 +1,4 @@
 ---
-
 import Layout from "../layouts/Layout.astro";
 import TableStudentsGolbal from "../components/Table_Students_Golbal.astro";
 import LottieAnimation from "astro-integration-lottie/Lottie.astro";
@@ -182,36 +181,39 @@ const ListStudents = [
 
 
 <style>
-.containerworKingDay{
-  display:flex;
-  width:67%;
-  color:#eef4ff;
-  border-radius:0.4em;
+.containerworKingDay {
+  display: flex;
+  width: 67%;
+  color: #eef4ff;
+  border-radius: 0.4em;
 
 }
-.dayMorning{
-    width: 100%;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor:pointer;
-    border-right: 1px solid var(--colorhr);
-    flex-direction:column;
-    box-shadow: var(--bacgroundContent);
-    border-radius: 0.4em;
-    background: var(--bacgroundContent);
-    margin-right:15px;
+
+.dayMorning {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-right: 1px solid var(--colorhr);
+  flex-direction: column;
+  box-shadow: var(--bacgroundContent);
+  border-radius: 0.4em;
+  background: var(--bacgroundContent);
+  margin-right: 15px;
 }
-.dayMorning h2{
-  text-align:center;
-  font-size:2.2em;
+
+.dayMorning h2 {
+  text-align: center;
+  font-size: 2.2em;
 }
+
 .dayMorning span {
-  font-size:2em;
+  font-size: 2em;
 }
 
-.dayAfternoon{
+.dayAfternoon {
   width: 100%;
   padding: 15px;
   display: flex;
@@ -223,78 +225,86 @@ const ListStudents = [
   border-radius: 0.4em;
   background: var(--bacgroundContent);
 }
-.dayAfternoon h2{
-  text-align:center;
-  font-size:2.2em;
+
+.dayAfternoon h2 {
+  text-align: center;
+  font-size: 2.2em;
 }
+
 .dayAfternoon span {
-  font-size:2em;
+  font-size: 2em;
 }
 
-@media (max-width:541px){
-  .containerworKingDay{
-    flex-direction:column;
-    width:100%;
+@media (max-width:541px) {
+  .containerworKingDay {
+    flex-direction: column;
+    width: 100%;
   }
-  .dayMorning{
+
+  .dayMorning {
     border-right: 0px;
-    border-bottom:1px solid var(--colorhr);
-    margin-bottom:15px;
-    margin-right:0px;
+    border-bottom: 1px solid var(--colorhr);
+    margin-bottom: 15px;
+    margin-right: 0px;
   }
-  
-}
-
-
-.containerAcordion{
-  width:100%;
-}
-
-.acordion{
-  width:71%;
 
 }
+
+
+.containerAcordion {
+  width: 100%;
+}
+
+.acordion {
+  width: 71%;
+
+}
+
 .acordion .contentCd {
-    position: relative;
-    margin: 10px 20px;
+  position: relative;
+  margin: 10px 20px;
 }
+
 .acordion .contentCd .label {
-    margin: 16px 3%;
-    border-radius: 0.4em;
-    position: relative;
-    display:flex;
-    justify-content:space-around;
-    padding: 10px;
-    box-shadow: 0 2px 2px rgba(73,80,104,0.4);
-    background: var(--bacgroundContent);
-    color: #fff;
-    cursor: pointer;
-    font-size:1.2em;
+  margin: 16px 3%;
+  border-radius: 0.4em;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+  background: var(--bacgroundContent);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2em;
 }
+
 .acordion .contentCd .label::before {
-    content: '+';
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 1.5em;
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 1.5em;
 }
+
 .acordion .contentCd.active .label::before {
-    content: '-';
-    transition: 0.5s;
+  content: '-';
+  transition: 0.5s;
 }
+
 .acordion .contentCd .contenidoad {
-    position: relative;
-    height: 0;
-    transform: 0.5s;
-    transition: 0.6s;
-    overflow-y: auto;
-    overflow-x: hidden;
+  position: relative;
+  height: 0;
+  transform: 0.5s;
+  transition: 0.6s;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .acordion .contentCd.active .contenidoad {
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.5s;
@@ -303,19 +313,16 @@ const ListStudents = [
 }
 
 
-
-
-
-    @media only screen and (max-width: 1186px) {
+@media only screen and (max-width: 1186px) {
   .content {
     flex-flow: column;
   }
 
-  .containerAcordion{
-    display:flex;
+  .containerAcordion {
+    display: flex;
     justify-content: center;
-    flex-direction:column;
-    align-items:center;
+    flex-direction: column;
+    align-items: center;
   }
 
 }
@@ -350,25 +357,25 @@ const ListStudents = [
   .containerLotttie {
     width: 100%;
   }
-  .acordion{
-    width:100%;
+
+  .acordion {
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: 580px) {
-  .acordion .contentCd .label{
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  .acordion .contentCd .label {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 }
 
-@media only screen and (max-width: 1186px){
-  .content-aside{
+@media only screen and (max-width: 1186px) {
+  .content-aside {
     width: 60%;
   }
 }
-
 
 </style>
 

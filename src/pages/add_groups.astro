@@ -1,87 +1,59 @@
 ---
-
-import Layout from "../layouts/Layout.astro";
-
+import Layout from "../layouts/Layout.astro"
 ---
 
-<Layout title_p="Sistema Escolar || Students" spanText="Agregar || Alumno">
-    <section class="content columContent">
-        <div class="content-aside">
-            <div class="form-options">
-                <div class="options">
-                    <div> <button style="text-decoration: none; " class="btn btn-requerid icon btn-disabled" disabled="">add</button>
-                    </div>
-                    <div><a href="#" style="text-decoration: none;" class="btn btn-requerid icon" name="btn" type="submit" >code</a>
-                    </div>
-                    <div>
-                        <a href="#" style="text-decoration: none;" class="btn btn-requerid icon" name="btn" type="submit">print</a>
-                    </div>
-                    <a href="#" style="text-decoration: none;" class="btn btn-search-mobile icon">search</a>
-                    <div>
-                        <a href="/students" style="text-decoration: none;" class="btn btn-exit icon">close</a>
-                    </div>
+<Layout title_p="Sistema Escolar || Groups" spanText="Agregar Salon"></Layout>
+<section class="content columContent">
+    <div class="content-aside">
+        <div class="form-options">
+            <div class="options">
+                <div> <button style="text-decoration: none; " class="btn btn-requerid icon btn-disabled" disabled="">add</button>
+                </div>
+                <div><a href="#" style="text-decoration: none;" class="btn btn-requerid icon" name="btn" type="submit" >code</a>
+                </div>
+                <div>
+                    <a href="#" style="text-decoration: none;" class="btn btn-requerid icon" name="btn" type="submit">print</a>
+                </div>
+                <a href="#" style="text-decoration: none;" class="btn btn-search-mobile icon">search</a>
+                <div>
+                    <a href="/groups" style="text-decoration: none;" class="btn btn-exit icon">close</a>
                 </div>
             </div>
         </div>
-        <div class="form-data">
-            <div class="head">
-                <h1 class="titulo">Agregar</h1>
+    </div>
+<div class="form-data">
+    <div class="head">
+        <h1 class="titulo">Agregar</h1>
+    </div>
+    <div class="body">
+        <form>
+            <div class="wrap">
+                <div class="first">
+                    <label class="label">Numeros de Estudiantes</label>
+                    <input class="text" type="number" required="" autofocus="">
+                    <label class="label">Numero total de Mujeres</label>
+                    <input class="text" type="number" required="">
+                    <label class="label">Numero total de Hombres</label>
+                    <input class="text" type="number" required="">
+                </div>
+                <div class="last">
+                    <label class="label">Jornada</label>
+                    <select class="select" style="width:94%;">
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                    </select>
+                    <label class="label">Salon de clases</label>
+                    <input class="text" type="text" placeholder="10B" required="">
+                </div>
             </div>
-            <div class="body">
-                <form>
-                    <div class="wrap">
-                        <div class="first">
-                            <label class="label">Nombres</label>
-                            <input class="text" type="text" required="" autofocus="">
-                            <label class="label">Apellidos</label>
-                            <input class="text" type="text" required="">
-                            <label class="label">Fecha de nacimiento</label>
-                            <input class="date" type="text" placeholder="aaaa-mm-dd" required="">
-                            <label class="label">Género</label>
-                            <select class="select" style="width:94%;">
-                                <option value="mujer">Mujer</option>
-                                <option value="hombre">Hombre</option>
-
-                            </select>
-                            <label class="label">Numero Identifiacion</label>
-                            <input class="text" type="number" placeholder="C.C" required="">
-                            <label class="label">Número de teléfono(Estudiante)</label>
-                            <input class="text" type="number" placeholder="+57 12345" title="Ingresa un número de teléfono válido." maxlength="10" required="">
-                        </div>
-                        <div class="last">
-                            <label class="label">Nombre de Acudiente</label>
-                            <input class="text" type="text" title="Ingresa nombre de tu acudiente." required="">
-                            <label class="label">Parentesto de acudiente</label>
-                            <input class="text" type="text" title="Ingresa nombre de tu acudiente." required="">
-                            <label class="label">Número de teléfono</label>
-                            <input class="text" type="number" placeholder="+57 12345" title="Ingresa un número de teléfono válido." maxlength="10" required="">
-                            <label class="label">Jornada</label>
-                            <select class="select" style="width:94%;">
-                                <option value="Mañana">Mañana</option>
-                                <option value="Tarde">Tarde</option>
-                            </select>
-                            <label class="label">Salon de clases</label>
-                            <select class="select" style="width:94%;">
-                                <option value="9A">9A</option>
-                                <option value="8B">8B</option>
-                                <option value="10B">10B</option>
-                                <option value="11A">11A</option>
-                            </select>
-                            <label class="label">Contraseña</label>
-                            <input class="text" type="text" name="txtrfc" placeholder="*******" required="">
-                        </div>
-                    </div>
-                    <button class="btn icon" type="submit">save</button>
-                </form>
-            </div>
-        </div>
-
-    </section>
-</Layout>
-
+            <button class="btn icon" type="submit">save</button>
+        </form>
+    </div>
+</div>
+</section>
 
 <style>
-    /*-------------------------------------------
+        /*-------------------------------------------
 Formulario | Add / Update
 -------------------------------------------*/
 
