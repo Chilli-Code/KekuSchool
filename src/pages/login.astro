@@ -1,14 +1,6 @@
 ---
 ---
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-		<link rel="icon" type="image/png" href="/public/img/icon.png">
-		<script src="/public/js/jquery.min.js" type="text/javascript"></script>
-    </head>
+
     <body class="login">
         <div class="wrap-title-login">
             <div class="title-login">
@@ -19,11 +11,11 @@
             <div class="logo-form-login">
             </div>
             <form>
-                <label class="label">Inicia sesión</label>
+                <label class="label">Inicia sessi&oacute;n</label>
                 <input type="text" class="text" placeholder="Correo electronico o matricula" autofocus="" required="">
-                <input type="password" class="textcontrasena" placeholder="Contraseña" autocomplete="off" required="">
+                <input type="password" class="textcontrasena" placeholder="Password" autocomplete="off" required="">
                 <div class="forgot-pass">
-                    <a class="un" href="#">¿Olvidaste la contraseña?</a>
+                    <a class="un" href="#">&#191;Olvidaste la contrase&ntilde;a?</a>
                 </div>
                 <div class="pretty p-svg p-curve p-smooth">
                     <input type="checkbox" placeholder="Recordar">
@@ -36,37 +28,16 @@
         </div>
     </body>
 
-</html>
 
 <style>
 
 /*-------------------------------------------
   Formulario | Iniciar Sesión
 -------------------------------------------*/
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: ;
-}
-
-body {
-    font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
-}
-@font-face {
-    font-family: 'icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(./fonts/MaterialIconsOutlined-Regular.eot);
-    /* For IE6-8 */
-    src: local('Material Icons'), local('MaterialIcons-Regular'), url(./fonts/MaterialIcons-Regular.woff2) format('woff2'), url(./fonts/MaterialIcons-Regular.woff) format('woff'), url(./fonts/MaterialIcons-Regular.ttf) format('truetype');
-}
-
-
 
 .login {
     font-family: Helvetica Neue”, Helvetica, Arial, sans-serif;
-    background: #dadceb url(../../public/img/background_login.jpg) no-repeat top center fixed;
+    background: #dadceb url(/img/background_login.jpg) no-repeat top center fixed;
     background-size: cover !important;
 }
 .wrap-title-login {
@@ -273,7 +244,7 @@ body {
 
 @media (max-width: 450px) {
     .login {
-        background: #dadceb url(../../public/img/background_login.jpg) no-repeat top center fixed;
+        background: #dadceb url(/img/background_login.jpg) no-repeat top center fixed;
     }
 }
 

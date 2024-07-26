@@ -1,115 +1,396 @@
 ---
+
 import Layout from "../layouts/Layout.astro";
 import TableStudentsGolbal from "../components/Table_Students_Golbal.astro";
 import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+
+
+
+const ListStudents = [
+  {
+    curso: "1A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "1B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "2A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "3A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "3B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "4A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "5B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "6A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "6B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "7B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "8A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "8B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "9A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "9B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "10A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "10B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "11A",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  {
+    curso: "11B",
+    totalStudents: 25,
+    tableStudents: TableStudentsGolbal,
+  },
+  
+];
 
 ---
 
 
 <Layout title_p="Sistema Escolar || Students" spanText="Alumnos">
-<section class="content columContent">
+  <section class="content columContent">
     <div class="content-aside">
-        <div class="form-options">
-          <div class="options">
-            <div>
-              <a
-                href="./add_students"
-                style="text-decoration: none;"
-                class="btn btn-add icon">add</a
-              >
-            </div>
-            <div>
-              <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn" type="submit" aria-disabled="false">code</a
-              >
-            </div>
-            <div>
-              <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn"  type="submit">print</a>
-            </div>
-            <a
-              href="#"
-              style="text-decoration: none;"
-              class="btn btn-search-mobile icon">search</a
-            >
-            <div>
-              <a
-                href="./index.html"
-                style="text-decoration: none;"
-                class="btn btn-exit icon">exit_to_app</a
-              >
-            </div>
+      <div class="form-options">
+        <div class="options">
+          <div>
+            <a href="./add_students" style="text-decoration: none;" class="btn btn-add icon">add</a>
           </div>
+          <div>
+            <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn" type="submit"
+              aria-disabled="false">code</a>
+          </div>
+          <div>
+            <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn" type="submit">print</a>
+          </div>
+          <a href="#" style="text-decoration: none;" class="btn btn-search-mobile icon">search</a>
+          <div>
+            <a href="./index.html" style="text-decoration: none;" class="btn btn-exit icon">exit_to_app</a>
+          </div>
+        </div>
+        <div class="LottieInvert">
           <div class="search">
             <div class="barra">
-              <input
-                type="text"
-                class="text-search"
-                id="txtSearch"
-                name="search"
-                placeholder="Buscar..."
-                autofocus=""
-              />
-              <button id="btnSearch" class="btn-search icon" type="submit"
-                >search</button
-              >
+              <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar..." autofocus="" />
+              <button id="btnSearch" class="btn-search icon" type="submit">search</button>
+            </div>
+          </div>
+          <div class="containerLotttie">
+            <div class="tittleLottie">
+              <h2>¿Algun Alumno que quieras Buscar?🧐</h2>
+            </div>
+            <div class="lottie" style="width: 200px; height: 150px; bottom:25px; position:relative; ">
+              <LottieAnimation src="/LoaderStudents2.json" autoplay="visible" />
             </div>
           </div>
         </div>
-    </div>
-    <!-- <TableStudentsGolbal /> -->
-     <div class="containerLotttie">
-      <div class="tittleLottie">
-        <h2>¿Algun Alumno que quieras Buscar?🧐</h2>
       </div>
-    <div class="lottie" style="width: 500px; height: auto; top:0px; position:relative; ">
-      <LottieAnimation src="/LoaderStudents2.json" autoplay="visible" />
-  </div>
-</div>
-    </section>
+    </div>
+    <!-- <div class="containerAcordion">
+      <div class="acordion">
+        <div class="contentCd">
+          <div class="label">Curso: <b>1A</b> Total de Alumnos: <b>25</b></div>
+          <div class="contenidoad form-gridview">
+            <TableStudentsGolbal />
+          </div>
+        </div>
+      </div> -->
+
+    <div class="containerworKingDay">
+      <div class="dayMorning">
+        <h2>Jornada De Mañana</h2>
+        <span>🌞</span>
+      </div>
+      <div class="dayAfternoon">
+        <h2>Jornada De tarde</h2>
+        <span>⛅</span>
+      </div>
+    </div>
+
+    <div class="containerAcordion">
+      {ListStudents.map(student => (
+        <div class="acordion" key={student.curso}>
+          <div class="contentCd">
+            <div class="label">
+              Curso: <b>{student.curso}</b> Total de Alumnos: <b>{student.totalStudents}</b>
+            </div>
+            <div class="contenidoad form-gridview">
+              <student.tableStudents />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 
 </Layout>
 
 
 <style>
-@media only screen and (max-width: 1186px){
-    .content {
-    flex-flow: column;
-}
+.containerworKingDay{
+  display:flex;
+  width:67%;
+  color:#eef4ff;
+  border-radius:0.4em;
 
 }
-.tittleLottie {
+.dayMorning{
     width: 100%;
-    text-align: center;
-    padding: 30px 8px;
-}
-.containerLotttie {
-    width: 68%;
+    padding: 15px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    background: var(--bacgroundContent);
-    box-shadow: 0 2px 2px rgba(73,80,104,0.4);
+    align-items: center;
+    cursor:pointer;
+    border-right: 1px solid var(--colorhr);
+    flex-direction:column;
+    box-shadow: var(--bacgroundContent);
     border-radius: 0.4em;
-    margin: 0px 20px;
-    position: relative;
-    padding: 20px 20px;
-    overflow-x:hidden;
+    background: var(--bacgroundContent);
+    margin-right:15px;
 }
-.tittleLottie h2 {
-    font-size: 2.4em;
-    color: #fff;
+.dayMorning h2{
+  text-align:center;
+  font-size:2.2em;
+}
+.dayMorning span {
+  font-size:2em;
 }
 
-@media only screen and (max-width: 990px){
+.dayAfternoon{
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: column;
+  box-shadow: var(--bacgroundContent);
+  border-radius: 0.4em;
+  background: var(--bacgroundContent);
+}
+.dayAfternoon h2{
+  text-align:center;
+  font-size:2.2em;
+}
+.dayAfternoon span {
+  font-size:2em;
+}
+
+@media (max-width:541px){
+  .containerworKingDay{
+    flex-direction:column;
+    width:100%;
+  }
+  .dayMorning{
+    border-right: 0px;
+    border-bottom:1px solid var(--colorhr);
+    margin-bottom:15px;
+    margin-right:0px;
+  }
+  
+}
+
+
+.containerAcordion{
+  width:100%;
+}
+
+.acordion{
+  width:71%;
+
+}
+.acordion .contentCd {
+    position: relative;
+    margin: 10px 20px;
+}
+.acordion .contentCd .label {
+    margin: 16px 3%;
+    border-radius: 0.4em;
+    position: relative;
+    display:flex;
+    justify-content:space-around;
+    padding: 10px;
+    box-shadow: 0 2px 2px rgba(73,80,104,0.4);
+    background: var(--bacgroundContent);
+    color: #fff;
+    cursor: pointer;
+    font-size:1.2em;
+}
+.acordion .contentCd .label::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+.acordion .contentCd.active .label::before {
+    content: '-';
+    transition: 0.5s;
+}
+.acordion .contentCd .contenidoad {
+    position: relative;
+    height: 0;
+    transform: 0.5s;
+    transition: 0.6s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.acordion .contentCd.active .contenidoad {
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  height: auto;
+  padding: 10px;
+}
+
+
+
+
+
+    @media only screen and (max-width: 1186px) {
+  .content {
+    flex-flow: column;
+  }
+
+  .containerAcordion{
+    display:flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items:center;
+  }
+
+}
+
+.tittleLottie {
+  width: 100%;
+  text-align: center;
+  padding: 0px 8px;
+}
+
+.containerLotttie {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background: var(--bacgroundContent); */
+  /* box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4); */
+  border-radius: 0.4em;
+  /* margin: 0px 20px; */
+  position: relative;
+  /* padding: 20px 20px; */
+  /* overflow-x: hidden; */
+}
+
+.tittleLottie h2 {
+  font-size: 1em;
+  color: #fff;
+}
+
+@media only screen and (max-width: 990px) {
   .containerLotttie {
     width: 100%;
   }
+  .acordion{
+    width:100%;
+  }
 }
-@media only screen and (max-width: 500px){
-  .lottie{
-    width:400px !important;
+
+@media only screen and (max-width: 580px) {
+  .acordion .contentCd .label{
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1186px){
+  .content-aside{
+    width: 60%;
   }
 }
 
 
 </style>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    const acordionItems = document.querySelectorAll('.acordion .contentCd');
+
+    acordionItems.forEach(function(item) {
+        const label = item.querySelector('.label');
+        const contenido = item.querySelector('.contenidoad');
+
+        // Agregar evento click al encabezado para abrir/cerrar
+        label.addEventListener('click', function() {
+            // Toggle de la clase active en el elemento del acordeón
+            item.classList.toggle('active');
+        });
+
+        // Evitar que el clic en el contenido interno cierre el acordeón
+        contenido.addEventListener('click', function(event) {
+            event.stopPropagation(); // Evitar la propagación del evento
+        });
+    });
+});
+
+</script>
