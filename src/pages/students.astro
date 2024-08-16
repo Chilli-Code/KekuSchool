@@ -151,30 +151,33 @@ const ListStudents = [
       </div> -->
 
     <div class="containerworKingDay">
-      <div class="dayMorning">
+      <div class="dayMorning" onclick="showTable('morning')">
         <h2>Jornada De Mañana</h2>
         <span>🌞</span>
       </div>
-      <div class="dayAfternoon">
+      <div class="dayAfternoon" onclick="showTable('afternoon')">
         <h2>Jornada De tarde</h2>
         <span>⛅</span>
       </div>
     </div>
-
-    <div class="containerAcordion">
-      {ListStudents.map(student => (
-        <div class="acordion" key={student.curso}>
-          <div class="contentCd">
-            <div class="label">
-              Curso: <b>{student.curso}</b> Total de Alumnos: <b>{student.totalStudents}</b>
+        <div id="morningTable" class="containerAcordion" style="display: none;">
+          {ListStudents.map(student => (
+            <div class="acordion" key={student.curso}>
+              <div class="contentCd">
+                <div class="label">
+                  Curso: <b>{student.curso}</b> Total de Alumnos: <b>{student.totalStudents}</b>
+                </div>
+                <div class="contenidoad form-gridview">
+                  <student.tableStudents />
+                </div>
+              </div>
             </div>
-            <div class="contenidoad form-gridview">
-              <student.tableStudents />
-            </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
+      <table id="afternoonTable" style="display: none;"> </table>
     </div>
+
   </section>
 
 </Layout>
@@ -376,7 +379,21 @@ const ListStudents = [
     width: 60%;
   }
 }
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+  opacity: 0;
+}
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: auto;
+  }
+}
 </style>
 
 <script type="text/javascript">
@@ -399,5 +416,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+function showTable(timeOfDay) {
+  const morningTable = document.getElementById('morningTable');
+  const afternoonTable = document.getElementById('afternoonTable');
 
+  // Ocultamos ambas tablas inicialmente
+  morningTable.style.display = 'none';
+  afternoonTable.style.display = 'none';
+
+  // Mostramos la tabla correspondiente y aplicamos la clase de animación
+  if (timeOfDay === 'morning') {
+    morningTable.style.display = 'block';
+    morningTable.classList.add('fade-in');
+    // Eliminar la clase después de la animación
+    morningTable.addEventListener('animationend', () => {
+      morningTable.classList.remove('fade-in');
+    });
+  } else if (timeOfDay === 'afternoon') {
+    afternoonTable.style.display = 'block';
+    afternoonTable.classList.add('fade-in');
+    // Eliminar la clase después de la animación
+    afternoonTable.addEventListener('animationend', () => {
+      afternoonTable.classList.remove('fade-in');
+    });
+  }
+}
 </script>
