@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ChartComponent from "../components/ui/DayMorning.jsx";
+import ChartComponent2 from "../components/ui/DayAfternoon.jsx";
+
 ---
 
 <Layout title_p="Sistema Escolar || Groups" spanText="Grupos">
@@ -72,8 +75,60 @@ import Layout from "../layouts/Layout.astro";
                 </g>
             </svg>
       </div>
+      <div class="containerTitle sss2">
+      <h2>Jornada Mañana</h2>
+      </div>
+      <div class="grafic-cont">
+        <ChartComponent client:only="react" />
+      </div>
+      <div class="containerTitle sss">
+      <h2>Jornada Tarde</h2>
+      </div>
+      <div class="grafic-cont">
+        <ChartComponent2 client:only="react" />
+      </div>
 
     </section>
 
 </Layout>
 
+<style>
+.containerTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerTitle h2{
+  color: var(--colorTitle);
+  font-size: 2.2rem;
+
+}
+.containerTitle.sss{
+  margin-top:25px;
+}
+.grafic-cont{
+  /* background: #101827; */
+  width:100%;
+  border-radius:0.4em;
+}
+
+@media only screen and (max-width: 1186px){
+  .content{
+    flex-flow:column;
+  }
+  .sss2{
+  margin-top:35px;
+  }
+}
+.apexcharts-canvas .apexcharts-element-hidden{
+  opacity:1;
+}
+.apexcharts-canvas {
+    position: relative;
+    user-select: none;
+    background-color: #101827;
+}
+.apexcharts-text{
+  fill:var(--colorTitle);
+}
+</style>
