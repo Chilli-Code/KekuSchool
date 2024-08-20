@@ -1,0 +1,110 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ChartSubjet from "../components/ui/GraficSubjet.jsx";
+import ChartBestStudentsMorning from "../components/ui/GraficBestStudentsMorning.jsx";
+import ChartBestStudentsAfternoon from "../components/ui/GraficBestStudentsAfternoon.jsx";
+---
+
+<Layout title_p="Sistema Escolar || Subjets" spanText="Asignaturas">
+    <section class="content columContent">
+        <div class="content-aside">
+            <div class="form-options">
+              <div class="options">
+                <div>
+                  <a
+                    href="./add_groups"
+                    style="text-decoration: none;"
+                    class="btn btn-add icon">add</a
+                  >
+                </div>
+                <div>
+                  <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn" type="submit" aria-disabled="false">code</a
+                  >
+                </div>
+                <div>
+                  <a href="#" style="text-decoration: none;" class="btn btn-disabled icon" name="btn"  type="submit">print</a>
+                </div>
+                <a
+                  href="#"
+                  style="text-decoration: none;"
+                  class="btn btn-search-mobile icon">search</a
+                >
+                <div>
+                  <a
+                    href="/login"
+                    style="text-decoration: none;"
+                    class="btn btn-exit icon">exit_to_app</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grafic1">
+              <div class="containerTitle sss2">
+                <h2>Notas de el Mes📝</h2>
+            </div>
+            <div class="grafic-cont">
+                <ChartSubjet client:only="react" />
+            </div>
+            <div class="grafic1">
+                <div class="containerTitle sss">
+                  <h2>Mejores Notas Estudiantes🎓</h2>
+                  <div class="containerChartBestStudents">
+                    <ChartBestStudentsMorning  client:only="react" />
+                    <ChartBestStudentsAfternoon  client:only="react" />
+                  </div>
+              </div>
+          </div>
+    </section>
+</Layout>
+
+<style>
+@media only screen and (max-width: 1186px){
+    .content{
+      flex-flow: column !important;
+    }
+  }
+    .containerTitle{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .containerTitle h2{
+      text-align: center;
+      color: var(--colorTitle);
+      font-size: 2.2rem;
+    
+    }
+    .containerTitle.sss{
+      margin-top:25px;
+    }
+    .grafic-cont{
+  /* background: #101827; */
+  width:100%;
+  border-radius:0.4em;
+}
+.grafic1{
+    position:relative;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+.grafic1 .containerTitle.sss{
+  flex-direction: column;
+
+}
+.containerTitle.sss{
+  margin-top:25px;
+}
+
+.containerChartBestStudents {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+</style>

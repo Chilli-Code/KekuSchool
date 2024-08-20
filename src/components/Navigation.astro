@@ -73,14 +73,18 @@ const isActive = (paths) => paths.includes(currentPath);
         </ul>
 
         <!-- Menu Mobile -->
-        <div class="button-dark dark-mode-btn" id="dark-mode-btn">
-            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
-        </div>
-        <div class="cont-copyright">
-            <hr>
-            <p>© Copyright Keku Enterprise</p>
-        </div>
+         <div class="containercopyright">
+            <div>
+                <div class="button-dark dark-mode-btn" id="dark-mode-btn">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+                </div>
+            </div>
+             <div class="cont-copyright">
+                 <hr>
+                 <p>© Copyright Keku Enterprise</p>
+             </div>
+         </div>
     </div>
     <div class="menu-mobile">
         <header>
@@ -763,7 +767,16 @@ User Mobile
 }
 
 
-
+@media (max-width: 3418px) and (max-height: 823px) {
+    .containercopyright {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.cont-copyright {
+    position: relative;
+}
+}
 .button-dark.dark-mobile{
     left: 15px;
     position: relative;
@@ -811,7 +824,7 @@ User Mobile
 .cont-copyright {
     position: absolute;
     bottom: 0;
-    left: 17px;
+    left: 0px;
     width: 100%;
     text-align: center;
 }
