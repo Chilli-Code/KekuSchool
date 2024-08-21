@@ -189,13 +189,12 @@ const ChartComponent = () => {
         </button>
       </div>
       {activeFilter === 'area' && (
-        <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
           {courses.map(course => (
             <button
               key={course}
               onClick={() => handleCourseSelect(course)}
               style={{
-                marginRight: '10px',
                 backgroundColor: selectedCourse === course ? 'var(--bacgroundContent)' : '#ccc',
                 color: selectedCourse === course ? '#fff' : '#000',
                 padding: '10px 20px',

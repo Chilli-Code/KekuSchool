@@ -9,19 +9,21 @@ const ChartComponent2 = () => {
   const [selectedCourse, setSelectedCourse] = useState(null); // Controlar el curso seleccionado
 
   // Datos de cursos y edades
-  const courses = ['1A', '1B', '2A', '2B', '3A', '3B', '4A', '4B', '5A', '5B'];
-  const studentCounts = [20, 19, 22, 25, 18, 20, 22, 27, 30, 14];
+  const courses = ['6A', '6B', '7A', '7B', '8A', '8B', '9A', '9B', '10A', '10B', '11A', '11B'];
+  const studentCounts = [20, 19, 22, 25, 18, 20, 22, 27, 30, 14, 20, 15];
   const studentAges = {
-    '1A': [12, 13, 14, 14, 12, 13, 14, 12, 12, 13],
-    '1B': [12, 13, 12, 12, 14, 13, 14, 13],
-    '2A': [13, 14, 15, 14, 13, 14],
-    '2B': [14, 15, 14, 13],
-    '3A': [14, 15, 16, 15, 14, 15, 16, 14, 15, 16, 15, 16],
-    '3B': [15, 16, 16, 15, 16, 15, 16, 16, 15, 16, 15, 16, 16, 15],
-    '4A': [15, 16, 17, 16, 15, 16],
-    '4B': [16, 17, 16, 15, 16, 17, 16, 17],
-    '5A': [17, 18, 18, 17, 18],
-    '5B': [17, 18, 18, 17, 18, 17, 18, 17, 18],
+    '6A': [12, 13, 14, 14, 12, 13, 14, 12, 12, 13],
+    '6B': [12, 13, 12, 12, 14, 13, 14, 13],
+    '7A': [13, 14, 15, 14, 13, 14],
+    '7B': [14, 15, 14, 13],
+    '8A': [14, 15, 16, 15, 14, 15, 16, 14, 15, 16, 15, 16],
+    '8B': [15, 16, 16, 15, 16, 15, 16, 16, 15, 16, 15, 16, 16, 15],
+    '9A': [15, 16, 17, 16, 15, 16],
+    '9B': [16, 17, 16, 15, 16, 17, 16, 17],
+    '10A': [17, 18, 18, 17, 18],
+    '10B': [17, 18, 18, 17, 18, 17, 18, 17, 18],
+    '11A': [17, 18, 18, 17, 18, 17, 18, 17, 18],
+    '11B': [17, 18, 18, 17, 18, 17, 18, 17, 18],
   };
 
   const handleFilterChange = (filterType) => {
@@ -189,7 +191,7 @@ const ChartComponent2 = () => {
         </button>
       </div>
       {activeFilter === 'area' && (
-        <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
           {courses.map(course => (
             <button
               key={course}
