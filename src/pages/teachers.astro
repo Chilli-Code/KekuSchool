@@ -3,6 +3,7 @@
 import Layout from "../layouts/Layout.astro";
 import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 import TableTeachers from "../components/Table_Teachers.astro";
+import TeacherListPage from "../components/ui/Table_Teachers.jsx";
 ---
 
 
@@ -69,6 +70,7 @@ import TableTeachers from "../components/Table_Teachers.astro";
               </div>
         </div>
         <TableTeachers />
+        <!-- <TeacherListPage  client:only="react"/> -->
     </section>
 </Layout>
 

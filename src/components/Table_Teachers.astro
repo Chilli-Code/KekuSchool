@@ -1,125 +1,418 @@
 ---
-const rows_teacher = [
-    { nombre: "Darly polo", asignatura: "Espanol", curso_encargado: "9A" },
-    { nombre: "Gigliola Cantillo", asignatura: "Filosofia", curso_encargado: "11A" },
-    { nombre: "Maria", asignatura: "Sociales", curso_encargado: "11B" },
-    // Agrega más filas aquí
+
+
+export const teachersData = [
+  {
+    id: 1,
+    teacherId: "1234567890",
+    name: "John Doe",
+    email: "john@doe.com",
+    photo:
+      "https://images.pexels.com/photos/2888150/pexels-photo-2888150.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Math", "Geometry"],
+    classes: ["1B", "2A", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 2,
+    teacherId: "1234567890",
+    name: "Jane Doe",
+    email: "jane@doe.com",
+    photo:
+      "https://images.pexels.com/photos/936126/pexels-photo-936126.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Physics", "Chemistry"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 3,
+    teacherId: "1234567890",
+    name: "Mike Geller",
+    email: "mike@geller.com",
+    photo:
+      "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Biology"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 4,
+    teacherId: "1234567890",
+    name: "Jay French",
+    email: "jay@gmail.com",
+    photo:
+      "https://images.pexels.com/photos/1187765/pexels-photo-1187765.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["History"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 5,
+    teacherId: "1234567890",
+    name: "Jane Smith",
+    email: "jane@gmail.com",
+    photo:
+      "https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Music", "History"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 6,
+    teacherId: "1234567890",
+    name: "Anna Santiago",
+    email: "anna@gmail.com",
+    photo:
+      "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Physics"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 7,
+    teacherId: "1234567890",
+    name: "Allen Black",
+    email: "allen@black.com",
+    photo:
+      "https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["English", "Spanish"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 8,
+    teacherId: "1234567890",
+    name: "Ophelia Castro",
+    email: "ophelia@castro.com",
+    photo:
+      "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Math", "Geometry"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 9,
+    teacherId: "1234567890",
+    name: "Derek Briggs",
+    email: "derek@briggs.com",
+    photo:
+      "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Literature", "English"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 10,
+    teacherId: "1234567890",
+    name: "John Glover",
+    email: "john@glover.com",
+    photo:
+      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Biology"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
 ];
+
 
 ---
 
-<div class="form-gridview">
-    <table class="default">
-      <tbody>
-         <tr>
-          <th>Nombre</th>
-          <th>Asignatura</th>
-          <th>Curso Encargado</th>
-          <th class="center"><a class="icon">visibility</a></th>
-          <th class="center"><a class="icon">edit</a></th>
-          <th class="center"><a class="icon">delete</a></th>
-        </tr>
-        {rows_teacher.map(row => (
+  <div class="container">
+    <div class="top-section">
+      <h1 class="title">All Teachers</h1>
+      <div class="button-group">
+        <button class="button">
+          <span class="icon">visibility</span>
+        </button>
+        <button class="button">
+          <!-- Icono de ordenación -->
+        </button>
+        <!-- <FormModal table="teacher" type="create" /> -->
+      </div>
+    </div>
+  
+    <div class="table-container">
+      <table class="w-full">
+        <thead class="thead">
           <tr>
-              <td>
-                <input type="checkbox" id="selectAll" class="rowCheckbox" />
-                {row.nombre}
-                </td>
-              <td>
-                {row.asignatura}
-                </td>
-              <td>{row.curso_encargado}</td>
-              <td><a class="btnview" href="/view_students"></a></td>
-          <td>
-            <button class="btnedit" type="submit"></button>
-          </td>
-          <td>
-            <button class="btndelete" type="submit"></button>
-          </td>
+            <th>Info</th>
+            <th>Teacher ID</th>
+            <th>Subjects</th>
+            <th>Classes</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
           </tr>
-      ))}
-
-
-        <!-- <tr>
-          <th>Nombre</th>
-          <th>Asignatura</th>
-          <th>Curso Encargado</th>
-          <th class="center"><a class="icon">visibility</a></th>
-          <th class="center"><a class="icon">edit</a></th>
-          <th class="center"><a class="icon">delete</a></th>
-        </tr>
-        <tr>
-          <td>admin</td>
-          <td>Diego Carmona Bernal</td>
-          <td>9614044227</td>
-          <td>
-            <button class="btnview" type="submit"></button>
-          </td>
-          <td>
-            <button class="btnedit" type="submit"></button>
-          </td>
-          <td>
-            <button class="btndelete" type="submit"></button>
-          </td>
-        </tr>
-        <tr>
-          <td>admineb405</td>
-          <td>Magnolia Montejo Gómez</td>
-          <td>9613459810</td>
-          <td>
-            <button class="btnview" type="submit"></button>
-          </td>
-          <td>
-            <button class="btnedit" type="submit"></button>
-          </td>
-          <td>
-            <button class="btndelete" type="submit"></button>
-          </td>
-        </tr>
-        <tr>
-          <td>adminec4e9</td>
-          <td>Rosalinda Pascacio Mendoza</td>
-          <td>9654392021</td>
-          <td>
-            <button class="btnview" type="submit"></button>
-          </td>
-          <td>
-            <button class="btnedit" type="submit"></button>
-          </td>
-          <td>
-            <button class="btndelete" type="submit"></button>
-          </td>
-        </tr>
-        <tr>
-          <td>editor</td>
-          <td>Jesús Antonio Olvera Gálvez</td>
-          <td>9614044227</td>
-          <td>
-            <button class="btnview" type="submit"></button>
-          </td>
-          <td>
-            <button class="btnedit" type="submit"></button>
-          </td>
-          <td>
-            <button class="btndelete" type="submit"></button>
-          </td>
-        </tr> -->
-      </tbody>
-    </table>
-    <div class="pages">
-      <ul>
-        <li class="active">
-          <div>
-            <button type="submit" name="page" value="1">1</button>
-          </div>
-        </li>
-      </ul>
+        </thead>
+        <tbody>
+          {teachersData.map((item) => (
+            <tr key={item.id} class="table-row">
+              <td class="table-dataa">
+                <img src={item.photo} class="imgTable" />
+                <div class="contImgTable">
+                  <h3>{item.name}</h3>
+                  <p>{item.email}</p>
+                </div>
+              </td>
+              <td class="table-data">{item.teacherId}</td>
+              <td class="table-data">{item.subjects.join(",")}</td>
+              <td class="table-data">{item.classes.join(",")}</td>
+              <td class="table-data">{item.phone}</td>
+              <td class="table-data">{item.address}</td>
+              <td class="table-data">
+                <div class="actions-container">
+                  <button class="button">
+                    <span class="icon">visibility</span>
+                  </button>
+                  <button class="button">
+                    <span class="icon">delete</span>
+                  </button>
+                  <!-- <FormModal table="teacher" type="delete" id={item.id} /> -->
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="pagination-container">
+      <button class="pagination-button" disabled>Prev</button>
+      <div class="page-numbers">
+        <button class="page-button active">1</button>
+        <button class="page-button">2</button>
+        <button class="page-button">3</button>
+        ...
+        <button class="page-button">10</button>
+      </div>
+      <button class="pagination-button">Next</button>
     </div>
   </div>
 
 
 
   <style>
+
+
+.contImgTable{
+  display: flex;           /* flex */
+  flex-direction: column;
+}
+.contImgTable h3{
+  font-weight: 600; 
+}
+.contImgTable p{
+  font-size: 0.75rem;
+  color: #6b7280; 
+}
+
+.imgTable {
+  width: 2.5rem;           /* w-10 */
+  height: 2.5rem;          /* h-10 */
+  border-radius: 50%;      /* rounded-full */
+  object-fit: cover;    /* object-cover */
+  pointer-events:none;
+}
+
+
+
+@media (min-width: 1280px) {
+  .imgTable {
+    display: block;        /* xl:block */
+  }
+}
+
+.w-full{
+  width: 100%;
+  margin-top: 1rem;
+  box-shadow:0 1px 6px rgba(142,136,192,0.2);
+  border-collapse: collapse;
+  border-top-left-radius: 0.4em;
+  border-top-right-radius: 0.4em;
+  border-bottom-left-radius: 0.4em;
+  border-bottom-right-radius: 0.4em;
+  overflow:hidden;
+}
+.w-full .thead{
+  background-color: #f1f5f9;
+}
+.w-full .thead tr{
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    font-size: 0.875rem;
+}
+
+.w-full .thead tr th{
+    padding: 1rem;
+    text-align: left;
+
+}
+
+.container {
+    background-color: var(--bacgroundContent);
+    padding: 1rem;
+    box-shadow:var(--boxShadowCont);
+    border-radius: 0.4em; /* rounded-md */
+    flex: 1;
+    margin: 1rem; /* m-4 */
+    margin-top: 0; /* mt-0 */
+    width: auto;
+  }
+
+  @media (max-width: 990px){
+.container {
+  width: 100%;
+ }
+  }
+
+  .top-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    display: none;
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+  }
+
+  @media (min-width: 768px) {
+    .title {
+      display: block;
+    }
+  }
+
+  .button-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+
+  }
+  
+  @media (min-width: 768px) {
+    .button-group{
+      flex-direction: row;
+    }
+  }
+  .button {
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor:pointer;
+  }
+
+
+  .table-container {
+    margin-top: 1rem;
+    overflow-x: auto; /* mt-4 */
+  }
+
+  .table-row {
+  border-bottom: 1px solid #e5e7eb; /* Asegura un color visible para el borde */
+  background-color: #f9fafb; /* Color de fondo por defecto */
+  font-size: 0.875rem; /* Tamaño de fuente */
+  transition: background-color 0.3s ease; /* Transición suave para el hover */
+}
+  .table-row:hover {
+    background-color: #d6d3f0; /* hover:bg-lamaPurpleLight */
+  }
+
+  .table-data {
+    padding: 1rem; /* p-4 */
+  }
+
+
+
+  .table-data {
+    display: table-cell;
+  }
+.table-dataa {
+  display: flex;
+  align-items: center;  
+  gap: 1rem;
+  padding: 1rem;
+}
+  .actions-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* gap-2 */
+  }
+
+  .pagination-container {
+    padding: 1rem; /* p-4 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #6b7280; /* text-gray-500 */
+  }
+
+  .pagination-button {
+    padding: 0.5rem 1rem; /* py-2 px-4 */
+    border-radius: 0.375rem; /* rounded-md */
+    background-color: #e2e8f0; /* bg-slate-200 */
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 600; /* font-semibold */
+    cursor: pointer;
+  }
+
+  .pagination-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* gap-2 */
+    font-size: 0.875rem; /* text-sm */
+  }
+
+  .page-button {
+    padding: 0.25rem 0.5rem; /* px-2 */
+    border-radius: 0.125rem; /* rounded-sm */
+    cursor: pointer;
+  }
+
+  .page-button.active {
+    background-color: #a5b4fc; /* bg-lamaSky */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 641px){
     .form-gridview table.default {

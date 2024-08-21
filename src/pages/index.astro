@@ -1,12 +1,131 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CountChart from '../components/ui/GraficTotalStudents.jsx';
 
 ---
 
 <Layout title_p="Sistema Escolar" spanText="Incio" />
-
+<section class="content columContent">
+    <div class="main-cards">
+      <div class="custom-div">
+        <div class="custom-header">
+          <span class="custom-span">2024/25</span>
+          <span class="icon">more_horiz</span>
+        </div>
+        <h1 class="custom-h1">1,234</h1>
+        <h2 class="custom-h2">Estudiantes</h2>
+      </div>
+      <div class="custom-div">
+        <div class="custom-header">
+          <span class="custom-span">2024/25</span>
+          <span class="icon">more_horiz</span>
+        </div>
+        <h1 class="custom-h1">1,234</h1>
+        <h2 class="custom-h2">Profesores</h2>
+      </div>
+      <div class="custom-div">
+        <div class="custom-header">
+          <span class="custom-span">2024/25</span>
+          <span class="icon">more_horiz</span>
+        </div>
+        <h1 class="custom-h1">1,234</h1>
+        <h2 class="custom-h2">Padres</h2>
+      </div>
+      <div class="custom-div">
+        <div class="custom-header">
+          <span class="custom-span">2024/25</span>
+          <span class="icon">more_horiz</span>
+        </div>
+        <h1 class="custom-h1">1,234</h1>
+        <h2 class="custom-h2">Personal</h2>
+      </div>
+    </div>
+    <div class="grafic1">
+        <CountChart client:only="react" />
+    </div>
+  </section>
 </Layout>
 
 <style>
 
+    .icon{
+        font-size:20px;
+        color: #fff;
+    }
+    .grafic1{
+        margin: 20px 0px 20px 0px;
+    }
+    @media only screen and (max-width: 1186px){
+        .content{
+            flex-flow: column;
+        }
+    }
+    .custom-div {
+    border-radius: 16px;
+    padding: 16px;
+    flex: 1;
+    min-width: 130px;
+}
+
+.custom-div:nth-child(odd) {
+    background-color: #6B21A8;
+}
+
+.custom-div:nth-child(even) {
+    background-color: #FAE27C;
+}
+
+.custom-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-span {
+    font-size: 10px;
+    background-color: #FFFFFF;
+    padding: 4px 8px;
+    border-radius: 9999px;
+    color: #16A34A;
+}
+
+.custom-h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 16px 0;
+    color: #000;
+}
+
+.custom-h2 {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6B7280;
+}
+
+.main-cards {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.custom-span {
+    font-size: 10px; 
+    background-color: #FFFFFF;
+    padding: 4px 8px;
+    border-radius: 9999px;
+    color: #16A34A;
+}
+
+
+
+.card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-inner h3 {
+    color: #fff;
+}
 </style>
