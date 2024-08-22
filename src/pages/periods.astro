@@ -38,27 +38,21 @@ import Table_Periods from "../components/Table_Periods.astro";
           >
         </div>
       </div>
-      <div class="search">
-        <div class="barra">
-          <input
-            type="text"
-            class="text-search"
-            id="txtSearch"
-            name="search"
-            placeholder="Buscar..."
-            autofocus=""
-          />
-          <button id="btnSearch" class="btn-search icon" type="submit"
-            >search</button
-          >
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <style>
-
+.columContent {
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    display: flex;
+}
+@media only screen and (max-width: 1186px){
+  .content {
+    flex-flow: column-reverse !important;
+  }
+}
 .content-aside {
     display: block;
     float: right;

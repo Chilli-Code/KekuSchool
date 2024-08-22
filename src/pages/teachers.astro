@@ -3,7 +3,6 @@
 import Layout from "../layouts/Layout.astro";
 import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 import TableTeachers from "../components/Table_Teachers.astro";
-import TeacherListPage from "../components/ui/Table_Teachers.jsx";
 ---
 
 
@@ -53,24 +52,10 @@ import TeacherListPage from "../components/ui/Table_Teachers.jsx";
                       >
                     </div>
                   </div>
-                  <div class="search">
-                    <div class="barra">
-                      <input
-                        type="text"
-                        class="text-search"
-                        placeholder="Buscar..."
-                        autofocus=""
-                      />
-                      <button id="btnSearch" class="btn-search icon" type="submit"
-                        >search</button
-                      >
-                    </div>
-                  </div>
                 </div>
               </div>
         </div>
         <TableTeachers />
-        <!-- <TeacherListPage  client:only="react"/> -->
     </section>
 </Layout>
 

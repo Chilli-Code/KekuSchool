@@ -4,7 +4,7 @@ import TableAdministrative from "../components/Table_Administrative.astro";
 ---
 
 <Layout title_p="Sistema Escolar || administrative" spanText="administrativos" />
-  <section class="content">
+  <section class="content ">
     <div class="content-aside" id="jjj">
       <div class="form-options">
         <div class="options">
@@ -45,38 +45,29 @@ import TableAdministrative from "../components/Table_Administrative.astro";
             >
           </div>
         </div>
-        <div class="search">
-          <div class="barra">
-            <input
-              type="text"
-              class="text-search"
-              placeholder="Buscar..."
-              autofocus=""
-            />
-            <button id="btnSearch" class="btn-search icon" type="submit"
-              >search</button
-            >
-          </div>
-        </div>
       </div>
     </div>
-
       <TableAdministrative />
-
   </section>
 </Layout>
 
 <style>
 
-
+.content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 /*-------------------------------------------
   Contenedor Formularios
 -------------------------------------------*/
 
-.content-aside {
-    display: block;
-    float: right;
-    width: 27%;
+.content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .content:after,

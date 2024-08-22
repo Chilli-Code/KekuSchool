@@ -1,157 +1,38 @@
 ---
-
-
-export const teachersData = [
-  {
-    id: 1,
-    teacherId: "1234567890",
-    name: "John Doe",
-    email: "john@doe.com",
-    photo:
-      "https://images.pexels.com/photos/2888150/pexels-photo-2888150.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Math", "Geometry"],
-    classes: ["1B", "2A", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 2,
-    teacherId: "1234567890",
-    name: "Jane Doe",
-    email: "jane@doe.com",
-    photo:
-      "https://images.pexels.com/photos/936126/pexels-photo-936126.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Physics", "Chemistry"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 3,
-    teacherId: "1234567890",
-    name: "Mike Geller",
-    email: "mike@geller.com",
-    photo:
-      "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Biology"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 4,
-    teacherId: "1234567890",
-    name: "Jay French",
-    email: "jay@gmail.com",
-    photo:
-      "https://images.pexels.com/photos/1187765/pexels-photo-1187765.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["History"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 5,
-    teacherId: "1234567890",
-    name: "Jane Smith",
-    email: "jane@gmail.com",
-    photo:
-      "https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Music", "History"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 6,
-    teacherId: "1234567890",
-    name: "Anna Santiago",
-    email: "anna@gmail.com",
-    photo:
-      "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Physics"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 7,
-    teacherId: "1234567890",
-    name: "Allen Black",
-    email: "allen@black.com",
-    photo:
-      "https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["English", "Spanish"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 8,
-    teacherId: "1234567890",
-    name: "Ophelia Castro",
-    email: "ophelia@castro.com",
-    photo:
-      "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Math", "Geometry"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 9,
-    teacherId: "1234567890",
-    name: "Derek Briggs",
-    email: "derek@briggs.com",
-    photo:
-      "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Literature", "English"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-  {
-    id: 10,
-    teacherId: "1234567890",
-    name: "John Glover",
-    email: "john@glover.com",
-    photo:
-      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    phone: "1234567890",
-    subjects: ["Biology"],
-    classes: ["5A", "4B", "3C"],
-    address: "123 Main St, Anytown, USA",
-  },
-];
-
-
+import { teachersData } from "../lib/data.ts";
+import AlertDelete from "./ui/AlertDelete.jsx";
 ---
 
   <div class="container">
     <div class="top-section">
       <h1 class="title">All Teachers</h1>
       <div class="button-group">
-        <button class="button">
-          <span class="icon">visibility</span>
-        </button>
-        <button class="button">
-          <!-- Icono de ordenación -->
-        </button>
+        <div class="search">
+          <div class="barra">
+            <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar..." autofocus="">
+            <button id="btnSearch" class="btn-search icon" type="submit">search</button>
+          </div>
+        </div>
+        <div class="containerFilter">
+      <h1 class="titleFiltros">Filtros</h1>
+          <button class="button icon buttonFilter">
+              swap_vert
+          </button>
+        </div>
         <!-- <FormModal table="teacher" type="create" /> -->
       </div>
     </div>
-  
     <div class="table-container">
       <table class="w-full">
-        <thead class="thead">
+        <thead class="thead table-data-head">
           <tr>
-            <th>Info</th>
-            <th>Teacher ID</th>
-            <th>Subjects</th>
-            <th>Classes</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Actions</th>
+            <th class="showThead">Informacion</th>
+            <th class="hiddenThead">ID</th>
+            <th class="hiddenThead">Asignaturas</th>
+            <th class="hiddenThead">Clases</th>
+            <th class="hiddenThead">Teléfono</th>
+            <th class="hiddenThead">Dirección</th>
+            <th class="showThead">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -169,16 +50,15 @@ export const teachersData = [
               <td class="table-data">{item.classes.join(",")}</td>
               <td class="table-data">{item.phone}</td>
               <td class="table-data">{item.address}</td>
-              <td class="table-data">
-                <div class="actions-container">
-                  <button class="button">
-                    <span class="icon">visibility</span>
+              <td>
+                <div  class="actions-container">
+                <a>
+                  <button class="button buttonView icon">
+                    visibility
                   </button>
-                  <button class="button">
-                    <span class="icon">delete</span>
-                  </button>
-                  <!-- <FormModal table="teacher" type="delete" id={item.id} /> -->
+                  <AlertDelete id={item.id} client:only="react"  />
                 </div>
+                </a>
               </td>
             </tr>
           ))}
@@ -201,9 +81,17 @@ export const teachersData = [
 
 
 
-  <style>
+  <style is:global>
+.containerFilter{
+  display: flex;
+    align-items: center;
+    gap: 1rem; 
+    justify-content: flex-end;
+}
 
-
+.titleFiltros{
+  display:none;
+}
 .contImgTable{
   display: flex;           /* flex */
   flex-direction: column;
@@ -224,8 +112,6 @@ export const teachersData = [
   pointer-events:none;
 }
 
-
-
 @media (min-width: 1280px) {
   .imgTable {
     display: block;        /* xl:block */
@@ -237,6 +123,7 @@ export const teachersData = [
   margin-top: 1rem;
   box-shadow:0 1px 6px rgba(142,136,192,0.2);
   border-collapse: collapse;
+  border-spacing:0;
   border-top-left-radius: 0.4em;
   border-top-right-radius: 0.4em;
   border-bottom-left-radius: 0.4em;
@@ -263,10 +150,11 @@ export const teachersData = [
     padding: 1rem;
     box-shadow:var(--boxShadowCont);
     border-radius: 0.4em; /* rounded-md */
-    flex: 1;
+    /* flex: 1; */
     margin: 1rem; /* m-4 */
     margin-top: 0; /* mt-0 */
     width: auto;
+    height:100%;
   }
 
   @media (max-width: 990px){
@@ -291,28 +179,85 @@ export const teachersData = [
     .title {
       display: block;
     }
-  }
 
+  }
   .button-group {
     display: flex;
+    flex-direction: column; /* Flex-direction for mobile view */
     align-items: center;
-    gap: 1rem; /* gap-4 */
+    gap: 1rem; /* 4 units of spacing, typically 1rem */
+    width: 100%; /* Full width */
+}
 
-  }
-  
-  @media (min-width: 768px) {
-    .button-group{
-      flex-direction: row;
+@media (min-width: 768px) { /* Medium devices and up (tablet) */
+    .button-group {
+        flex-direction: row; /* Change to row direction on larger screens */
+        width: auto; /* Auto width on larger screens */
     }
+}
+  @media (max-width:1186px){
+.container {
+  width:100%;
+}
+}
+@media ((width > 2499px)){
+  .container {
+  width:100%;
+}
   }
+
+ 
   .button {
     width: 2rem; /* w-8 */
-    height: 2rem; /* h-8 */
+    height: 2rem;
+    border:none;
+    color:#eef4ff;
+    font-size: 1.2em;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     cursor:pointer;
+    box-shadow:0 1px 6px rgba(91, 133, 127, 0.2);
+    transition:all 300ms ease-out;
+  }
+  .buttonFilter{
+  background: #F0C35C;
+}
+.buttonFilter:hover, .buttonFilter:focus, .buttonFilter:active {
+    background: #ad8b3c;
+    border: 4px solid #F0C35C;
+    color: #eef4ff98;
+    transition: all 200ms ease-in;
+}
+
+.buttonView.buttonView{
+  background:#569188;
+}
+.buttonView.buttonView:active {
+    background: #569188;
+    transition: all 200ms ease-in;
+}
+.buttonView.buttonView:hover, .buttonView.buttonView:focus{
+  background: #456661;
+  border: 4px solid #6daaa3;
+  color: #eef4ff98;
+  transition: all 200ms ease-in;
+}
+.buttonView.buttonDelete:active{
+  background: #db4949;
+  transition: all 200ms ease-in;
+}
+.buttonDelete{
+    background: #db4949;
+    box-shadow: 0 1px 6px rgba(219,73,73,0.2);
+    transition: all 300ms ease-out;
+}
+
+  .buttonDelete:hover, .buttonDelete:focus{
+    background: #aa3535;
+    border: 4px solid #e77f7f;
+    transition: all 200ms ease-in;
   }
 
 
@@ -334,9 +279,38 @@ export const teachersData = [
   .table-data {
     padding: 1rem; /* p-4 */
   }
+  .table-data-head{
+    display:contents;
+  }
+  @media (max-width: 768px) {
+    .table-data {
+      display: none !important;
+    }
+    .table-data-head{
+      display: contents;
+    }
+    .containerFilter{
+      width:100%;
+    }
+    .hiddenThead{
+      display:none;
+    }
+    .showThead{
+      display:table-cell;
+    }
+    .actions-container{
+      justify-content:left !important;
+    }
+    .actions-container{
+      gap:1.2rem;
+    }
+    .titleFiltros{
+      display:flex;
+    }
 
-
-
+  }
+  
+  
   .table-data {
     display: table-cell;
   }
@@ -346,11 +320,17 @@ export const teachersData = [
   gap: 1rem;
   padding: 1rem;
 }
-  .actions-container {
+.actions-container{
+    justify-content: space-evenly;
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* gap-2 */
-  }
+    gap: 0.5rem;
+}
+.actions-container a{
+  display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
   .pagination-container {
     padding: 1rem; /* p-4 */
@@ -367,6 +347,7 @@ export const teachersData = [
     font-size: 0.75rem; /* text-xs */
     font-weight: 600; /* font-semibold */
     cursor: pointer;
+    border:none;
   }
 
   .pagination-button[disabled] {
@@ -378,13 +359,17 @@ export const teachersData = [
     display: flex;
     align-items: center;
     gap: 0.5rem; /* gap-2 */
-    font-size: 0.875rem; /* text-sm */
+    font-size: 0.875rem;
   }
 
   .page-button {
     padding: 0.25rem 0.5rem; /* px-2 */
     border-radius: 0.125rem; /* rounded-sm */
     cursor: pointer;
+    border:none;
+    background:transparent;
+    color:#eef4ff;
+
   }
 
   .page-button.active {
@@ -392,384 +377,92 @@ export const teachersData = [
   }
 
 
+  .search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (max-width: 641px){
-    .form-gridview table.default {
-    overflow-x: auto !important;
-}
 }
 
-@media only screen and (max-width: 990px) {
-.form-gridview{
-        overflow-x: auto;
-        width: 100% !important;
+@media (min-width: 768px) { /* Medium devices and up (tablet) */
+    .search {
+        width: auto;
     }
+
 }
 
-    
-/*-------------------------------------------
-  Formulario | GridView
--------------------------------------------*/
-
-.form-gridview {
-    float: left;
-    margin: 0 0 35px 0;
-    width: 71%;
-    background: var(--bacgroundContent);
-    box-shadow: var(--boxShadowCont);
-    border-radius: 0.4em;
+.search .barra {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-gridview img.data-not-found,
-.form-data img.data-not-found {
-    overflow-x: hidden;
-    display: block;
-    width: 80%;
-    margin: 2% auto 5%;
-    pointer-events: none;
-    user-select: none;
-}
-
-.form-gridview table.default,
-.form-gridview table.users {
-    width: 91%;
-    margin: 4.5% auto 0;
-    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
-    border-collapse: collapse;
-    border-top-left-radius: 0.4em;
-    border-top-right-radius: 0.4em;
-    border-bottom-left-radius: 0.4em;
-    border-bottom-right-radius: 0.4em;
-    overflow: hidden;
-}
-
-.form-gridview th {
-    padding: 7px 15px;
-    background: #282a36;
-    color: #eef4ff;
-    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
-    border: none;
-    text-align: left;
-    font-size: 0.9em;
-    font-weight: 500;
-    text-transform: normal;
-}
-
-.form-gridview th.center {
-    text-align: center;
-}
-
-.form-gridview th a.icon {
-    color: #eef4ff;
-    font-size: 1.2em;
-    text-decoration: none;
-}
-
-.form-gridview td {
-    padding: 8px 15px;
-    background: #eef4ff;
-    color: #4a567c;
-    text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
-    border-bottom: solid #6273a495 1px;
-    font-size: 0.9em;
-    font-weight: 500;
-    text-align: left;
-    transition: all 300ms ease-out;
-}
-
-.form-gridview td.tdbreak {
-    word-break: break-all;
-}
-
-.form-gridview td.tdbreakw {
-    word-break: break-word;
-}
-
-.form-gridview td.center {
-    text-align: center;
-}
-
-.form-gridview td button.btnview {
-    margin: 0 auto;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: #569188;
-    box-shadow: 0 1px 6px rgba(91, 133, 127, 0.2);
-    border: none;
-    border-radius: 2em;
-    color: #eef4ff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 300ms ease-out;
-}
-
-.form-gridview td button.btnview:hover,
-.form-gridview td button.btnview:focus {
-    background: #456661;
-    border: 4px solid #6daaa3;
-    transition: all 200ms ease-in;
-}
-
-.form-gridview td button.btnview:active {
-    background: #569188;
-    transition: all 200ms ease-in;
-}
-
-.form-gridview td button.btnedit {
-    margin: 0 auto;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: #3f6992;
-    box-shadow: 0 1px 6px rgba(63, 105, 146, 0.2);
-    border: none;
-    border-radius: 2em;
-    color: #eef4ff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 300ms ease-out;
-}
-
-.form-gridview td button.btnedit:hover,
-.form-gridview td button.btnedit:focus {
-    background: #2a4866;
-    border: 4px solid #7eb2e2;
-    transition: all 200ms ease-in;
-}
-
-.form-gridview td button.btnedit:active {
-    background: #3f6992;
-    transition: all 200ms ease-in;
-}
-
-.form-gridview td button.btndelete {
-    margin: 0 auto;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: #db4949;
-    box-shadow: 0 1px 6px rgba(219, 73, 73, 0.2);
-    border: none;
-    border-radius: 2em;
-    color: #eef4ff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 300ms ease-out;
-}
-
-.form-gridview td button.btndelete:hover,
-.form-gridview td button.btndelete:focus {
-    background: #aa3535;
-    border: 4px solid #e77f7f;
-    transition: all 200ms ease-in;
-}
-
-.form-gridview td button.btndelete:active {
-    background: #db4949;
-    transition: all 200ms ease-in;
-}
-
-.form-gridview tr:hover td {
-    background: #dde8fc;
-    transition: all 200ms ease-in;
-}
-
-
-.pages {
-    display: block;
-    text-align: center;
-    margin: 2.8% 0 2.8% 3.8%;
-    user-select: none;
-}
-
-.pages:after {
+.search:after {
     display: block;
     content: "";
     clear: both;
 }
 
-.pages ul li {
-    list-style: none;
-}
 
-.pages ul li button {
-    margin: 0 10px 0 0;
-    width: 5%;
-    height: 22px;
-    background: #7e8aac;
-    box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
+.search .text-search {
+    float: left;
+    width: 100%;
+    padding: 0.5rem;
+    height: 36px;
+    background: #eef4ff;
+    box-shadow: 0 1px 6px rgba(142,136,192,0.2);
     border: none;
-    border-radius: 0.6em;
-    color: #eef4ff;
-    line-height: 23px;
-    font-size: 0.625em;
-    font-weight: 600;
+    border-top-left-radius: 0.4em;
+    border-bottom-left-radius: 0.4em;
+    border-top-right-radius: 0.55em;
+    border-bottom-right-radius: 0.55em;
+    color: #687292;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: all 300ms ease-out;
+    outline: none!important;
+    outline-width: 0!important;
     transition: all 300ms ease-out;
 }
 
-.pages ul li button:hover,
-.pages ul li button:focus {
-    background: #4c597e;
-    cursor: pointer;
+.search .text-search:focus {
+    box-shadow: 0 0 0 2.5pt var(--backgroundBtnFocusShearch) !important;
+    color: #4a567c !important;
     transition: all 200ms ease-in;
 }
 
-.pages ul li.active button {
-    background: #6272a4;
-}
-
-.pages ul li.active button:hover,
-.pages ul li.active button:focus {
-    background: #7e8aac;
+.search .btn-search {
+    float: left;
+    width: 20%;
+    height: 36px;
+    margin: 0 6.5% 0 -18%;
+    background: var(--backgroundBtnShearch);
+    border: none;
+    color: #eef4ff;
+    cursor: initial;
+    border-top-right-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    font-size: 1.02em;
     cursor: pointer;
+    transition: all 300ms ease-out;
+}
+.search .btn-search:hover,
+.search .btn-search:focus {
+    background: var(--colorhr);
+    box-shadow: inset 0 0 0 2.5pt var(--backgroundFocusInput) !important;
+    color: #eef4ff98;
     transition: all 200ms ease-in;
 }
 
-/* CHECKCED */
-@supports (-webkit-appearance: none) or (-moz-appearance: none) {
-	 input[type='checkbox'] {
-		 --active: #275efe;
-		 --active-inner: #fff;
-		 --focus: 2px rgba(39, 94, 254, .3);
-		 --border: #bbc1e1;
-		 --border-hover: #275efe;
-		 --background: #fff;
-		 --disabled: #f6f8ff;
-		 --disabled-inner: #e1e6f9;
-		 -webkit-appearance: none;
-		 -moz-appearance: none;
-		 height: 15px;
-		 outline: none;
-		 display: inline-block;
-		 vertical-align: top;
-		 position: relative;
-		 margin: 0;
-		 cursor: pointer;
-		 border: 1px solid var(--bc, var(--border));
-		 background: var(--b, var(--background));
-		 transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
-	}
-	 input[type='checkbox']:after {
-		 content: '';
-		 display: block;
-		 left: 0;
-		 top: 0;
-		 position: absolute;
-		 transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
-	}
-	 input[type='checkbox']:checked {
-		 --b: var(--active);
-		 --bc: var(--active);
-		 --d-o: 0.3s;
-		 --d-t: 0.6s;
-		 --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
-	}
-	 input[type='checkbox']:disabled {
-		 --b: var(--disabled);
-		 cursor: not-allowed;
-		 opacity: 0.9;
-	}
-	 input[type='checkbox']:disabled:checked {
-		 --b: var(--disabled-inner);
-		 --bc: var(--border);
-	}
-	 input[type='checkbox']:disabled {
-		 cursor: not-allowed;
-	}
-	 input[type='checkbox']:hover{
-		 --bc: var(--border-hover);
-	}
-	 input[type='checkbox']:focus {
-		 box-shadow: 0 0 0 var(--focus);
-	}
-	 input[type='checkbox']:not(.switch), input[type='radio']:not(.switch) {
-		 width: 15px;
-     margin-right: 3px;
-	}
-	 input[type='checkbox']:after{
-		 opacity: var(--o, 0);
-	}
-	 input[type='checkbox']:checked {
-		 --o: 1;
-	}
-	 input[type='checkbox'] {
-		 font-size: 14px;
-		 line-height: 21px;
-		 display: inline-block;
-		 vertical-align: top;
-		 cursor: pointer;
-	}
-	 input[type='checkbox'] {
-		 border-radius: 7px;
-	}
-	 input[type='checkbox']:after {
-		 width: 4px;
-		 height: 8px;
-		 border: 2px solid var(--active-inner);
-		 border-top: 0;
-		 border-left: 0;
-		 left: 4px;
-		 top: 0px;
-		 transform: rotate(var(--r, 20deg));
-	}
-	 input[type='checkbox']:checked {
-		 --r: 43deg;
-	}
-	 input[type='checkbox'].switch {
-		 width: 38px;
-		 border-radius: 11px;
-	}
-	
-
-	 input[type='radio'] {
-		 border-radius: 50%;
-	}
-	 input[type='radio']:after {
-		 width: 19px;
-		 height: 19px;
-		 border-radius: 50%;
-		 background: var(--active-inner);
-		 opacity: 0;
-		 transform: scale(var(--s, 0.7));
-	}
-	 input[type='radio']:checked {
-		 --s: 0.5;
-	}
-
-}
-.checkPadding{
-  padding:8px 5px !important;
-}
-.selected-row {
-  background-color:#b0c2e0; /* Color de la fila seleccionada */
+.search .btn-search:hover:active {
+    background: var(--backgroundBtnShearch);
+    transition: all 200ms ease-in;
 }
 
-.selected-row td {
-  color:#060606 !important;
-  background-color: transparent !important; /* Quitar el fondo de los td cuando se selecciona la fila */
-}
+
   </style>
-
-<script lang="ts" type="module" src="/js/checkboxTable.js"></script>

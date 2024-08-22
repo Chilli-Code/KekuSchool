@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Chart from "react-apexcharts";
 import styled from "styled-components";
 
+
 const Container = styled.div`
   background-color: var(--backgroundGrafic);
   border-radius: 0.75rem; // rounded-xl
@@ -84,7 +85,7 @@ const CountChart = () => {
   const totalCount = 1000;
   
   // Cantidad de niños por categoría
-  const [boysCount, setBoysCount] = useState(250); // Número de niños en la categoría de chicos
+  const [boysCount, setBoysCount] = useState(550); // Número de niños en la categoría de chicos
   const [girlsCount, setGirlsCount] = useState(650); // Número de niños en la categoría de chicas
 
   // Calcula los porcentajes

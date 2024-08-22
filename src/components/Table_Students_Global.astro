@@ -1,0 +1,83 @@
+---
+const studentInfo = [
+    {
+        id: "1",
+        name: "Jorge Villamizar Bolivar",
+        jornada: "mañana",
+        curso: "11B",
+        photo: "https://images.pexels.com/photos/2888150/pexels-photo-2888150.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    },
+    // Otros estudiantes...
+];
+---
+
+<div class="container">
+  <div class="table-container">
+    <table class="w-full">
+      <thead class="thead table-data-head">
+        <tr>
+          <th>Nombre</th>
+          <th>Información</th>
+          <th class="icon">visibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        {studentInfo.map((item) => (
+          <tr key={item.id} class="table-row">
+            <td class="table-dataa">
+              <img src={item.photo} class="imgTable" />
+              <div class="contImgTable">
+                <h3>{item.name}</h3>
+              </div>
+            </td>
+            <td class="table-data">
+              <b>Jornada:</b> {item.jornada}<br />
+              <b>Curso:</b> {item.curso}
+            </td>
+            <td class="table-data">
+              <div class="actions-container">
+                <a>
+                  <button class="button buttonView icon">
+                    edit
+                  </button>
+                </a>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-container">
+    <button class="pagination-button" disabled>Prev</button>
+    <div class="page-numbers">
+      <button class="page-button active">1</button>
+      <button class="page-button">2</button>
+      <button class="page-button">3</button>
+      ...
+      <button class="page-button">10</button>
+    </div>
+    <button class="pagination-button">Next</button>
+  </div>
+</div>
+
+<style>
+  .thead tr th:nth-child(3) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .table-data {
+      display: table-cell !important;
+    }
+  }
+
+  .table-dataa {
+    gap: 0.5rem;
+    padding: 1rem 10px;
+  }
+
+  .container {
+    width: 100%;
+  }
+</style>

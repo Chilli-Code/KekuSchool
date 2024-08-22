@@ -1,97 +1,116 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TableStudentsGolbal from "../components/Table_Students_Golbal.astro";
+import TableStudentsGolbal from "../components/Table_Students_Global.astro";
 import LottieAnimation from "astro-integration-lottie/Lottie.astro";
-
-
+import { studentsData } from "../lib/data.ts";
+import AlertDelete from "../components/ui/AlertDelete.jsx";
+import ShowTableStudents from "../components/ui/ShowTableStudents.jsx";
 
 const ListStudents = [
   {
+    id:"1",
     curso: "1A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"2",
     curso: "1B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"3",
     curso: "2A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"4",
     curso: "3A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"5",
     curso: "3B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"6",
     curso: "4A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"7",
     curso: "5B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"8",
     curso: "6A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"9",
     curso: "6B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"10",
     curso: "7B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"11",
     curso: "8A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"12",
     curso: "8B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"13",
     curso: "9A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"14",
     curso: "9B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"15",
     curso: "10A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"16",
     curso: "10B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"17",
     curso: "11A",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
   },
   {
+    id:"18",
     curso: "11B",
     totalStudents: 25,
     tableStudents: TableStudentsGolbal,
@@ -100,8 +119,6 @@ const ListStudents = [
 ];
 
 ---
-
-
 <Layout title_p="Sistema Escolar || Students" spanText="Alumnos">
   <section class="content columContent">
     <div class="content-aside">
@@ -123,12 +140,6 @@ const ListStudents = [
           </div>
         </div>
         <div class="LottieInvert">
-          <div class="search">
-            <div class="barra">
-              <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar..." autofocus="" />
-              <button id="btnSearch" class="btn-search icon" type="submit">search</button>
-            </div>
-          </div>
           <div class="containerLotttie">
             <div class="tittleLottie">
               <h2>¿Algun Alumno que quieras Buscar?🧐</h2>
@@ -140,7 +151,7 @@ const ListStudents = [
         </div>
       </div>
     </div>
-    <!-- <div class="containerAcordion">
+    <div class="containerAcordion">
       <div class="acordion">
         <div class="contentCd">
           <div class="label">Curso: <b>1A</b> Total de Alumnos: <b>25</b></div>
@@ -148,7 +159,7 @@ const ListStudents = [
             <TableStudentsGolbal />
           </div>
         </div>
-      </div> -->
+      </div>
 
     <div class="containerworKingDay">
       <div class="dayMorning" onclick="showTable('morning')">
@@ -160,249 +171,449 @@ const ListStudents = [
         <span>⛅</span>
       </div>
     </div>
-        <div id="morningTable" class="containerAcordion" style="display: none;">
-          {ListStudents.map(student => (
-            <div class="acordion" key={student.curso}>
-              <div class="contentCd">
-                <div class="label">
-                  Curso: <b>{student.curso}</b> Total de Alumnos: <b>{student.totalStudents}</b>
-                </div>
-                <div class="contenidoad form-gridview">
-                  <student.tableStudents />
-                </div>
-              </div>
+
+      </div>
+    </div>
+    <div class="main-cards containerAcordion" id="morningTable"  style="display: none;">
+      {ListStudents.map(student => (
+        <div class="custom-div" key={student.id}>
+          <div class="custom-header">
+            <ShowTableStudents curso={student.curso} client:only="react" />
+          </div>
+          <h1 class="custom-h1">Curso:<br /><b>{student.curso}</b></h1>
+          <h2 class="custom-h2">Total de Alumnos: <b>{student.totalStudents}</b></h2>
+        </div>
+      ))}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+      <div class="top-section">
+        <h1 class="title">All Teachers</h1>
+        <div class="button-group">
+          <div class="search">
+            <div class="barra">
+              <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar..." autofocus="">
+              <button id="btnSearch" class="btn-search icon" type="submit">search</button>
             </div>
-          ))}
+          </div>
+          <div class="containerFilter">
+        <h1 class="titleFiltros">Filtros</h1>
+            <button class="button icon buttonFilter">
+                swap_vert
+            </button>
+          </div>
         </div>
       </div>
-      <table id="afternoonTable" style="display: none;"> </table>
+      <div class="table-container">
+        <table class="w-full">
+          <thead class="thead table-data-head">
+            <tr>
+              <th class="showThead">Informacion</th>
+              <th class="hiddenThead">ID</th>
+              <th class="hiddenThead">Teléfono</th>
+              <th class="hiddenThead">Grado</th>
+              <th class="hiddenThead">Clase</th>
+              <th class="hiddenThead">Dirección</th>
+              <th class="showThead">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {studentsData.map((item) => (
+              <tr key={item.id} class="table-row">
+                <td class="table-dataa">
+                  <img src={item.photo} class="imgTable" />
+                  <div class="contImgTable">
+                    <h3>{item.name}</h3>
+                    <p>{item.email}</p>
+                  </div>
+                </td>
+                <td class="table-data">{item.studentId}</td>
+                <td class="table-data">{item.phone}</td>
+                <td class="table-data">{item.grade}</td>
+                <td class="table-data">{item.class}</td>
+                <td class="table-data">{item.address}</td>
+                <td>
+                  <div  class="actions-container">
+                  <a>
+                    <button class="button buttonView icon">
+                      visibility
+                    </button>
+                    <AlertDelete id={item.id} client:only="react"  />
+                  </div>
+                </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    
+      <div class="pagination-container">
+        <button class="pagination-button" disabled>Prev</button>
+        <div class="page-numbers">
+          <button class="page-button active">1</button>
+          <button class="page-button">2</button>
+          <button class="page-button">3</button>
+          ...
+          <button class="page-button">10</button>
+        </div>
+        <button class="pagination-button">Next</button>
+      </div>
     </div>
+  </div>
 
   </section>
 
 </Layout>
 
 
+
 <style>
-.containerworKingDay {
-  display: flex;
-  width: 67%;
-  color: #eef4ff;
-  border-radius: 0.4em;
 
-}
-
-.dayMorning {
-  width: 100%;
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-right: 1px solid var(--colorhr);
-  flex-direction: column;
-  box-shadow: var(--bacgroundContent);
-  border-radius: 0.4em;
-  background: var(--bacgroundContent);
-  margin-right: 15px;
-}
-
-.dayMorning h2 {
-  text-align: center;
-  font-size: 2.2em;
-}
-
-.dayMorning span {
-  font-size: 2em;
-}
-
-.dayAfternoon {
-  width: 100%;
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  flex-direction: column;
-  box-shadow: var(--bacgroundContent);
-  border-radius: 0.4em;
-  background: var(--bacgroundContent);
-}
-
-.dayAfternoon h2 {
-  text-align: center;
-  font-size: 2.2em;
-}
-
-.dayAfternoon span {
-  font-size: 2em;
-}
-
-@media (max-width:541px) {
+  .icon{
+          font-size:20px;
+          color: #fff;
+      }
+      .grafic1{
+          margin: 20px 0px 20px 0px;
+      }
+      @media only screen and (max-width: 1186px){
+          .content{
+              flex-flow: column;
+          }
+      }
+      .custom-div {
+      border-radius: 16px;
+      padding: 16px;
+      flex: 1;
+      min-width: 130px;
+      cursor:pointer;
+      text-align: center;
+  }
+  .custom-div{
+    transition: transform 0.3s ease;
+  }
+  .custom-div:nth-child(odd) {
+      background-color: #6B21A8;
+  }
+  
+  .custom-div:hover {
+      transform: scale(1.05);
+  }
+  
+  .custom-div:nth-child(even) {
+      background-color: #FAE27C;
+  }
+  
+  .custom-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  
+  
+  .custom-h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 16px 0;
+      color: #000;
+  }
+  
+  .custom-h2 {
+      text-transform: capitalize;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+  }
+  .main-cards {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .custom-span {
+      font-size: 10px; 
+      background-color: #FFFFFF;
+      padding: 4px 8px;
+      border-radius: 9999px;
+      color: #16A34A;
+  }
+  
+  
+  
+  .card-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  .card-inner h3 {
+      color: #fff;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   .containerworKingDay {
-    flex-direction: column;
-    width: 100%;
+    display: flex;
+    width: 67%;
+    color: #eef4ff;
+    border-radius: 0.4em;
+  
   }
-
+  
   .dayMorning {
-    border-right: 0px;
-    border-bottom: 1px solid var(--colorhr);
-    margin-bottom: 15px;
-    margin-right: 0px;
-  }
-
-}
-
-
-.containerAcordion {
-  width: 100%;
-}
-
-.acordion {
-  width: 71%;
-
-}
-
-.acordion .contentCd {
-  position: relative;
-  margin: 10px 20px;
-}
-
-.acordion .contentCd .label {
-  margin: 16px 3%;
-  border-radius: 0.4em;
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
-  background: var(--bacgroundContent);
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.2em;
-}
-
-.acordion .contentCd .label::before {
-  content: '+';
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  font-size: 1.5em;
-}
-
-.acordion .contentCd.active .label::before {
-  content: '-';
-  transition: 0.5s;
-}
-
-.acordion .contentCd .contenidoad {
-  position: relative;
-  height: 0;
-  transform: 0.5s;
-  transition: 0.6s;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.acordion .contentCd.active .contenidoad {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
-  height: auto;
-  padding: 10px;
-}
-
-
-@media only screen and (max-width: 1186px) {
-  .content {
-    flex-flow: column;
-  }
-
-  .containerAcordion {
+    width: 100%;
+    padding: 15px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+    cursor: pointer;
+    border-right: 1px solid var(--colorhr);
+    flex-direction: column;
+    box-shadow: var(--bacgroundContent);
+    border-radius: 0.4em;
+    background: var(--bacgroundContent);
+    margin-right: 15px;
   }
-
-}
-
-.tittleLottie {
-  width: 100%;
-  text-align: center;
-  padding: 0px 8px;
-}
-
-.containerLotttie {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  /* background: var(--bacgroundContent); */
-  /* box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4); */
-  border-radius: 0.4em;
-  /* margin: 0px 20px; */
-  position: relative;
-  /* padding: 20px 20px; */
-  /* overflow-x: hidden; */
-}
-
-.tittleLottie h2 {
-  font-size: 1em;
-  color: #fff;
-}
-
-@media only screen and (max-width: 990px) {
-  .containerLotttie {
+  
+  .dayMorning h2 {
+    text-align: center;
+    font-size: 2.2em;
+  }
+  
+  .dayMorning span {
+    font-size: 2em;
+  }
+  
+  .dayAfternoon {
     width: 100%;
-  }
-
-  .acordion {
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: 580px) {
-  .acordion .contentCd .label {
+    padding: 15px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     flex-direction: column;
+    box-shadow: var(--bacgroundContent);
+    border-radius: 0.4em;
+    background: var(--bacgroundContent);
   }
-}
-
-@media only screen and (max-width: 990px){
-  .form-gridview{
-    overflow-x: hidden !important;
+  
+  .dayAfternoon h2 {
+    text-align: center;
+    font-size: 2.2em;
   }
-}
-
-@media only screen and (max-width: 1186px) {
-  .content-aside {
-    width: 60%;
+  
+  .dayAfternoon span {
+    font-size: 2em;
   }
-}
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-  opacity: 0;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  
+  @media (max-width:541px) {
+    .containerworKingDay {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .dayMorning {
+      border-right: 0px;
+      border-bottom: 1px solid var(--colorhr);
+      margin-bottom: 15px;
+      margin-right: 0px;
+    }
+  
+  }
+  
+  
+  .containerAcordion {
+    width: 100%;
+  }
+  
+  .acordion {
+    width: 71%;
+  
+  }
+  
+  .acordion .contentCd {
+    position: relative;
+    margin: 10px 20px;
+  }
+  
+  .acordion .contentCd .label {
+    margin: 16px 3%;
+    border-radius: 0.4em;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+    background: var(--bacgroundContent);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+  
+  .acordion .contentCd .label::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+  }
+  
+  .acordion .contentCd.active .label::before {
+    content: '-';
+    transition: 0.5s;
+  }
+  
+  .acordion .contentCd .contenidoad {
+    position: relative;
     height: 0;
+    transform: 0.5s;
+    transition: 0.6s;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-  to {
-    opacity: 1;
+  
+  .acordion .contentCd.active .contenidoad {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
     height: auto;
+    padding: 10px;
   }
-}
-</style>
+  
+  
+  @media only screen and (max-width: 1186px) {
+    .content {
+      flex-flow: column;
+    }
+  s
+  
+  }
+  
+  .tittleLottie {
+    width: 100%;
+    text-align: center;
+    padding: 0px 8px;
+  }
+  
+  .containerLotttie {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background: var(--bacgroundContent); */
+    /* box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4); */
+    border-radius: 0.4em;
+    /* margin: 0px 20px; */
+    position: relative;
+    /* padding: 20px 20px; */
+    /* overflow-x: hidden; */
+  }
+  
+  .tittleLottie h2 {
+    font-size: 1em;
+    color: #fff;
+  }
+  
+  @media only screen and (max-width: 990px) {
+    .containerLotttie {
+      width: 100%;
+    }
+  
+    .acordion {
+      width: 100%;
+    }
+  }
+  
+  @media only screen and (max-width: 580px) {
+    .acordion .contentCd .label {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+  
+  @media only screen and (max-width: 990px){
+    .form-gridview{
+      overflow-x: hidden !important;
+    }
+  }
+  
+  @media only screen and (max-width: 1186px) {
+    .content-aside {
+      width: 60%;
+    }
+  }
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+    opacity: 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      height: 0;
+    }
+    to {
+      opacity: 1;
+      height: auto;
+    }
+  }
+  
+  .content{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+  }
+  .containerworKingDay{
+    margin:30px 0px;
+  }
+  @media only screen and (max-width: 1186px){
+  .containerworKingDay{
+    margin:30px 0px;
+  }
+  }
+  
+  </style>
 
-<script type="text/javascript">
+
+  <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
     const acordionItems = document.querySelectorAll('.acordion .contentCd');
 

@@ -1,14 +1,6 @@
 ---
+import { subjectsData } from "../lib/data.ts";
 import AlertDelete from "./ui/AlertDelete.jsx";
-const Periods = [
-  {
-    id: "1",
-    name: "Perido1",
-    inicia : "2024-02-10",
-    final : "2024-03-10",
-  }
-]
-
 ---
 
 <div class="container">
@@ -34,34 +26,29 @@ const Periods = [
       <table class="w-full">
         <thead class="thead table-data-head">
           <tr>
-              <th>Nombre</th>
-            <th>Inicia</th>
-            <th>Finaliza</th>
-            <th class="icon">edit</th>
-            <th class="icon">delete</th>
+              <th>Asignatura</th>
+            <th>Encargados</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {Periods.map((item) => (
+          {subjectsData.map((item) => (
             <tr key={item.id} class="table-row">
               <td class="table-dataa">
                 <div class="contImgTable">
                   <h3>{item.name}</h3>
                 </div>
               </td>
-              <td class="table-data">{item.inicia}</td>
-              <td class="table-data">{item.final}</td>
-              <td class="table-data">
+              <td class="table-data">{item.teachers.join(" - ")}</td>
+              <td>
                 <div  class="actions-container">
                 <a>
                   <button class="button buttonEdit icon">
                     edit
                   </button>
                 </div>
+                  <AlertDelete  id={item.id} client:only="react" />
                 </a>
-              </td>
-              <td class="table-data">
-                <AlertDelete  id={item.id} client:only="react" />
               </td>
             </tr>
           ))}
@@ -83,12 +70,6 @@ const Periods = [
   
 
   <style>
-    .thead tr th:nth-child(4) {
-    font-size: 1.2rem;
-}
-.thead tr th:nth-child(5) {
-    font-size: 1.2rem;
-}
     @media (max-width: 768px){
         .table-data{
             display:table-cell !important;
@@ -97,9 +78,6 @@ const Periods = [
     .container{
     width:100%;
     margin:2.5rem 1rem;
-  }
-  .actions-container{
-    justify-content: normal;
   }
 
   </style>

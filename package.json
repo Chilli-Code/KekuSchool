@@ -25,7 +25,8 @@
     "react-dom": "^18.3.1",
     "select2": "^4.1.0-rc.0",
     "styled-components": "^6.1.12",
-    "sweetalert2": "^11.12.2"
+    "sweetalert2": "^11.12.4",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.30",
