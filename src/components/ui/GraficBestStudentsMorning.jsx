@@ -1,5 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
+import Loader from './core/Loader.jsx';
+import styled from 'styled-components';
+
+
+// Styles
+const ContainerBest = styled.div`
+ padding:20px;
+ background-color: var(--backgroundGrafic);
+border-radius: 0.4em;
+box-shadow:rgba(73, 80, 104, 0.4) 1px 0px 2px 2px;
+`;
+const Content = styled.div`
+text-align: center;
+margin-bottom:10px;
+`;
+
+const TextH2 = styled.h2`
+ margin: 0;
+ color: var(--colorTitle);
+`;
+
+
 
 // Datos del mejor estudiante por curso
 const bestStudents = {
@@ -95,18 +117,39 @@ const ChartBestStudentsMorning = () => {
     },
   };
 
+
+
+
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const loadTimeout = setTimeout(() => {
+      setIsLoading(false); // Se asume que el componente ha "terminado" de cargarse
+    }, 1000); // Ajusta el tiempo según el tiempo real de carga
+
+    return () => clearTimeout(loadTimeout);
+  }, []);
+
+
+
   return (
-    <div style={{ padding: '20px', backgroundColor: 'var(--backgroundGrafic)', borderRadius: '0.4em',boxShadow:'rgba(73, 80, 104, 0.4) 1px 0px 2px 2px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '10px' }}>
-        <h2 style={{ margin: 0, color: 'var(--colorTitle)' }}>Jornada mañana</h2>
-      </div>
-      <ApexCharts
+    <>
+    {isLoading ? (
+      <Loader />
+    ) : (
+    <ContainerBest>
+      <Content>
+        <TextH2>Jornada tarde</TextH2>
+        </Content>
+        <ApexCharts
         options={chartOptions}
         series={series}
         type="bar"
         height={350}
-      />
-    </div>
+        />
+        </ContainerBest>
+    )}
+    </>
   );
 };
 

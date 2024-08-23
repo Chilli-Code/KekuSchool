@@ -1,11 +1,44 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import Loader from "./core/Loader.jsx";
 import ApexCharts from 'react-apexcharts';
+import styled from 'styled-components';
 
 const materias = [
   'Español', 'Biología', 'Filosofía', 'Química', 'Sociales',
   'Matemáticas', 'Ed. Física', 'Física', 'Arte', 'Religión',
   'Ética', 'Inglés', 'Geometría'
 ];
+
+// Styles
+
+const Cont = styled.div`
+padding: 20px;
+border-radius:0.4em;
+box-shadow: 1px 0px 2px 2px rgba(73, 80, 104, 0.4);
+background: var(--backgroundGrafic);
+`;
+
+const ContLoader = styled.div`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+`;
+
+const BottonGrafic = styled.button`
+margin-top:20px;
+padding: 10px 20px;
+background-color: #00ab57;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+`;
+
+
+
+
+
 
 // Genera datos ficticios de notas para cada materia
 const generarNotas = () => {
@@ -137,34 +170,38 @@ const ChartSubjet = () => {
   // Referencia para el gráfico de ApexCharts
   const chartRef = React.useRef(null);
 
+
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const loadTimeout = setTimeout(() => {
+        setIsLoading(false); // Se asume que el componente ha "terminado" de cargarse
+      }, 1000); // Ajusta el tiempo según el tiempo real de carga
+  
+      return () => clearTimeout(loadTimeout);
+    }, []);
+
+
   return (
-    <div style={{ padding: '20px', 
-      borderRadius: '0.4em',
-      boxShadow: '1px 0px 2px 2px rgba(73, 80, 104, 0.4)',
-      background: 'var(--backgroundGrafic)',
-    }}>
-      <ApexCharts
-        ref={chartRef}
-        options={areaChartOptions}
-        series={areaChartOptions.series}
-        type="area"
-        height={350}
-      />
-      <button
-        onClick={resetZoom}
-        style={{
-          marginTop: '20px',
-          padding: '10px 20px',
-          backgroundColor: '#00ab57',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-        }}
-      >
-        Restablecer Vista
-      </button>
-    </div>
+    <>
+    {isLoading ? (
+      <ContLoader>
+        <Loader />
+      </ContLoader>
+    ) : (
+      <Cont>
+        <ApexCharts
+          options={areaChartOptions}
+          series={areaChartOptions.series}
+          type="area"
+          height={350}
+        />
+        <BottonGrafic onClick={resetZoom}>
+          Restablecer Vista
+        </BottonGrafic>
+      </Cont>
+    )}
+  </>
   );
 };
 

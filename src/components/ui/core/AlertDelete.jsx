@@ -1,8 +1,22 @@
-import React from 'react';
+
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import LoaderDelete from './LoaderButtonDelete';
+import { useState, useEffect } from 'react';
+
 
 const AlertDelete = ({ id }) => {
+
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const loadTimeout = setTimeout(() => {
+      setIsLoading(false); // Se asume que el componente ha "terminado" de cargarse
+    }, 1000); // Ajusta el tiempo según el tiempo real de carga
+
+    return () => clearTimeout(loadTimeout);
+  }, []);
+
   const MySwal = withReactContent(Swal);
 
   const showAlert = () => {
@@ -24,9 +38,16 @@ const AlertDelete = ({ id }) => {
   };
 
   return (
-    <button onClick={showAlert} className="button buttonDelete">
-      <span className="icon">delete</span>
-    </button>
+    <>
+    {isLoading ? (
+      <LoaderDelete />
+    ) : (
+      <button onClick={showAlert} className="button buttonDelete">
+        <span className="icon">delete</span>
+        </button>
+      )}
+    
+    </>
   );
 };
 

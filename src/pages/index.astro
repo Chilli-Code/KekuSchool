@@ -1,45 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CountChart from '../components/ui/GraficTotalStudents.jsx';
+import AnimatedDivs from '../components/ui/core/AnimateCardIndex.jsx';
 
 ---
 
 <Layout title_p="Sistema Escolar" spanText="Incio" />
 <section class="content columContent">
-    <div class="main-cards">
-      <div class="custom-div">
-        <div class="custom-header">
-          <span class="custom-span">2024/25</span>
-          <span class="icon">more_horiz</span>
-        </div>
-        <h1 class="custom-h1">1,234</h1>
-        <h2 class="custom-h2">Estudiantes</h2>
-      </div>
-      <div class="custom-div">
-        <div class="custom-header">
-          <span class="custom-span">2024/25</span>
-          <span class="icon">more_horiz</span>
-        </div>
-        <h1 class="custom-h1">1,234</h1>
-        <h2 class="custom-h2">Profesores</h2>
-      </div>
-      <div class="custom-div">
-        <div class="custom-header">
-          <span class="custom-span">2024/25</span>
-          <span class="icon">more_horiz</span>
-        </div>
-        <h1 class="custom-h1">1,234</h1>
-        <h2 class="custom-h2">Padres</h2>
-      </div>
-      <div class="custom-div">
-        <div class="custom-header">
-          <span class="custom-span">2024/25</span>
-          <span class="icon">more_horiz</span>
-        </div>
-        <h1 class="custom-h1">1,234</h1>
-        <h2 class="custom-h2">Personal</h2>
-      </div>
-    </div>
+  <AnimatedDivs client:only="react" />
     <div class="grafic1">
         <CountChart client:only="react" />
     </div>

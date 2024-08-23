@@ -3,122 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import TableStudentsGolbal from "../components/Table_Students_Global.astro";
 import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 import { studentsData } from "../lib/data.ts";
-import AlertDelete from "../components/ui/AlertDelete.jsx";
-import ShowTableStudents from "../components/ui/ShowTableStudents.jsx";
-
-const ListStudents = [
-  {
-    id:"1",
-    curso: "1A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"2",
-    curso: "1B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"3",
-    curso: "2A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"4",
-    curso: "3A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"5",
-    curso: "3B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"6",
-    curso: "4A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"7",
-    curso: "5B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"8",
-    curso: "6A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"9",
-    curso: "6B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"10",
-    curso: "7B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"11",
-    curso: "8A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"12",
-    curso: "8B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"13",
-    curso: "9A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"14",
-    curso: "9B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"15",
-    curso: "10A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"16",
-    curso: "10B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"17",
-    curso: "11A",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  {
-    id:"18",
-    curso: "11B",
-    totalStudents: 25,
-    tableStudents: TableStudentsGolbal,
-  },
-  
-];
-
+import AlertDelete from "../components/ui/core/AlertDelete.jsx";
+import ShowTableStudents from "../components/ui/core/ShowTableStudentsGroups.jsx";
+import TableGroupsMorning from "../components/ui/core/TableStudentMorning.jsx";
+import TableGroupsAfternoon from "../components/ui/core/TableStudentAfternoon.jsx";
 ---
+
 <Layout title_p="Sistema Escolar || Students" spanText="Alumnos">
   <section class="content columContent">
     <div class="content-aside">
@@ -152,39 +42,22 @@ const ListStudents = [
       </div>
     </div>
     <div class="containerAcordion">
-      <div class="acordion">
-        <div class="contentCd">
-          <div class="label">Curso: <b>1A</b> Total de Alumnos: <b>25</b></div>
-          <div class="contenidoad form-gridview">
-            <TableStudentsGolbal />
-          </div>
+      <div class="containerworKingDay">
+        <div class="dayMorning">
+          <h2>Jornada de Mañana🌞</h2>
+          <TableGroupsMorning client:only="react" />
         </div>
+        
+        <div class="dayAfternoon">
+          <h2>Jornada De tarde⛅</h2>
+          <TableGroupsAfternoon client:only="react" />
+                    </div>
       </div>
+      </div>
+    </div>
+    <div class="contff" id="morningTable" ></div>
+    <div class="contff" id="afternoonTable"></div>
 
-    <div class="containerworKingDay">
-      <div class="dayMorning" onclick="showTable('morning')">
-        <h2>Jornada De Mañana</h2>
-        <span>🌞</span>
-      </div>
-      <div class="dayAfternoon" onclick="showTable('afternoon')">
-        <h2>Jornada De tarde</h2>
-        <span>⛅</span>
-      </div>
-    </div>
-
-      </div>
-    </div>
-    <div class="main-cards containerAcordion" id="morningTable"  style="display: none;">
-      {ListStudents.map(student => (
-        <div class="custom-div" key={student.id}>
-          <div class="custom-header">
-            <ShowTableStudents curso={student.curso} client:only="react" />
-          </div>
-          <h1 class="custom-h1">Curso:<br /><b>{student.curso}</b></h1>
-          <h2 class="custom-h2">Total de Alumnos: <b>{student.totalStudents}</b></h2>
-        </div>
-      ))}
-    </div>
 
 
 
@@ -285,6 +158,10 @@ const ListStudents = [
 
 <style>
 
+  .contff{
+    width:100%;
+    margin:0px 0px 50px 0px;
+  }
   .icon{
           font-size:20px;
           color: #fff;
@@ -399,15 +276,17 @@ const ListStudents = [
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     border-right: 1px solid var(--colorhr);
     flex-direction: column;
     box-shadow: var(--bacgroundContent);
     border-radius: 0.4em;
     background: var(--bacgroundContent);
     margin-right: 15px;
+    transition: transform 0.3s ease;
   }
-  
+  .dayMorning:hover {
+    transform: scale(1.05);
+}
   .dayMorning h2 {
     text-align: center;
     font-size: 2.2em;
@@ -423,12 +302,17 @@ const ListStudents = [
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     flex-direction: column;
     box-shadow: var(--bacgroundContent);
     border-radius: 0.4em;
     background: var(--bacgroundContent);
+    transition: transform 0.3s ease;
+
   }
+
+  .dayAfternoon:hover {
+    transform: scale(1.05);
+}
   
   .dayAfternoon h2 {
     text-align: center;
@@ -456,9 +340,11 @@ const ListStudents = [
   
   
   .containerAcordion {
-    width: 100%;
-  }
-  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
   .acordion {
     width: 71%;
   
@@ -521,7 +407,7 @@ const ListStudents = [
     .content {
       flex-flow: column;
     }
-  s
+
   
   }
   
@@ -537,13 +423,9 @@ const ListStudents = [
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* background: var(--bacgroundContent); */
-    /* box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4); */
     border-radius: 0.4em;
-    /* margin: 0px 20px; */
     position: relative;
-    /* padding: 20px 20px; */
-    /* overflow-x: hidden; */
+
   }
   
   .tittleLottie h2 {
@@ -610,103 +492,18 @@ const ListStudents = [
   }
   }
   
+  .transition-box {
+    margin-bottom: 10px;
+    width: 200px;
+    height: 100px;
+    border-radius: 4px;
+    background-color: #409EFF;
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    margin-right: 20px;
+  }
+
   </style>
 
-
-  <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    const acordionItems = document.querySelectorAll('.acordion .contentCd');
-
-    acordionItems.forEach(function(item) {
-        const label = item.querySelector('.label');
-        const contenido = item.querySelector('.contenidoad');
-
-        // Verificar que el elemento label exista antes de agregar el evento
-        if (label) {
-            label.addEventListener('click', function() {
-                item.classList.toggle('active');
-            });
-        }
-
-        // Verificar que el elemento contenido exista antes de agregar el evento
-        if (contenido) {
-            contenido.addEventListener('click', function(event) {
-                event.stopPropagation(); // Evitar la propagación del evento
-            });
-        }
-    });
-
-    // Selección de botones para mostrar tablas
-    const morningButton = document.querySelector('#morningButton');
-    const afternoonButton = document.querySelector('#afternoonButton');
-
-    // Verificar que los botones existan antes de agregar eventos
-    if (morningButton) {
-        morningButton.addEventListener('click', () => showTable('morning'));
-    }
-    if (afternoonButton) {
-        afternoonButton.addEventListener('click', () => showTable('afternoon'));
-    }
-
-    // Manejar el tamaño de la ventana al cargar y al redimensionar
-    handleResize();
-    window.addEventListener('resize', handleResize);
-});
-
-function handleResize() {
-    const morningTable = document.getElementById('morningTable');
-    const afternoonTable = document.getElementById('afternoonTable');
-
-    if (!morningTable || !afternoonTable) {
-        console.error('One or both of the tables are missing in the DOM.');
-        return;
-    }
-
-    // Verifica el ancho de la pantalla y ajusta el modo de visualización
-    const isSmallScreen = window.matchMedia('(max-width: 1186px)').matches;
-
-    // Si ninguna tabla está visible, asegúrate de que el estilo se ajuste correctamente
-    if (morningTable.style.display !== 'none') {
-        morningTable.style.display = isSmallScreen ? 'flex' : 'block';
-    }
-
-    if (afternoonTable.style.display !== 'none') {
-        afternoonTable.style.display = isSmallScreen ? 'flex' : 'block';
-    }
-}
-
-function showTable(timeOfDay) {
-    const morningTable = document.getElementById('morningTable');
-    const afternoonTable = document.getElementById('afternoonTable');
-
-    if (!morningTable || !afternoonTable) {
-        console.error('One or both of the tables are missing in the DOM.');
-        return;
-    }
-
-    // Verifica el ancho de la pantalla y ajusta el modo de visualización
-    const isSmallScreen = window.matchMedia('(max-width: 1186px)').matches;
-
-    // Ocultamos ambas tablas inicialmente
-    morningTable.style.display = 'none';
-    afternoonTable.style.display = 'none';
-
-    // Mostramos la tabla correspondiente y aplicamos la clase de animación
-    if (timeOfDay === 'morning') {
-        morningTable.style.display = isSmallScreen ? 'flex' : 'block';
-        morningTable.classList.add('fade-in');
-        // Eliminar la clase después de la animación
-        morningTable.addEventListener('animationend', () => {
-            morningTable.classList.remove('fade-in');
-        }, { once: true }); // { once: true } asegura que el listener se elimine después de ejecutarse una vez
-    } else if (timeOfDay === 'afternoon') {
-        afternoonTable.style.display = isSmallScreen ? 'flex' : 'block';
-        afternoonTable.classList.add('fade-in');
-        // Eliminar la clase después de la animación
-        afternoonTable.addEventListener('animationend', () => {
-            afternoonTable.classList.remove('fade-in');
-        }, { once: true });
-    }
-}
-
-</script>

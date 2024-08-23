@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import styled from "styled-components";
-
+import Loader from './core/Loader.jsx';
 
 const Container = styled.div`
   background-color: var(--backgroundGrafic);
@@ -80,6 +80,18 @@ const IconOpcion = styled.span`
     font-family:'icons';
 `;
 
+const ContLoader = styled.div`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+`;
+
+
+
+
+
+
 const CountChart = () => {
   // Número total de niños
   const totalCount = 1000;
@@ -148,14 +160,31 @@ const CountChart = () => {
     },
   };
 
+
+
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const loadTimeout = setTimeout(() => {
+      setIsLoading(false); // Se asume que el componente ha "terminado" de cargarse
+    }, 1000); // Ajusta el tiempo según el tiempo real de carga
+
+    return () => clearTimeout(loadTimeout);
+  }, []);
+
+
   return (
+  <>
+  {isLoading ? (
+      <ContLoader>
+        <Loader />
+      </ContLoader>
+    ) : (
     <Container>
-      {/* TITLE */}
       <Title>
         <TitleText>Students</TitleText>
         <IconOpcion>more_horiz</IconOpcion>
       </Title>
-      {/* CHART */}
       <ChartContainer>
         <Chart options={chartData.options} series={chartData.series} type="radialBar" height="100%" />
         <ChartImage
@@ -165,7 +194,6 @@ const CountChart = () => {
           height={50}
         />
       </ChartContainer>
-      {/* BOTTOM */}
       <BottomContainer>
         <BottomItem>
           <ColorCircle color="#00aaff" />
@@ -179,6 +207,8 @@ const CountChart = () => {
         </BottomItem>
       </BottomContainer>
     </Container>
+    )}
+  </>
   );
 };
 

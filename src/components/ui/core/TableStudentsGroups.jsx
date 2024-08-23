@@ -44,7 +44,7 @@ const studentInfo = [
 
 const ContainerTable = styled.div`
 height: auto;
-width:auto;
+width:100%;
 `;
 
 const TableData = styled.td`
@@ -76,7 +76,7 @@ const TableStudentsGlobal = () => {
     <div className="button-group">
         <div className="search">
             <div className="barra">
-                <input type="text" className="text-search" id="txtSearch" name="search" placeholder="Buscar..." autoFocus />
+                <input type="text" className="text-search" id="txtSearch" name="search" placeholder="Buscar..." />
                 <button id="btnSearch" className="btn-search icon" type="submit">search</button>
             </div>
         </div>
@@ -94,7 +94,7 @@ const TableStudentsGlobal = () => {
         {studentInfo.map((item) => (
           <tr key={item.id} className="table-row">
             <td className="table-dataa">
-              <img src={item.photo} className="imgTable" />
+              <img alt='Imagen Estudiante' loading='lazy' src={item.photo} className="imgTable" />
               <div className="contImgTable">
                 <h3>{item.name}</h3>
               </div>
@@ -103,7 +103,7 @@ const TableStudentsGlobal = () => {
               <div className="actions-container">
                 <a>
                   <button className="button buttonView icon">
-                    edit
+                  visibility
                   </button>
                 </a>
               </div>
