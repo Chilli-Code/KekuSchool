@@ -46,6 +46,9 @@ const CustomDiv = styled(motion.div)`
     font-weight: 500;
     color: #fff;
   }
+  .icon{
+    color:#fff;
+  }
 `;
 const ButtonTable = styled.button`
   font-size: 2rem;
@@ -192,8 +195,12 @@ const TableGroupsAfternoon = () => {
                                 <div className="custom-header">
                                     <ShowTableStudents curso={student.curso} client:only="react" />
                                 </div>
-                                    <h1 className="custom-h1">Curso:<br /><b>{student.curso}</b></h1>
-                                    <h2 className="custom-h2">Total de Alumnos: <b>{student.totalStudents}</b></h2>
+                                <h1 className="custom-h1">
+                                <span className="icon">home</span><br/>
+                                      Curso<br /><b>{student.curso}</b>
+                                    </h1>
+                                    <span className="icon">group</span>
+                                    <h2 className="custom-h2">Total de Alumnos:<b>{student.totalStudents}</b></h2>
                     </motion.div>
                 ))}
             </CustomDiv>

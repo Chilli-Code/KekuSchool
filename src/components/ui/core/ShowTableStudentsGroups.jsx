@@ -1,11 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Swal from 'sweetalert2';
 import styled from 'styled-components';
 import withReactContent from 'sweetalert2-react-content';
 import TableStudentsGlobal from './TableStudentsGroups.jsx';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import MiniMenu from './MiniMenu.jsx';
 
 const ButtonTable = styled.button`
   font-size: 20px;
@@ -21,40 +19,36 @@ const NoPaddingContainer = styled.div`
   }
 `;
 
-
-
 const MySwal = withReactContent(Swal);
 
 const ShowTableStudents = ({ curso }) => {
-
   const showAlert = () => {
     MySwal.fire({
-        title: `Lista de Estudiantes ${curso}`,
-        footer: 'hola',
-        html: (
-            <NoPaddingContainer>
-                <TableStudentsGlobal />
-            </NoPaddingContainer>
-          ),
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK',
-        cancelButtonText: 'Cancel',
-        customClass: {
-          popup: 'full-screen-popup',
-          title: 'full-screen-title',
-          content: 'full-screen-content',
-          confirmButton: 'full-screen-button',
-          cancelButton: 'full-screen-button',
-        },
-        showClass: {
-          popup:'animate__animated animate__fadeInDown',
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOutDown',
-        },
+      title: `Lista de Estudiantes ${curso}`,
+      footer: 'hola',
+      html: (
+        <NoPaddingContainer>
+          <TableStudentsGlobal />
+        </NoPaddingContainer>
+      ),
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
+      customClass: {
+        popup: 'full-screen-popup',
+        title: 'full-screen-title',
+        confirmButton: 'full-screen-button',
+        cancelButton: 'full-screen-button',
+      },
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown',
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutDown',
+      },
       didOpen: () => {
         const popup = MySwal.getPopup();
         if (popup) {
@@ -68,46 +62,27 @@ const ShowTableStudents = ({ curso }) => {
       },
     });
   };
-  const menuRef = useRef(null); // Referencia al menú
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
+  const menuOptions = [
+    {
+      label: 'Tabla',
+      icon: 'table_view',
+      action: showAlert,
+    },
+    {
+      label: 'Informacion',
+      icon: 'info',
+      isLink: true,
+      route: '/view_students',
+    },
+  ];
+
   return (
     <>
-      <ButtonTable
-      className="icon"
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        more_horiz
-      </ButtonTable>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-        ref={menuRef}
-      >
-        <MenuItem onClick={() => { showAlert(); handleClose(); }}><span className="icon">table_view</span>Tabla</MenuItem>
-        <MenuItem onClick={handleClose}><span className="icon">info</span>Info</MenuItem>
-      </Menu>
+      <MiniMenu
+        options={menuOptions}
+      />
     </>
-
-    // <ButtonTable onClick={showAlert} className="icon">
-    //   more_horiz
-    // </ButtonTable>
   );
 };
-
-export default ShowTableStudents;
+  export default ShowTableStudents;

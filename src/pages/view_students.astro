@@ -3,8 +3,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import Layout from "../layouts/Layout.astro";
 import 'animate.css';
-import TableStudents from '../components/Table_Students.astro';
-
+import TableStudents from '../components/Table_Student.astro';
+import CustomPickersDay from "../components/ui/GraficAsistencia.jsx";
 ---
 
 <Layout title_p="Sistema Escolar || Students" spanText="Vista de Alumno" >
@@ -61,16 +61,31 @@ import TableStudents from '../components/Table_Students.astro';
               </div>
           </div>
       </div>
-      <div class="containerSubjet">
-        <header class="header">
+      <div class="containerInfo">
+        <div class="sss">
+          <header class="headeer">
+              <div class="info-title">
+                  <span class="title">Notas Escolares 📚</span>
+              </div>
+          </header>
+          <TableStudents />
+        </div>
+        <div>
+          <header class="headeer">
             <div class="info-title">
-                <span class="title">Notas Escolares 📚</span>
+                <span class="title sssss">Calendario de asistencia📅
+                </span>
             </div>
         </header>
-          <TableStudents />
+        <CustomPickersDay client:only="react" />
+        </div>
       </div>
     </section>
 </Layout>
+
+
+
+
 <script>
     import Swal from 'sweetalert2/dist/sweetalert2.js';
     import 'sweetalert2/src/sweetalert2.scss';
@@ -141,14 +156,34 @@ import TableStudents from '../components/Table_Students.astro';
 </script>
 
 <style>
+.sss {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.containerInfo{
+  width: 100%;
+  margin-top:30px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 1186px){
+  .sss {
+    min-width: 300px;
+    flex: 1;
+}
+}
     /*-------------------------------------------
   Home | Header
 -------------------------------------------*/
-.header {
+.headeer {
     width: 100%;
-    float: right;
     height: 50px;
-    margin: 35px 3%;
+    margin: 35px 0%;
     background: var(--bacgroundContent);
     box-shadow: var(--boxShadowCont);
     border-radius: 0.4em;
@@ -171,14 +206,24 @@ import TableStudents from '../components/Table_Students.astro';
     width: 100%;
     height: 100%;
 }
-.info-title .title {
-    display: block;
-    margin-left: 4%;
+.headeer .info-title .title {
+    display: flex;
     color: #eef4ff;
     text-shadow: 0 1px 5px rgba(142,136,192,0.2);
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 500;
     text-transform: capitalize;
+}
+@media (min-width: 768px){
+.headeer .info-title .title {
+  display: flex;
+}
+}
+.headeer .info-title .title.sssss{
+  margin: 2px 8px;
+    height: 100%;
+    text-align: center;
+    align-items: center;
 }
 
 .contInfoW p{
@@ -191,7 +236,6 @@ import TableStudents from '../components/Table_Students.astro';
     justify-content: center;
     align-items: center;
     width:100%;
-    min-height: 50vh;
     flex-direction:column;
 }
 
