@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import ChartComponent from "../components/ui/DayMorning.jsx";
 import ChartComponent2 from "../components/ui/DayAfternoon.jsx";
+import GraficNumberJornada from "../components/ui/ChartStudentMorning.jsx";
+import GraficNumberJornadaAfternoon from "../components/ui/ChartStudentAfternoon.jsx";
 ---
 
 <Layout title_p="Sistema Escolar || Groups" spanText="Grupos">
@@ -36,21 +38,6 @@ import ChartComponent2 from "../components/ui/DayAfternoon.jsx";
               >
             </div>
           </div>
-          <div class="search">
-            <div class="barra">
-              <input
-                type="text"
-                class="text-search"
-                id="txtSearch"
-                name="search"
-                placeholder="Buscar..."
-                autofocus=""
-              />
-              <button id="btnSearch" class="btn-search icon" type="submit"
-                >search</button
-              >
-            </div>
-          </div>
         </div>
       </div>
 
@@ -80,13 +67,14 @@ import ChartComponent2 from "../components/ui/DayAfternoon.jsx";
       <div class="grafic-cont">
         <ChartComponent client:only="react" />
       </div>
+      <GraficNumberJornada client:only="react" />
       <div class="containerTitle sss">
       <h2>Jornada Tarde</h2>
       </div>
       <div class="grafic-cont">
         <ChartComponent2 client:only="react" />
       </div>
-
+      <GraficNumberJornadaAfternoon client:only="react" />
     </section>
 
 </Layout>
@@ -110,6 +98,10 @@ import ChartComponent2 from "../components/ui/DayAfternoon.jsx";
   /* background: #101827; */
   width:100%;
   border-radius:0.4em;
+  display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 1186px){

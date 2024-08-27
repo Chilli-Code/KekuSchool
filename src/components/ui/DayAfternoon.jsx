@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
+import Loader from "./core/Loader.jsx";
+import styled from 'styled-components';
+
 
 const ChartComponent2 = () => {
   const [chartType, setChartType] = useState('bar'); // 'bar' o 'area'
@@ -159,8 +162,37 @@ const ChartComponent2 = () => {
     handleFilterChange('bar'); // Por defecto, mostrar el gráfico de barras
   }, []);
 
+
+  // LOADER
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const loadTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(loadTimeout);
+  }, []);
+  const ContLoader = styled.div`
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  `;
+  const DivCont = styled.div`
+  position: relative;
+  flex:1;
+  max-width:auto;
+  `;
+  
+
   return (
-    <div>
+    <DivCont>
+      {isLoading ? (
+        <ContLoader>
+          <Loader />
+        </ContLoader>
+      ) : (
+        <>
       <div style={{marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <button
           onClick={() => handleFilterChange('bar')}
@@ -224,7 +256,9 @@ const ChartComponent2 = () => {
           height={350} 
         />
       </div>
-    </div>
+      </>
+      )}
+    </DivCont>
   );
 };
 

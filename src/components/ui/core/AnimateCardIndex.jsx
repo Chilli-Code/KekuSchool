@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from 'react';
+import ChartModal from '../GraficTotalGropus.jsx';
+import MiniMenu from "./MiniMenu.jsx";
+import { totalPeopleData } from "../../../lib/data.ts";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import MiniMenu from "./MiniMenu.jsx";
-
 // STYLE GLOBAL
 const CustomDiv = styled(motion.div)`
   .custom-div {
@@ -14,7 +15,7 @@ const CustomDiv = styled(motion.div)`
     transition: transform 0.3s ease;
   }
   .custom-div:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) !important;
   }
   .custom-div:nth-child(odd) {
     background-color: #6b21a8;
@@ -76,24 +77,33 @@ const item = {
 };
 
 const AnimatedDivs = () => {
-  const handleEdit = () => {
-    console.log("Edit clicked");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalCategory, setModalCategory] = useState('');
+
+  const openModal = (category) => {
+    setModalCategory(category);
+    setModalIsOpen(true);
   };
 
-  const handleSettings = () => {
-    console.log("Settings clicked");
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setModalCategory('');
+  };
+  const functionMap = {
+    handlePreviewStudents: () => openModal('totalStudents'),
+    handlePreviewTeachers: () => openModal('totalTeachers'),
+    handlePreviewParents: () => openModal('totalParents'),
+    handlePreviewStaff: () => openModal('totalStaff'),
+    handleSettings: () => console.log("Settings clicked"),
+    handleNewOption: () => console.log("New Option clicked"),
   };
 
-  const handleNewOption = () => {
-    console.log("New Option clicked");
+  const getEnhancedOptions = (previewFunctionName) => {
+    return totalPeopleData.options.map(option => ({
+      ...option,
+      action: functionMap[option.action === 'handlePreview' ? previewFunctionName : option.action],
+    }));
   };
-
-  const menuOptions = [
-    { label: "Editar", icon: "edit", action: handleEdit },
-    { label: "Configurar", icon: "settings", action: handleSettings },
-    { label: "Nueva Opción", icon: "add", action: handleNewOption },
-  ];
-
   return (
     <CustomDiv
       variants={customDivVariants}
@@ -102,58 +112,68 @@ const AnimatedDivs = () => {
       exit="exit"
       transition={{ duration: 0.5 }}
     >
+      {/* Estudiantes */}
       <motion.div
         className="custom-div"
         variants={item}
         transition={{ duration: 0.5 }}
       >
         <div className="custom-header">
-          <span className="custom-span">2024/25</span>
-          <MiniMenu options={menuOptions} />
+          <span className="custom-span">{totalPeopleData.year}</span>
+          <MiniMenu options={getEnhancedOptions('handlePreviewStudents')} />
         </div>
-        <h1 className="custom-h1">1,234</h1>
-        <h2 className="custom-h2">Estudiantes</h2>
-      </motion.div>
-       {/* CONTAINER DOS */}
-        <motion.div
-        className="custom-div"
-        variants={item}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="custom-header">
-          <span className="custom-span">2024/25</span>
-          <MiniMenu options={menuOptions} />
-        </div>
-        <h1 className="custom-h1">1,234</h1>
+        <h1 className="custom-h1">{totalPeopleData.totalStudents.total}</h1>
         <h2 className="custom-h2">Estudiantes</h2>
       </motion.div>
 
-          {/* CONTAINER TRES */}
-          <motion.div
+      {/* Profesores */}
+      <motion.div
         className="custom-div"
         variants={item}
         transition={{ duration: 0.5 }}
       >
         <div className="custom-header">
-          <span className="custom-span">2024/25</span>
-          <MiniMenu options={menuOptions} />
+          <span className="custom-span">{totalPeopleData.year}</span>
+          <MiniMenu options={getEnhancedOptions('handlePreviewTeachers')} />
         </div>
-        <h1 className="custom-h1">1,234</h1>
+        <h1 className="custom-h1">{totalPeopleData.totalTeachers.total}</h1>
+        <h2 className="custom-h2">Profesores</h2>
+      </motion.div>
+
+      {/* Padres */}
+      <motion.div
+        className="custom-div"
+        variants={item}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="custom-header">
+          <span className="custom-span">{totalPeopleData.year}</span>
+          <MiniMenu options={getEnhancedOptions('handlePreviewParents')} />
+        </div>
+        <h1 className="custom-h1">{totalPeopleData.totalParents.total}</h1>
         <h2 className="custom-h2">Padres</h2>
       </motion.div>
-         {/* CONTAINER CUATRO */}
-         <motion.div
+
+      {/* Personal */}
+      <motion.div
         className="custom-div"
         variants={item}
         transition={{ duration: 0.5 }}
       >
         <div className="custom-header">
-          <span className="custom-span">2024/25</span>
-          <MiniMenu options={menuOptions} />
+          <span className="custom-span">{totalPeopleData.year}</span>
+          <MiniMenu options={getEnhancedOptions('handlePreviewStaff')} />
         </div>
-        <h1 className="custom-h1">1,234</h1>
+        <h1 className="custom-h1">{totalPeopleData.totalStaff.total}</h1>
         <h2 className="custom-h2">Personal</h2>
       </motion.div>
+
+      {/* Modal para gráficos */}
+      <ChartModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        category={modalCategory}
+      />
     </CustomDiv>
   );
 };

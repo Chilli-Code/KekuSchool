@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
+import Loader from "./core/Loader.jsx";
+import styled from 'styled-components';
 
 const ChartComponent = () => {
   const [chartType, setChartType] = useState('bar'); // 'bar' o 'area'
@@ -157,71 +159,114 @@ const ChartComponent = () => {
     handleFilterChange('bar'); // Por defecto, mostrar el gráfico de barras
   }, []);
 
+
+
+  // LOADER
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const loadTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(loadTimeout);
+  }, []);
+
+  const ContLoadeer = styled.div`
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  `;
+
+const Div1 = styled.div`
+ margin-bottom: 20px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+`;
+const Div2 = styled.div`
+border-radius: 0.4em;
+box-shadow: 1px 0px 2px 2px rgba(73, 80, 104, 0.4);
+background: var(--backgroundGrafic);
+width:100%;
+`;
+const DivCont = styled.div`
+position: relative;
+flex:1;
+max-width:auto;
+`;
+
   return (
-    <div>
-      <div style={{marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <button
-          onClick={() => handleFilterChange('bar')}
-          style={{
-            marginRight: '10px',
-            backgroundColor: activeFilter === 'bar' ? 'var(--bacgroundContent)' : '#ccc',
-            color: activeFilter === 'bar' ? '#fff' : '#000',
-            padding: '10px 20px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
-        >
-          Número de Estudiantes
-        </button>
-        <button
-          onClick={() => handleFilterChange('area')}
-          style={{
-            backgroundColor: activeFilter === 'area' ? 'var(--bacgroundContent)' : '#ccc',
-            color: activeFilter === 'area' ? '#fff' : '#000',
-            padding: '10px 20px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
-        >
-          Edades
-        </button>
-      </div>
-      {activeFilter === 'area' && (
-        <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
-          {courses.map(course => (
+    <DivCont>
+      {isLoading ? (
+        <ContLoadeer>
+        <Loader />
+      </ContLoadeer>
+      ) : (
+        <>
+          <Div1>
             <button
-              key={course}
-              onClick={() => handleCourseSelect(course)}
+              onClick={() => handleFilterChange('bar')}
               style={{
-                backgroundColor: selectedCourse === course ? 'var(--bacgroundContent)' : '#ccc',
-                color: selectedCourse === course ? '#fff' : '#000',
+                marginRight: '10px',
+                backgroundColor: activeFilter === 'bar' ? 'var(--bacgroundContent)' : '#ccc',
+                color: activeFilter === 'bar' ? '#fff' : '#000',
                 padding: '10px 20px',
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',
               }}
             >
-              {course}
+              Número de Estudiantes
             </button>
-          ))}
-        </div>
+            <button
+              onClick={() => handleFilterChange('area')}
+              style={{
+                backgroundColor: activeFilter === 'area' ? 'var(--bacgroundContent)' : '#ccc',
+                color: activeFilter === 'area' ? '#fff' : '#000',
+                padding: '10px 20px',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+              }}
+            >
+              Edades
+            </button>
+          </Div1>
+
+          {activeFilter === 'area' && (
+            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
+              {courses.map(course => (
+                <button
+                  key={course}
+                  onClick={() => handleCourseSelect(course)}
+                  style={{
+                    backgroundColor: selectedCourse === course ? 'var(--bacgroundContent)' : '#ccc',
+                    color: selectedCourse === course ? '#fff' : '#000',
+                    padding: '10px 20px',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {course}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <Div2>
+            <ApexCharts 
+              key={chartType}
+              options={options} 
+              series={series} 
+              type={chartType} 
+              height={350} 
+            />
+          </Div2>
+        </>
       )}
-      <div style={{
-        borderRadius: '0.4em',
-        boxShadow: '1px 0px 2px 2px rgba(73, 80, 104, 0.4)',
-        background: 'var(--backgroundGrafic)',
-      }}>
-        <ApexCharts 
-          key={chartType}
-          options={options} 
-          series={series} 
-          type={chartType} 
-          height={350} 
-        />
-      </div>
-    </div>
+    </DivCont>
   );
 };
 

@@ -24,7 +24,7 @@ const isActive = (paths) => paths.includes(currentPath);
     <div class="nav-home">
         <a href="/"><span class="name_system">Control de Asistencias</span></a>
         <div class="user">
-            <img class="image_user" src="/img/user.png">
+            <img class="image_user" src="/img/user.png" alt="imagen user">
             <span class="name_user">Nombre Admin</span>
             <span class="logout_user">
                 <a class="icon" href="#">expand_more</a>
@@ -62,7 +62,7 @@ const isActive = (paths) => paths.includes(currentPath);
                 <a  href="/subjects" class={currentPath === "subjects" ? "active" : ""}><span class="icon">library_books</span>Asignaturas</a>
             </li>
             <li>
-                <a  href="/groups" class={isActive(["groups", "add_groups"]) ? "active" : ""}><span class="icon">groups</span>Grupos</a>
+                <a  href="/groups" class={isActive(["groups", "add_groups", "view_groups"]) ? "active" : ""}><span class="icon">groups</span>Grupos</a>
             </li>
             <li>
                 <a  href=""><span class="icon">fact_check</span>Asistencias</a>

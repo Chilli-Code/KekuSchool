@@ -6,8 +6,10 @@ import Loader from './core/Loader.jsx';
 const Container = styled.div`
   background-color: var(--backgroundGrafic);
   border-radius: 0.75rem; // rounded-xl
-  width: 100%;
-  height: 420px;
+  max-width: auto;
+  /* flex:1; */
+  margin-top:50px;
+  height: auto;
   border-radius: 0.4em;
   box-shadow:var(--boxShadowCont);
   padding: 1rem;
@@ -28,7 +30,7 @@ const TitleText = styled.h1`
 const ChartContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 350px; // Ajusta este valor según tus necesidades
+  height: 300px; // Ajusta este valor según tus necesidades
 `;
 
 const ChartImage = styled.img`
@@ -45,10 +47,10 @@ const ChartImage = styled.img`
 `;
 
 const BottomContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 4rem;
-  translate:0 -60px; // gap-16
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    translate: 0px -60px;
 `;
 
 const BottomItem = styled.div`
@@ -92,7 +94,7 @@ align-items:center;
 
 
 
-const CountChart = () => {
+const GraficNumberJornada = () => {
   // Número total de niños
   const totalCount = 1000;
   
@@ -182,7 +184,7 @@ const CountChart = () => {
     ) : (
     <Container>
       <Title>
-        <TitleText>Students</TitleText>
+        <TitleText>Numero de Generos</TitleText>
         <IconOpcion>more_horiz</IconOpcion>
       </Title>
       <ChartContainer>
@@ -212,4 +214,4 @@ const CountChart = () => {
   );
 };
 
-export default CountChart;
+export default GraficNumberJornada;

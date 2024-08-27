@@ -1,0 +1,60 @@
+---
+import { infoStudent } from "../lib/data.ts";
+---
+
+<div class="container">
+    <div class="table-container">
+      <table class="w-full">
+        <tbody>
+          {infoStudent.map((item) => (
+            <tr key={item.id} class="table-row">
+              <td class="table-data bold">Nombre:</td>
+              <td class="table-data">{item.nameStudent}</td>
+            </tr>
+            <tr class="table-row">
+              <td class="table-data bold">Jornada:</td>
+              <td class="table-data">{item.jornada}</td>
+            </tr>
+            <tr class="table-row">
+              <td class="table-data bold">Curso:</td>
+              <td class="table-data">{item.curso}</td>
+            </tr>
+            <tr class="table-row">
+              <td class="table-data bold">Telefono:</td>
+              <td class="table-data">{item.phoneStudent}</td>
+            </tr>
+            <tr class="table-row">
+              <td class="table-data bold">Nombre acudiente:</td>
+              <td class="table-data">{item.nameAttendant}</td>
+            </tr>
+            <tr class="table-row">
+              <td class="table-data bold">Telefono acudiente:</td>
+              <td class="table-data">{item.phoneAttendant}</td>
+            </tr>
+            <tr class="table-row">
+              <td class="table-data bold">EPS:</td>
+              <td class="table-data">{item.eps}</td>
+            </tr>
+            <tr class="table-row">
+              <td class="table-data bold">Faltas:</td>
+              <td class="table-data">
+                {item.faults.faul === 0 ? "No hay faltas registradas" : item.faults.descripcionFail}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <style>
+.bold{
+  font-weight:bold;
+}
+
+@media (max-width: 768px){
+  .table-data {
+    display: table-cell !important;
+}
+}s
+  </style>

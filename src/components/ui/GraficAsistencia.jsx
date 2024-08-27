@@ -4,6 +4,8 @@ import 'react-day-picker/dist/style.css';
 import ApexCharts from 'react-apexcharts';
 import styled from 'styled-components';
 import Loader from './core/Loader.jsx';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 // Estilo personalizado para DayPicker
 const StyledDayPicker = styled(DayPicker)`
@@ -27,6 +29,9 @@ const StyledDayPicker = styled(DayPicker)`
     color: #1aaedd;
     font-weight: bold;
   }
+  .rdp-dropdown {
+    padding: 10px 10px !important;
+  }
 `;
 
 const ContLoader = styled.div`
@@ -44,51 +49,56 @@ const ContainerChart = styled.div`
   margin-top: 20px;
 `;
 
-const getCssVariable = (variable) => {
-  return getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
+// Frame Motion
+const customDivVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
 };
+
+const CustomDiv = styled(motion.div)`
+  width: 100%;
+`;
 
 // Componente para el gráfico de asistencia
 const AttendanceChart = ({ attendance }) => {
-  const [colorTitle, setColorTitle] = useState('');
-
-  useEffect(() => {
-    const color = getCssVariable('--colorTitle');
-    console.log('Color Title:', color); // Verifica el valor de la variable
-    setColorTitle(color || '#000'); // Establece un valor predeterminado si no se obtiene ningún color
-  }, []);
-
   const options = {
     chart: {
       type: 'bar',
     },
     xaxis: {
-      categories: ['Attended', 'Missed'],
+      categories: ['Asistió', 'Faltó'],
       axisBorder: {
-        color: '#777',
+        color: 'var(--colorTitle)',
       },
       labels: {
         style: {
-          colors: [colorTitle], // Aplicando color a las etiquetas del eje X
+          colors: 'var(--colorTitle)',
         },
       },
     },
     yaxis: {
       labels: {
         style: {
-          colors: [colorTitle], // Aplicando color a las etiquetas del eje Y
+          colors: 'var(--colorTitle)',
         },
       },
       title: {
-        text: 'Attendance',
+        text: 'Asistencia',
         style: {
-          color: colorTitle, // Aplicando color al título del eje Y
+          color: 'var(--colorTitle)',
         },
       },
     },
     legend: {
       labels: {
-        colors: [colorTitle], // Aplicando color a las etiquetas de la leyenda (cuadritos de abajo)
+        colors: 'var(--colorTitle)',
       },
     },
     plotOptions: {
@@ -98,6 +108,18 @@ const AttendanceChart = ({ attendance }) => {
       },
     },
     colors: ['#248541', '#C70039'],
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shade: 'dark',
+        type: 'horizontal',
+        shadeIntensity: 0.5,
+        gradientToColors: ['#248541', '#C70039'],
+        opacityFrom: 0.8,
+        opacityTo: 0.7,
+        stops: [0, 100],
+      },
+    },
   };
 
   const series = [
@@ -112,7 +134,12 @@ const AttendanceChart = ({ attendance }) => {
 
 // Componente principal
 const CustomPickersDay = () => {
+  // Loader
   const [isLoading, setIsLoading] = useState(true);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1, // Ajusta este valor según necesites
+  });
 
   useEffect(() => {
     const loadTimeout = setTimeout(() => {
@@ -122,6 +149,7 @@ const CustomPickersDay = () => {
     return () => clearTimeout(loadTimeout);
   }, []);
 
+  // INFORMACION DE ASISTENCIA
   const [attendance, setAttendance] = useState({
     attended: [
       new Date(2024, 7, 12),
@@ -159,7 +187,13 @@ const CustomPickersDay = () => {
           <Loader />
         </ContLoader>
       ) : (
-        <>
+        <CustomDiv
+          ref={ref}
+          variants={customDivVariants}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          transition={{ duration: 0.5 }}
+        >
           <StyledDayPicker
             modifiers={modifiers}
             modifiersStyles={modifiersStyles}
@@ -170,7 +204,7 @@ const CustomPickersDay = () => {
           <ContainerChart>
             <AttendanceChart attendance={attendance} />
           </ContainerChart>
-        </>
+        </CustomDiv>
       )}
     </div>
   );

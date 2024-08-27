@@ -2,6 +2,43 @@
 
 export let role = "admin";
 
+// INICIO
+export const totalPeopleData = {
+  year: "2024/25",
+  totalStudents: {
+    total: 1234,
+    totalMan: 600,
+    totalWoman: 634,
+  },
+  totalParents: {
+    total: 567,
+    totalMan: 280,
+    totalWoman: 287,
+  },
+  totalTeachers: {
+    total: 560,
+    totalMan: 250,
+    totalWoman: 310,
+  },
+  totalStaff: {
+    total: 890,
+    totalMan: 430,
+    totalWoman: 460,
+  },
+  options: [
+    { label: "Preview", icon: "preview", action: "handlePreview" },
+    { label: "Configurar", icon: "settings", action: "handleSettings" },
+    { label: "Nueva Opción", icon: "add", action: "handleNewOption" },
+  ],
+};
+
+
+export const totalGenderType = {
+  totalMan: 900,
+  totalWoman:500,
+}
+
+
 export const teachersData = [
   {
     id: 1,
@@ -124,6 +161,36 @@ export const teachersData = [
     address: "123 Main St, Anytown, USA",
   },
 ];
+
+export const allNotasStudent = [
+  { id: "1", asignatura: "Matematica", docente: "Donaldo Bola", nota: "4.2" },
+  { id: "2", asignatura: "Historia", docente: "Luis Perez", nota: "3.8" },
+  { id: "3", asignatura: "Historia", docente: "sandra Perez", nota: "1.8" },
+  { id: "4", asignatura: "Historia", docente: "sandra Perez", nota: "1.8" },
+  { id: "5", asignatura: "Historia", docente: "sandra Perez", nota: "1.8" },
+];
+
+export const infoStudent = [
+  {
+    id: "1",
+    nameStudent: "jorge villamizar bolivar",
+    jornada: "mañana",
+    curso: "9A",
+    phoneStudent: "32432432432",
+    nameAttendant: "darly polo",
+    phoneAttendant: "53489583495",
+    eps: "salud total",
+    faults: {
+      faul: 1,
+      tituloFail: "Inasistencia Injustificada", // Título de la falta
+      descripcionFail: "El estudiante no asistió a clases el día 15 de agosto.", // Descripción detallada
+    },
+  },
+
+];
+
+export const faltaStudent=[
+]
 
 export const studentsData = [
   {

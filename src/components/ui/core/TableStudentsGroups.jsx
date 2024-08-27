@@ -67,7 +67,9 @@ const hiddenThead = styled.th`
 
 `;
 
-
+const ButtonView = styled.a`
+  text-decoration:none;
+`;
 const TableStudentsGlobal = () => {
     return (
 <ContainerTable className="container">
@@ -102,9 +104,9 @@ const TableStudentsGlobal = () => {
             <TableData className="table-data">
               <div className="actions-container">
                 <a>
-                  <button className="button buttonView icon">
+                  <ButtonView href="/view_students" className="button buttonView icon">
                   visibility
-                  </button>
+                  </ButtonView>
                 </a>
               </div>
             </TableData>

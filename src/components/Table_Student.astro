@@ -2,13 +2,8 @@
 import AlertDelete from "./ui/core/AlertDelete.jsx";
 import { studentsData } from "../lib/data.ts";
 import GraficNoteStudent from "./ui/GraficNoteStudent.jsx";
-
-const rows = [
-    { id: "1", asignatura: "Matematica", docente: "Donaldo Bola", nota: "4.2" },
-    { id: "2", asignatura: "Historia", docente: "Luis Perez", nota: "3.8" },
-    { id: "3", asignatura: "Historia", docente: "sandra Perez", nota: "1.8" },
-    // Agrega más filas aquí
-];
+import { allNotasStudent } from "../lib/data.ts";
+import Pagination from "./ui/core/Pagination.astro";
 
 
 const getSvgForGrade = (grade) => {
@@ -16,24 +11,25 @@ const getSvgForGrade = (grade) => {
   if (numericGrade >= 1 && numericGrade <= 2.9) return "/img/svgGades/svg1.svg";
   if (numericGrade >= 3 && numericGrade <= 3.9) return "/img/svgGades/svg3.svg";
   if (numericGrade >= 4 && numericGrade <= 5) return "/img/svgGades/svg2.svg";
-  return null; // No SVG para valores fuera de rango
+  return null;
 };
+
 ---
 
 
 
   <div class="container">
     <div class="top-section">
-      <h1 class="title">All Notas</h1>
+      <h1 class="title">Todas las notas</h1>
       <div class="button-group">
         <div class="search">
           <div class="barra">
-            <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar..." autofocus="">
+            <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar...">
             <button id="btnSearch" class="btn-search icon" type="submit">search</button>
           </div>
         </div>
         <div class="containerFilter">
-      <h1 class="titleFiltros">Filtros</h1>
+      <h1 class="titleFiltros title">Filtros</h1>
           <button class="button icon buttonFilter">
               swap_vert
           </button>
@@ -51,42 +47,27 @@ const getSvgForGrade = (grade) => {
           </tr>
         </thead>
         <tbody>
-          {rows.map((item) => (
+          {allNotasStudent.map((item) => (
             <tr key={item.id} class="table-row">
               <td class="table-data">{item.asignatura}</td>
               <td class="table-data">{item.docente}</td>
               <td class="table-data">
-                <img src={getSvgForGrade(item.nota)} alt="Nota" width="20" height="20" class="svgNotas" alt="Icono Nota"/>
+                <img loading="lazy" src={getSvgForGrade(item.nota)} alt="Nota" width="20" height="20" class="svgNotas" alt="Icono Nota"/>
                 {item.nota}
               </td>
               <td>
                 <div  class="actions-container">
                 <a>
-                  <GraficNoteStudent  id={item.id} client:only="react" />
-                </div>
-              </a>
+                  <GraficNoteStudent  asignatura={item.asignatura} client:only="react" />
+                  </div>
+                </a>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <Pagination  />
     </div>
-  
-    <div class="pagination-container">
-      <button class="pagination-button" disabled>Prev</button>
-      <div class="page-numbers">
-        <button class="page-button active">1</button>
-        <button class="page-button">2</button>
-        <button class="page-button">3</button>
-        ...
-        <button class="page-button">10</button>
-      </div>
-      <button class="pagination-button">Next</button>
-    </div>
-  </div>
-</div>
-
-
   <style>
 
     .icon{
@@ -96,6 +77,9 @@ const getSvgForGrade = (grade) => {
 @media (max-width: 768px){
   .table-data {
     display: table-cell !important;
+}
+.title {
+    padding: 0px 10px;
 }
 }
 

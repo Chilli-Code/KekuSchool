@@ -73,7 +73,7 @@ const ShowTableStudents = ({ curso }) => {
       label: 'Informacion',
       icon: 'info',
       isLink: true,
-      route: '/view_students',
+      route: '/view_groups',
     },
   ];
 

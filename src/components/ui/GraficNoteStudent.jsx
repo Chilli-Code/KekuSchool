@@ -3,13 +3,13 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import ApexCharts from 'react-apexcharts';
 
-const GraficNoteStudent = ({ id }) => {
+const GraficNoteStudent = ({ asignatura }) => {
   const MySwal = withReactContent(Swal);
 
   const chartData = {
     series: [{
       name: 'Notas',
-      data: [4.5, 3.8, 4.0, 4.2, 3.9, 4.6, 4.3, 4.7]
+      data: [4.5, 3.8, 4.0, 4.2, 3.9, 4.6, 4.3, 2.9]
     }],
     options: {
       chart: {
@@ -20,7 +20,26 @@ const GraficNoteStudent = ({ id }) => {
         bar: {
           horizontal: false,
           columnWidth: '55%',
-        },
+          colors: {
+            ranges: [
+              {
+                from: 4.0,
+                to: 5.0,
+                color: '#2c9244ee'
+              },
+              {
+                from: 3.0,
+                to: 3.9,
+                color: '#dfb22ef6'
+              },
+              {
+                from: 0.0,
+                to: 2.9,
+                color: '#b31122ea'
+              }
+            ]
+          }
+        }
       },
       dataLabels: {
         enabled: false
@@ -56,18 +75,16 @@ const GraficNoteStudent = ({ id }) => {
 
   const showAlert = () => {
     MySwal.fire({
-      title: 'Gráfica de Notas - Matemáticas',
+      title: `Gráfica de Notas ${asignatura}`,
+      text: 'hola',
       html: (
         <div id="chart">
           <ApexCharts options={chartData.options} series={chartData.series} type="bar" height={350} />
         </div>
       ),
-      width: '98%', // Ajusta el ancho de la ventana
-      showCancelButton: true,
+      width: '98%',
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'OK',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Cerrar',
       customClass: {
         container: 'full-screen-container'
       }

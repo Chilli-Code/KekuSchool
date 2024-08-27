@@ -151,6 +151,7 @@ const MenuButton = styled(BaseMenuButton)(({ theme }) => `
   }
 `);
 
+
 const MiniMenu = ({ options }) => {
   return (
     <Dropdown>

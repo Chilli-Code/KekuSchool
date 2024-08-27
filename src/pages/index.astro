@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CountChart from '../components/ui/GraficTotalStudents.jsx';
+import CountChart from '../components/ui/GraficTotalPeople.jsx';
 import AnimatedDivs from '../components/ui/core/AnimateCardIndex.jsx';
 
 ---
@@ -12,7 +12,7 @@ import AnimatedDivs from '../components/ui/core/AnimateCardIndex.jsx';
         <CountChart client:only="react" />
     </div>
   </section>
-
+  <div id="root"></div>
 </Layout>
 
 <style>

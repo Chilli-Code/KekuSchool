@@ -1,0 +1,68 @@
+---
+// components/ui/core/Pagination.astro
+
+const { totalPages, currentPage } = Astro.props;
+
+const getPageUrl = (page) => {
+  const url = new URL(Astro.request.url);
+  url.searchParams.set('page', page);
+  return url.toString();
+};
+---
+
+<div class="pagination-container">
+  <a
+    class="pagination-button"
+    href={currentPage > 1 ? getPageUrl(currentPage - 1) : '#'}
+    aria-disabled={currentPage === 1 ? 'true' : 'false'}
+  >
+    Prev
+  </a>
+  <div class="page-numbers">
+    {Array.from({ length: totalPages }, (_, i) => (
+      <a
+        key={i + 1}
+        class={`page-button ${i + 1 === currentPage ? 'active' : ''}`}
+        href={getPageUrl(i + 1)}
+      >
+        {i + 1}
+      </a>
+    ))}
+  </div>
+  <a
+    class="pagination-button"
+    href={currentPage < totalPages ? getPageUrl(currentPage + 1) : '#'}
+    aria-disabled={currentPage === totalPages ? 'true' : 'false'}
+  >
+    Next
+  </a>
+</div>
+
+<style>
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.pagination-button,
+.page-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background-color: #e2e8f0;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  color: #6b7280;
+}
+
+.page-button.active {
+  background-color: #d1d5db;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 0.5rem;
+}
+</style>
