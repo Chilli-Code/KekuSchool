@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import styled from "styled-components";
 import Loader from './core/Loader.jsx';
+import AnimatedComponent from "./core/AnimationDivs.jsx";
+
 
 const Container = styled.div`
   background-color: var(--backgroundGrafic);
@@ -182,6 +184,7 @@ const GraficNumberJornada = () => {
         <Loader />
       </ContLoader>
     ) : (
+      <AnimatedComponent animationType="slideUp">
     <Container>
       <Title>
         <TitleText>Numero de Generos</TitleText>
@@ -209,6 +212,7 @@ const GraficNumberJornada = () => {
         </BottomItem>
       </BottomContainer>
     </Container>
+    </AnimatedComponent>
     )}
   </>
   );

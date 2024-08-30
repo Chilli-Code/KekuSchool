@@ -65,7 +65,7 @@ import TableGroupsAfternoon from "../components/ui/core/TableStudentAfternoon.js
         <div class="button-group">
           <div class="search">
             <div class="barra">
-              <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar..." autofocus="">
+              <input type="text" class="text-search" id="txtSearch" name="search" placeholder="Buscar..." >
               <button id="btnSearch" class="btn-search icon" type="submit">search</button>
             </div>
           </div>
@@ -94,7 +94,7 @@ import TableGroupsAfternoon from "../components/ui/core/TableStudentAfternoon.js
             {studentsData.map((item) => (
               <tr key={item.id} class="table-row">
                 <td class="table-dataa">
-                  <img src={item.photo} class="imgTable" />
+                  <img loading="lazy" alt="Usuario Estudent" src={item.photo} class="imgTable" />
                   <div class="contImgTable">
                     <h3>{item.name}</h3>
                     <p>{item.email}</p>

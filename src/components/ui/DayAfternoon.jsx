@@ -4,6 +4,8 @@ import Loader from "./core/Loader.jsx";
 import styled from 'styled-components';
 
 
+
+
 const ChartComponent2 = () => {
   const [chartType, setChartType] = useState('bar'); // 'bar' o 'area'
   const [options, setOptions] = useState({});

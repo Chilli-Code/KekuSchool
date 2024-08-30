@@ -176,9 +176,16 @@ export const infoStudent = [
     nameStudent: "jorge villamizar bolivar",
     jornada: "mañana",
     curso: "9A",
+    birthDate:"20-05-2003",
+    years: '20',
+    typeIdentification:"C.C",
+    identification: "128232193",
     phoneStudent: "32432432432",
-    nameAttendant: "darly polo",
-    phoneAttendant: "53489583495",
+    attendant:{
+      nameAttendant: "darly polo",
+      phoneAttendant: "53489583495",
+      relationship: "Madre",
+    },
     eps: "salud total",
     faults: {
       faul: 1,
@@ -189,8 +196,21 @@ export const infoStudent = [
 
 ];
 
-export const faltaStudent=[
-]
+
+export const horarioCruso = {
+  Lunes: [
+    ["6:30 AM - 7:30 AM", "Dipper", "Matemáticas"],
+    ["7:45 AM - 8:45 AM", "Dipper", "Inglés"],
+    ["9:00 AM - 10:00 AM", "Dipper", "Ciencias"],
+    ["10:00 AM - 11:00 AM", "Dipper", "Ciencias"],
+    ["11:00 AM - 12:00 PM", "Dipper", "Ciencias"], // Corregido el rango de tiempo
+  ],
+  Martes: [
+    ["6:30 AM - 7:30 AM", "Mabel", "Historia"],
+    ["7:45 AM - 8:45 AM", "Mabel", "Arte"],
+    ["9:00 AM - 10:00 AM", "Mabel", "Música"],
+  ],
+};
 
 export const studentsData = [
   {

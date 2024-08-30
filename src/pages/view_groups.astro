@@ -1,8 +1,52 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Schedule from "../components/ui/core/InfoCursoMorning.jsx";
+import ScheduleAfternoon from "../components/ui/core/InfoCursoAfternoon.jsx";
+import TeacherCard from "../components/ui/core/TeacherGroup.jsx";
+import CountChart from '../components/ui/GraficTotalPeople.jsx';
+
 
 ---
 <Layout title_p="Sistema Escolar || Views_groups" spanText="Vista Previa Salon">
-
+    <section class="content columContent">
+        <div class="contcard">
+            <div>
+                <TeacherCard client:only="react" />
+            </div>
+            <div class="containerInfo">
+                <Schedule client:only="react" />
+            </div>
+            <div>
+                <CountChart client:only="react" />
+            </div>
+        </div>
+        <!-- <ScheduleAfternoon client:only="react" /> -->
+    </section>
 
 </Layout>
+
+<style>
+.contcard{
+    width:100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.containerInfo{
+    background-color:var(--bacgroundContent);
+    box-shadow:var(--boxShadowCont);
+    border-radius:0.4em;
+}
+    @media (width > 1187px){
+        .containerInfo{
+            flex:1;
+        }
+    }
+
+    @media (max-width: 1040px){
+
+    }
+
+</style>

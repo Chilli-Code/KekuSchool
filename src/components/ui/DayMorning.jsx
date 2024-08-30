@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
 import Loader from "./core/Loader.jsx";
 import styled from 'styled-components';
+import AnimatedComponent from "./core/AnimationDivs.jsx";
+
 
 const ChartComponent = () => {
   const [chartType, setChartType] = useState('bar'); // 'bar' o 'area'
@@ -204,6 +206,7 @@ max-width:auto;
       </ContLoadeer>
       ) : (
         <>
+        <AnimatedComponent animationType="slideUp">
           <Div1>
             <button
               onClick={() => handleFilterChange('bar')}
@@ -264,6 +267,7 @@ max-width:auto;
               height={350} 
             />
           </Div2>
+          </AnimatedComponent>
         </>
       )}
     </DivCont>

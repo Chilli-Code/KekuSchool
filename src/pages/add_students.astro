@@ -43,16 +43,24 @@ import Layout from "../layouts/Layout.astro";
                             <select class="select" style="width:94%;">
                                 <option value="mujer">Mujer</option>
                                 <option value="hombre">Hombre</option>
-
+                            </select>
+                            <label class="label">Tipo de Identifiacion</label>
+                            <select class="select" style="width:94%;">
+                                <option value="T.I">T.I</option>
+                                <option value="C.C">C.C</option>
                             </select>
                             <label class="label">Numero Identifiacion</label>
-                            <input class="text" type="number" placeholder="C.C" required="">
+                            <input class="text" type="number" required>
                             <label class="label">Número de teléfono(Estudiante)</label>
                             <input class="text" type="number" placeholder="+57 12345" title="Ingresa un número de teléfono válido." maxlength="10" required="">
                         </div>
                         <div class="last">
-                            <label class="label">Nombre de Acudiente</label>
-                            <input class="text" type="text" title="Ingresa nombre de tu acudiente." required="">
+                            <label class="label">Nombres de Acudiente</label>
+                            <input class="text" type="text" title="Ingresa nombre de tu acudiente." required>
+                            <label class="label">Apellidos de Acudiente</label>
+                            <input class="text" type="text" title="Ingresa nombre de tu acudiente." required>
+                            <label class="label">Identifiacion</label>
+                            <input class="text" type="number" placeholder="C.C" required>
                             <label class="label">Parentesto de acudiente</label>
                             <input class="text" type="text" title="Ingresa nombre de tu acudiente." required="">
                             <label class="label">Número de teléfono</label>
@@ -70,7 +78,7 @@ import Layout from "../layouts/Layout.astro";
                                 <option value="11A">11A</option>
                             </select>
                             <label class="label">Contraseña</label>
-                            <input class="text" type="text" name="txtrfc" placeholder="*******" required="">
+                            <input class="text" type="password" name="txtrfc" placeholder="*******" required>
                         </div>
                     </div>
                     <button class="btn icon" type="submit">save</button>

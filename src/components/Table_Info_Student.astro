@@ -3,13 +3,25 @@ import { infoStudent } from "../lib/data.ts";
 ---
 
 <div class="container">
-    <div class="table-container">
+    <div class="table-container overflow">
       <table class="w-full">
         <tbody>
           {infoStudent.map((item) => (
             <tr key={item.id} class="table-row">
               <td class="table-data bold">Nombre:</td>
               <td class="table-data">{item.nameStudent}</td>
+            </tr>
+              <tr class="table-row">
+              <td class="table-data bold">Identifiacion:</td>
+              <td class="table-data"><b>{item.typeIdentification}</b> {item.identification}</td>
+            </tr>
+              <tr class="table-row">
+              <td class="table-data bold">fecha de nacimineto:</td>
+              <td class="table-data">{item.birthDate}</td>
+            </tr>
+              <tr class="table-row">
+              <td class="table-data bold">Años:</td>
+              <td class="table-data">{item.years}</td>
             </tr>
             <tr class="table-row">
               <td class="table-data bold">Jornada:</td>
@@ -25,11 +37,15 @@ import { infoStudent } from "../lib/data.ts";
             </tr>
             <tr class="table-row">
               <td class="table-data bold">Nombre acudiente:</td>
-              <td class="table-data">{item.nameAttendant}</td>
+              <td class="table-data">{item.attendant.nameAttendant}</td>
+            </tr>
+              <tr class="table-row">
+              <td class="table-data bold">Parentesco:</td>
+              <td class="table-data">{item.attendant.relationship}</td>
             </tr>
             <tr class="table-row">
               <td class="table-data bold">Telefono acudiente:</td>
-              <td class="table-data">{item.phoneAttendant}</td>
+              <td class="table-data">{item.attendant.phoneAttendant}</td>
             </tr>
             <tr class="table-row">
               <td class="table-data bold">EPS:</td>
@@ -38,7 +54,7 @@ import { infoStudent } from "../lib/data.ts";
             <tr class="table-row">
               <td class="table-data bold">Faltas:</td>
               <td class="table-data">
-                {item.faults.faul === 0 ? "No hay faltas registradas" : item.faults.descripcionFail}
+                {item.faults.faul === 0 ? "No hay faltas registradas" : item.faults.faul}
               </td>
             </tr>
           ))}
@@ -56,5 +72,10 @@ import { infoStudent } from "../lib/data.ts";
   .table-data {
     display: table-cell !important;
 }
-}s
+}
+.table-container.overflow{
+  margin-top:0px;
+  height:480px;
+}
+
   </style>

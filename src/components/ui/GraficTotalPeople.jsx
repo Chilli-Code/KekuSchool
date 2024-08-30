@@ -74,7 +74,7 @@ const BottomItemTitle = styled.h1`
 
 const BottomItemSubtitle = styled.h2`
   font-size: 0.75rem; // text-xs
-  color: #d1d5db; // text-gray-300
+  color: #bec2ca; // text-gray-300
 `;
 
 const IconOpcion = styled.span`
